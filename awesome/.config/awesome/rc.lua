@@ -1,0 +1,42 @@
+pcall(require, "luarocks.loader")
+
+local awful = require("awful")
+local beautiful = require("beautiful")
+local gears = require("gears")
+
+-- focus windows automatically when they are raised
+require("awful.autofocus")
+
+
+cdir = gears.filesystem.get_configuration_dir()
+home = os.getenv("HOME")
+
+dofile(cdir .. "error_handling.lua")
+
+-- Themes define colours, icons, font and wallpapers.
+beautiful.init(cdir .. "theme/theme.lua")
+
+
+-- This is used later as the default terminal and editor to run.
+terminal = "kitty"
+editor = "nvim"
+editor_cmd = terminal .. " " .. editor
+
+
+-- Screens and layouts
+dofile(cdir .. "screens.lua")
+
+dofile(cdir .. "mouse.lua")
+dofile(cdir .. "keys.lua")
+
+dofile(cdir .. "rules.lua")
+
+-- Signals and titlebars
+dofile(cdir .. "signals.lua")
+
+-- Autostart
+awful.spawn.with_shell("mpd")
+awful.spawn.with_shell("blueberry-tray")
+awful.spawn.with_shell("if not pgrep Discord; discord --start-minimized; end")
+awful.spawn.with_shell(".screenlayout/2.sh")
+awful.spawn.with_shell("killall conky; conky")
