@@ -1,0 +1,2 @@
+# vim undodir - security issue when published as it contains undo histories of files
+neovim/.config/nvim/undodir/*
