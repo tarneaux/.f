@@ -3,7 +3,7 @@
 ## Screenshot
 ![screenshot](screen.png)
 
-## installing
+## Installing
 - install gnu stow
 - clone this repo
 - run `stow <configs_to_install>`
