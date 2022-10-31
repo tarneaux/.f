@@ -1,5 +1,8 @@
 # .f
 
+## Screenshot
+![screenshot](screen.png)
+
 ## installing
 - install gnu stow
 - clone this repo
