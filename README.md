@@ -13,8 +13,22 @@
 
 
 ## Installing
-- install gnu stow
-- clone this repo
+- On a fresh arch install, run:
+```bash
+# install yay
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+
+# clone this repo
+git clone https://github.com/tarneaux/.f.git
+
+cd .f
+
+# install dependencies
+yay -S $(cat toinstall.txt)
+```
 - run `stow <configs_to_install>`
 
   For example:
@@ -22,3 +36,5 @@
   `stow awesome/`
 
   `stow */`
+
+
