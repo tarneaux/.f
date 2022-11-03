@@ -35,8 +35,5 @@ dofile(cdir .. "rules.lua")
 dofile(cdir .. "signals.lua")
 
 -- Autostart
-awful.spawn.with_shell("mpd")
-awful.spawn.with_shell("blueberry-tray")
 awful.spawn.with_shell("if not pgrep Discord; discord --start-minimized; end")
-awful.spawn.with_shell(".screenlayout/2.sh")
 awful.spawn.with_shell("killall conky; conky")
