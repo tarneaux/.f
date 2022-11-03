@@ -32,6 +32,14 @@ globalkeys = gears.table.join(
     awful.key({ modkey,  }, "q", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
 
+    -- change the screen layout
+    awful.key({ modkey   }, "1", function () awful.spawn.with_shell("xrandr --output eDP-1 --mode 1366x768 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off") end,
+              {description = "change screen layout", group = "awesome"}),
+
+    -- change the screen layout
+    awful.key({ modkey   }, "2", function () awful.spawn.with_shell("xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output HDMI-2 --mode 2560x1080 --pos 0x0 --rotate normal --output DP-2 --off --output HDMI-3 --off") end,
+              {description = "change screen layout", group = "awesome"}),
+
     -- Shutdown the computer
     awful.key({ modkey, "Control" }, "q", function() awful.spawn.with_shell("shutdown now") end,
               {description = "shutdown", group = "launcher"}),
