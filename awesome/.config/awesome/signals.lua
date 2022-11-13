@@ -16,7 +16,7 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
     c.shape = function(cr,w,h)
-        gears.shape.rounded_rect(cr,w,h,2)
+        gears.shape.rounded_rect(cr,w,h,5)
     end
 end)
 
