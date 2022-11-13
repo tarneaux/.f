@@ -34,7 +34,7 @@ theme.fg_inactive = theme.color14
 theme.useless_gap = 5
 theme.gap_single_client = true
 
-theme.bar_rounding = 4
+theme.bar_rounding = 5
 theme.bar_bg = theme.background
 theme.bar_fg = theme.foreground
 theme.bar_shape = function (cr, width, height)
@@ -141,6 +141,7 @@ theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = "/usr/share/icons/Tela-circle-dark"
 
-theme.wallpaper = "~/.config/awesome/theme/wallpaper.png"
+-- theme.wallpaper = "~/.config/awesome/theme/wallpaper.png"
+theme.wallpaper = "~/Downloads/nitish-meena-ANo5_iE9dcU-unsplash.jpg"
 
 return theme

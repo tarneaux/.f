@@ -2,14 +2,12 @@ local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
 local vpn = require("bar/widgets/vpn")
-local batt = require("bar/widgets/batt")
 
 
 tray = wibox.widget {
     {
         {
             {
-                batt,
                 vpn,
                 layout = wibox.layout.align.horizontal
             },
