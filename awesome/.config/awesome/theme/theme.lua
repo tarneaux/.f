@@ -142,6 +142,6 @@ theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 theme.icon_theme = "/usr/share/icons/Tela-circle-dark"
 
 -- theme.wallpaper = "~/.config/awesome/theme/wallpaper.png"
-theme.wallpaper = "~/Downloads/nitish-meena-ANo5_iE9dcU-unsplash.jpg"
+theme.wallpaper = "~/.config/awesome/nitish-meena-ANo5_iE9dcU-unsplash.jpg"
 
 return theme
