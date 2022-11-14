@@ -13,3 +13,5 @@ fish/.config/fish/functions/
 neovim/.local/share/nvim/rplugin.vim
 neovim/.local/share/nvim/site/pack/packer/opt/
 neovim/.local/share/nvim/site/pack/packer/start/*
+
+!neovim/.local/share/nvim/site/pack/packer/start/packer.nvim
