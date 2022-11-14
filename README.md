@@ -28,6 +28,9 @@ cd .f
 
 # install dependencies
 yay -S $(cat toinstall.txt)
+
+# install packer
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 - run `stow <configs_to_install>`
 
