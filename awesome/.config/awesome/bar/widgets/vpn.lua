@@ -2,35 +2,32 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 
-
-local up = gears.filesystem.get_configuration_dir() .. "bar/widgets/svgs/arrow_up.svg"
-local down = gears.filesystem.get_configuration_dir() .. "bar/widgets/svgs/arrow_down.svg"
-
-
-status = wibox.widget {
-    image = down,
-    resize = true,
-    widget = wibox.widget.imagebox
+local status = wibox.widget {
+    text = "",
+    widget = wibox.widget.textbox
 }
 
-status:connect_signal("button::press", function(_, _, button)
-    awful.spawn.with_shell("~/.config/vpn/ss.sh")
-end)
+
+local is_running = function ()
+    awful.spawn.easy_async('sudo wg show', function(stdout)
+        if stdout == '' then
+            status.text = "vpn: down"
+            return false
+        else
+            status.text = "vpn: up"
+            return true
+        end
+    end)
+end
+
 
 gears.timer {
     timeout = 1,
     call_now = true,
     autostart = true,
     callback = function()
-      awful.spawn.easy_async('pgrep openvpn', function(stdout)
-        if stdout == '' then
-          status.image = down
-        else
-          status.image = up
-        end
-      end)
+        is_running()
     end
-        
 }
 
 return status

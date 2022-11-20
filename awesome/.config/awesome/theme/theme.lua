@@ -6,7 +6,7 @@ local gears = require("gears")
 
 theme = {}
 
-theme.background = "#1d2021"
+theme.background = "#282828"
 theme.foreground = "#ebdbb2"
 theme.color0 = "#3c3836"
 theme.color1 = "#cc241d"
@@ -26,6 +26,7 @@ theme.color14 = "#8ec07c"
 theme.color15 = "#fbf1c7"
 theme.cursor = "#bdae93"
 
+
 theme.bg_accent = theme.color0
 theme.fg_accent = theme.color15
 theme.fg_inactive = theme.color14
@@ -34,7 +35,7 @@ theme.fg_inactive = theme.color14
 theme.useless_gap = 5
 theme.gap_single_client = true
 
-theme.bar_rounding = 5
+theme.bar_rounding = 0
 theme.bar_bg = theme.background
 theme.bar_fg = theme.foreground
 theme.bar_shape = function (cr, width, height)
