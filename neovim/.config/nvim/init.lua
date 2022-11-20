@@ -7,7 +7,6 @@ require('packer').startup(function(use)
 
   -- Gruvbox theme
   use 'morhetz/gruvbox'
-  vim.cmd [[colorscheme gruvbox]]
 
   use 'nvim-treesitter/nvim-treesitter'
 
@@ -42,13 +41,18 @@ require('packer').startup(function(use)
 
   use 'goolord/alpha-nvim'
 
+  use 'norcalli/nvim-colorizer.lua'
+
 end)
 
+vim.cmd [[colorscheme gruvbox]]
 dofile(root .. "packs/treesitter.lua")
 dofile(root .. "packs/lualine.lua")
 dofile(root .. "packs/whichkey.lua")
 dofile(root .. "packs/lsp.lua")
 dofile(root .. "packs/alpha.lua")
+vim.opt.termguicolors = true
+require'colorizer'.setup()
 
 vim.opt.rnu = true 
 
