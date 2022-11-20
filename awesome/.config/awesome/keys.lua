@@ -11,7 +11,7 @@ globalkeys = gears.table.join(
               {description = "launch dmenu", group = "launcher"}),
     
     -- Brave browser
-    awful.key({ modkey,           }, "b", function() awful.spawn.with_shell("brave") end,
+    awful.key({ modkey,           }, "b", function() awful.spawn.with_shell("brave-browser-stable") end,
               {description = "launch brave", group = "launcher"}),
     -- newsflash
     --awful.key({ modkey,           }, "r", function() awful.spawn.with_shell("newsflash") end,
