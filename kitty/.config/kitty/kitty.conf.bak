@@ -1311,6 +1311,6 @@ map kitty_mod+delete clear_terminal reset active
 
 
 # BEGIN_KITTY_THEME
-# Gruvbox Dark
+# Gruvbox Dark Hard
 include current-theme.conf
 # END_KITTY_THEME
