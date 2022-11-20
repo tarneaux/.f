@@ -4,45 +4,34 @@ local wibox = require("wibox")
 
 local taglist = require("bar/widgets/taglist")
 local clock = require("bar/widgets/clock")
-local tasklist = require("bar/widgets/tasklist")
-local tray = require("bar/widgets/tray")
-
+local vpn = require("bar/widgets/vpn")
 
 local bar = function(s)
-    wb = awful.wibar {
+    local wb = awful.wibar {
         position = "top",
-        height = 23,
+        height = 18,
         screen = s,
-        bg = '#0000'
+        bg = beautiful.background
     }
     wb:setup {
         {
+            layout = wibox.layout.align.horizontal,
             {
                 layout = wibox.layout.align.horizontal,
-                {
-                    layout = wibox.layout.align.horizontal,
-                    taglist(s)
-                },
-                nil,
-                {
-                    layout = wibox.layout.align.horizontal,
-                    -- tray,
-                    clock
-                }
+                taglist(s)
             },
+            nil,
             {
-                tasklist(s),
-                valign = "center",
-                halign = "center",
-                layout = wibox.container.place
-            },
-            layout = wibox.layout.stack
-
+                layout = wibox.layout.align.horizontal,
+                vpn
+            }
         },
-        left = 10,
-        right = 10,
-        top = 5,
-        widget = wibox.container.margin
+        {
+            layout = wibox.container.place,
+            halign = "center",
+            clock
+        },
+        layout = wibox.layout.stack
     }
 end
 
