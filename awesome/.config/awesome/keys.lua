@@ -9,7 +9,6 @@ globalkeys = gears.table.join(
     -- Applications launcher
     awful.key({ modkey,           }, "p", function() awful.spawn.with_shell("dmenu_run") end,
               {description = "launch dmenu", group = "launcher"}),
-    
     -- Brave browser
     awful.key({ modkey,           }, "b", function() awful.spawn.with_shell("brave-browser-stable") end,
               {description = "launch brave", group = "launcher"}),
@@ -23,7 +22,6 @@ globalkeys = gears.table.join(
     -- Discord
     awful.key({ modkey,           }, "d", function() awful.spawn.with_shell("discord") end,
               {description = "launch discord", group = "launcher"}),
-    
     -- Open terminal
     awful.key({ modkey,           }, "Return", function () awful.spawn.with_shell(terminal) end,
               {description = "open a terminal", group = "launcher"}),
@@ -41,11 +39,11 @@ globalkeys = gears.table.join(
               {description = "change screen layout", group = "awesome"}),
 
     -- Shutdown the computer
-    awful.key({ modkey, "Control" }, "q", function() awful.spawn.with_shell("shutdown now") end,
+    awful.key({ modkey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end,
               {description = "shutdown", group = "launcher"}),
 
     -- Hibernate the computer
-    awful.key({ modkey, "Control" }, "h", function() awful.spawn.with_shell("lock systemctl hibernate") end,
+    awful.key({ modkey, "Control" }, "h", function() awful.spawn.with_shell("sudo ZZZ") end,
               {description = "hibernate", group = "launcher"}),
 
     -- Suspend the computer
