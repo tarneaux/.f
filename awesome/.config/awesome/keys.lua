@@ -128,12 +128,7 @@ globalkeys = gears.table.join(
                     )
                   end
               end,
-              {description = "restore minimized", group = "client"}),
-    -- Bookmarks with dmenu
-    awful.key({ modkey }, "m", function ()
-        awful.spawn.with_shell("xdotool type (grep -v '^#' ~/.config/awesome/bookmarks | dmenu -i -l 10)")
-    end,
-    {description = "open bookmark", group = "launcher"})
+              {description = "restore minimized", group = "client"})
 )
 
 clientkeys = gears.table.join(
