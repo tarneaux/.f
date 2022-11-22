@@ -2,6 +2,8 @@
 
 local awful = require("awful")
 local gears = require("gears")
+local hotkeys_popup = require("awful.hotkeys_popup")
+require("awful.hotkeys_popup.keys")
 
 modkey = "Mod4"
 
@@ -133,7 +135,12 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "m", function ()
         awful.spawn.with_shell("xdotool type (grep -v '^#' ~/.config/awesome/bookmarks | dmenu -i -l 10)")
     end,
-    {description = "open bookmark", group = "launcher"})
+    {description = "open bookmark", group = "launcher"}),
+    awful.key({ modkey,           }, ",", function () awful.layout.inc( 1)                end,
+              {description = "select next", group = "layout"}),
+    -- show hotkeys
+    awful.key({ modkey,           }, "h", function () hotkeys_popup.show_help(nil, awful.screen.focused()) end,
+              {description="show help", group="awesome"})
 )
 
 clientkeys = gears.table.join(
