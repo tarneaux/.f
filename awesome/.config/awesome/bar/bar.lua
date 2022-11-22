@@ -15,23 +15,28 @@ local bar = function(s)
     }
     wb:setup {
         {
-            layout = wibox.layout.align.horizontal,
             {
                 layout = wibox.layout.align.horizontal,
-                taglist(s)
+                {
+                    layout = wibox.layout.align.horizontal,
+                    taglist(s)
+                },
+                nil,
+                {
+                    layout = wibox.layout.align.horizontal,
+                    vpn
+                }
             },
-            nil,
-            {
-                layout = wibox.layout.align.horizontal,
-                vpn
-            }
+            widget = wibox.container.margin,
+            right = 5,
+            left = 5
         },
         {
             layout = wibox.container.place,
             halign = "center",
             clock
         },
-        layout = wibox.layout.stack
+        layout = wibox.layout.stack,
     }
 end
 
