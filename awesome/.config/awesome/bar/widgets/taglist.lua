@@ -73,21 +73,7 @@ local taglist = function(s)
         },
         buttons = taglist_buttons
     }
-    mytaglist_with_margins = wibox.widget {
-        {
-            {
-                mytaglist,
-                left = 5,
-                right = 5,
-                widget = wibox.container.margin
-            },
-            bg = beautiful.bar_bg,
-            widget = wibox.container.background,
-            shape = beautiful.bar_shape
-        },
-        right = 4,
-        widget = wibox.container.margin
-    }
+    mytaglist_with_margins = mytaglist
     return mytaglist_with_margins
 end
 
