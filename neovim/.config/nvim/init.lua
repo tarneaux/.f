@@ -43,6 +43,7 @@ require('packer').startup(function(use)
 
   use 'norcalli/nvim-colorizer.lua'
 
+  use 'airblade/vim-gitgutter'
 end)
 
 vim.cmd [[colorscheme gruvbox]]
@@ -53,6 +54,7 @@ dofile(root .. "packs/lsp.lua")
 dofile(root .. "packs/alpha.lua")
 vim.opt.termguicolors = true
 require'colorizer'.setup()
+
 
 vim.opt.rnu = true 
 
