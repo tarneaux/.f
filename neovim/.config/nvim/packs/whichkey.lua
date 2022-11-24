@@ -18,6 +18,14 @@ wk.register({
             p = { "<cmd>Git push<cr>", "Push" },
             s = { "<cmd>Git status<cr>", "Status" }
         },
+        b = {
+            name = "Buffers",
+            b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+            d = { "<cmd>bd<cr>", "Delete" },
+            c = { "<cmd>enew<cr>", "Close" },
+            p = { "<cmd>bp<cr>", "Previous" },
+            n = { "<cmd>bn<cr>", "Next" }
+        },
         q = { "<cmd>q<cr>", "Quit" },
         w = { "<cmd>w<cr>", "Write" }
     }
