@@ -8,6 +8,8 @@ require('packer').startup(function(use)
   -- Gruvbox theme
   use 'morhetz/gruvbox'
 
+  use 'airblade/vim-gitgutter'
+
   use 'nvim-treesitter/nvim-treesitter'
 
   use {
@@ -43,7 +45,6 @@ require('packer').startup(function(use)
 
   use 'norcalli/nvim-colorizer.lua'
 
-  use 'airblade/vim-gitgutter'
 end)
 
 vim.cmd [[colorscheme gruvbox]]
@@ -62,7 +63,7 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 
-vim.opt.wrap = false
+vim.opt.linebreak = true
 
 vim.opt.swapfile = false
 
@@ -78,5 +79,10 @@ vim.opt.autoread = true
 
 
 vim.cmd.highlight('SignColumn', 'guibg=NONE')
+-- same for gitgutter signs
+vim.cmd.highlight('GitGutterAdd', 'guibg=NONE')
+vim.cmd.highlight('GitGutterChange', 'guibg=NONE')
+vim.cmd.highlight('GitGutterDelete', 'guibg=NONE')
 
-vim.opt.signcolumn = "yes"
+
+vim.opt.signcolumn = 'number'
