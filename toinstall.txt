@@ -1,1 +1,1 @@
-awesome dmenu kitty neovim conky git fish stow nerd-fonts-ibm-plex-mono upower exa ripgrep trash-cli bat tela-icon-theme ttf-dejavu
+awesome dmenu kitty neovim conky git fish stow nerd-fonts-ibm-plex-mono upower exa ripgrep trash-cli bat ttf-dejavu
