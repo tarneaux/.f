@@ -73,8 +73,7 @@ local taglist = function(s)
         },
         buttons = taglist_buttons
     }
-    mytaglist_with_margins = mytaglist
-    return mytaglist_with_margins
+    return mytaglist
 end
 
 return taglist
