@@ -45,12 +45,8 @@ globalkeys = gears.table.join(
               {description = "shutdown", group = "launcher"}),
 
     -- Hibernate the computer
-    awful.key({ modkey, "Control" }, "h", function() awful.spawn.with_shell("sudo ZZZ") end,
+    awful.key({ modkey, "Control" }, "h", function() awful.spawn.with_shell("sudo systemctl hibernate") end,
               {description = "hibernate", group = "launcher"}),
-
-    -- Suspend the computer
-    awful.key({ modkey, "Control" }, "s", function() awful.spawn.with_shell("lock systemctl suspend") end,
-              {description = "suspend", group = "launcher"}),
 
     -- Print area / window
     awful.key({}, "Print", function() awful.spawn.with_shell("maim --select | xclip -selection clipboard -target image/png") end,

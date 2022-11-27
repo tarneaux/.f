@@ -10,6 +10,4 @@ xsetroot -solid darkgrey
 dbus-update-activation-environment DISPLAY XAUTHORITY
 
 
-pulseaudio --start
-
 exec awesome
