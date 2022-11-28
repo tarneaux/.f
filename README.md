@@ -1,7 +1,7 @@
 # .f
 
 ## Screenshot
-![screenshot](screen.png)
+![image](https://user-images.githubusercontent.com/62650051/204324745-7b7c1fd1-5bbb-40a0-b9a1-c1bdaab9fea1.png)
 
 ## What's used
 - WM: `awesomewm`. [config](awesome/.config/awesome)
