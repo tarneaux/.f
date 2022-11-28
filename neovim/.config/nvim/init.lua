@@ -45,6 +45,15 @@ require('packer').startup(function(use)
 
   use 'norcalli/nvim-colorizer.lua'
 
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons' -- optional, for file icons
+    }
+  }
+
+  use 'cljoly/telescope-repo.nvim'
+
 end)
 
 vim.cmd [[colorscheme gruvbox]]
@@ -53,6 +62,7 @@ dofile(root .. "packs/lualine.lua")
 dofile(root .. "packs/whichkey.lua")
 dofile(root .. "packs/lsp.lua")
 dofile(root .. "packs/alpha.lua")
+dofile(root .. "packs/nvim-tree.lua")
 vim.opt.termguicolors = true
 require'colorizer'.setup()
 

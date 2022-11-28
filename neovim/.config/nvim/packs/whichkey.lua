@@ -26,7 +26,10 @@ wk.register({
             p = { "<cmd>bp<cr>", "Previous" },
             n = { "<cmd>bn<cr>", "Next" }
         },
+        o = { "<cmd>NvimTreeToggle<cr>", "Open nvimtree" },
+        i = { "<cmd>NvimTreeFocus<cr>", "Focus nvimtree" },
         q = { "<cmd>q<cr>", "Quit" },
-        w = { "<cmd>w<cr>", "Write" }
+        w = { "<cmd>w<cr>", "Write" },
+        r = { "<cmd>Telescope repo list<cr>", "Registers" },
     }
 })
