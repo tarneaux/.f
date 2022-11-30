@@ -11,7 +11,7 @@ local function update_mpd()
         if stdout ~= "" then
             mpd:set_text(" " .. stdout)
         else
-            mpd:set_text(" ")
+            mpd:set_text(" not playing")
         end
     end)
 end
