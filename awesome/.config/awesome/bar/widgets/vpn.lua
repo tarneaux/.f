@@ -25,9 +25,7 @@ gears.timer {
     timeout = 1,
     call_now = true,
     autostart = true,
-    callback = function()
-        is_running()
-    end
+    callback = is_running
 }
 
 return status
