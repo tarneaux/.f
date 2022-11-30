@@ -5,6 +5,9 @@ local wibox = require("wibox")
 local taglist = require("bar/widgets/taglist")
 local clock = require("bar/widgets/clock")
 local vpn = require("bar/widgets/vpn")
+local mpd = require("bar/widgets/mpd")
+local spacer = require("bar/widgets/spacer")
+
 
 local bar = function(s)
     local wb = awful.wibar {
@@ -24,6 +27,8 @@ local bar = function(s)
                 nil,
                 {
                     layout = wibox.layout.align.horizontal,
+                    mpd,
+                    spacer,
                     vpn
                 }
             },
