@@ -75,7 +75,7 @@ globalkeys = gears.table.join(
               awful.spawn.with_shell("mpc prev")
               end),
     awful.key({}, "XF86AudioPlay", function ()
-              awful.spawn.with_shell("playerctl play-pause")
+              awful.spawn.with_shell("mpc toggle")
               end),
 
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
