@@ -28,6 +28,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Return", function () awful.spawn.with_shell(terminal) end,
               {description = "open a terminal", group = "launcher"}),
 
+    -- Open project in terminal
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn.with_shell("kitty -d ~/Projects/(/bin/ls ~/Projects/ | dmenu -i -l 10)") end,
+              {description = "open a project in a new terminal", group = "launcher"}),
+
     -- Reload awesome
     awful.key({ modkey,  }, "q", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
