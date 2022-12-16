@@ -8,8 +8,8 @@ wk.register({
             f = { "<cmd>Telescope find_files<cr>", "Files" },
             g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
             b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-            h = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
-            r = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
+            h = { "<cmd>Telescope find_files hidden=true<cr>", "Hidden files" },
+            r = { "<cmd>Telescope repo list<cr>", "Git repos" },
         },
         g = {
             name = "Git",
