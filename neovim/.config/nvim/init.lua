@@ -25,7 +25,7 @@ require('packer').startup(function(use)
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, { "cljoly/telescope-repo.nvim" } }
   }
   use 'nvim-telescope/telescope-file-browser.nvim'
 
@@ -52,8 +52,7 @@ require('packer').startup(function(use)
     }
   }
 
-  use 'cljoly/telescope-repo.nvim'
-
+  use 'airblade/vim-rooter'
 end)
 
 vim.cmd [[colorscheme gruvbox]]
@@ -65,6 +64,8 @@ dofile(root .. "packs/alpha.lua")
 dofile(root .. "packs/nvim-tree.lua")
 vim.opt.termguicolors = true
 require'colorizer'.setup()
+require'telescope'.load_extension'repo'
+vim.g['rooter_cd_cmd'] = 'lcd'
 
 
 vim.opt.rnu = true 
