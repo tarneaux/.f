@@ -37,7 +37,6 @@ dofile(cdir .. "signals.lua")
 -- Autostart
 -- awful.spawn.with_shell("if not pgrep Discord; discord --start-minimized; end")
 -- awful.spawn.with_shell("kill conky; conky")
-awful.spawn.with_shell("nextcloud --background")
 awful.spawn.with_shell("syncthing")
 awful.spawn.with_shell("mpd")
 awful.spawn.with_shell('rsync -r -aAXv --exclude=".cache/" --exclude="max/.local/share/Trash/" ~ user@chankla:~/backups')
