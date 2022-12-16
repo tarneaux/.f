@@ -16,7 +16,8 @@ wk.register({
             c = { "<cmd>Git commit<cr>", "Commit" },
             a = { "<cmd>Git add " .. vim.fn.expand('%:p') .. " <cr>", "Add current file" },
             p = { "<cmd>Git push<cr>", "Push" },
-            s = { "<cmd>Git status<cr>", "Status" }
+            s = { "<cmd>Git status<cr>", "Status" },
+            d = { "<cmd>Git diff<cr>", "Diff" },
         },
         b = {
             name = "Buffers",
