@@ -29,6 +29,8 @@ alias gca="git commit -a"
 alias gcam="git commit -am"
 alias gp="git push"
 alias gs="git status"
+alias gl="git log --decorate --oneline --graph"
+alias gd="git diff"
 
 
 # the terminal rickroll
