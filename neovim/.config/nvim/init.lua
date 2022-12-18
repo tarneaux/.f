@@ -21,7 +21,7 @@ require('packer').startup(function(use)
 
   use 'tpope/vim-commentary'
 
-  use 'jiangmiao/auto-pairs'
+  use 'windwp/nvim-autopairs'
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -66,6 +66,8 @@ vim.opt.termguicolors = true
 require'colorizer'.setup()
 require'telescope'.load_extension'repo'
 vim.g['rooter_cd_cmd'] = 'lcd'
+require("nvim-autopairs").setup {}
+
 
 
 vim.opt.rnu = true 
