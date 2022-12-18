@@ -22,6 +22,12 @@ alias mv='mv -i'
 alias mkdirs='mkdir -p'
 alias woman="man"
 
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gp="git push"
+alias gs="git status"
+
 
 # the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
