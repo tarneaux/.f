@@ -41,3 +41,7 @@ awful.spawn.with_shell("syncthing")
 awful.spawn.with_shell("mpd")
 awful.spawn.with_shell('rsync -r -aAXv --exclude=".cache/" --exclude="max/.local/share/Trash/" ~ user@chankla:~/backups')
 awful.spawn.with_shell("picom")
+
+-- Configuration for my wifi adapter
+awful.spawn.with_shell("eject /dev/cdrom")
+awful.spawn.with_shell("~/.config/scripts/wifi_driver.sh")
