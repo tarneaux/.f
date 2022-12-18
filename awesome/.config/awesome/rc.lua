@@ -44,4 +44,4 @@ awful.spawn.with_shell("picom")
 
 -- Configuration for my wifi adapter
 awful.spawn.with_shell("eject /dev/cdrom")
-awful.spawn.with_shell("~/.config/scripts/wifi_driver.sh")
+-- awful.spawn.with_shell("~/.config/scripts/wifi_driver.sh")
