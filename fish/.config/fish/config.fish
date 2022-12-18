@@ -20,6 +20,8 @@ alias s="swallow"
 alias cp="cp --interactive"
 alias mv='mv -i'
 alias mkdirs='mkdir -p'
+alias woman="man"
+
 
 # the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
@@ -44,6 +46,8 @@ end
 
 
 if status is-interactive
+    lua ~/.config/fish/z.lua --init fish | source
+    set -gx _ZL_CD cd
     bind --user \e, 'history-token-search-backward'
     bind --user \e\; 'history-token-search-forward'
 end
