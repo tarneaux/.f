@@ -2,57 +2,59 @@ local root = vim.fn.expand('~/.config/nvim/')
 
 vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-  -- Gruvbox theme
-  use 'morhetz/gruvbox'
+    -- Gruvbox theme
+    use 'morhetz/gruvbox'
 
-  use 'airblade/vim-gitgutter'
+    use 'airblade/vim-gitgutter'
 
-  use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/nvim-treesitter'
 
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-
-  use 'github/copilot.vim'
-
-  use 'tpope/vim-commentary'
-
-  use 'windwp/nvim-autopairs'
-
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, { "cljoly/telescope-repo.nvim" } }
-  }
-  use 'nvim-telescope/telescope-file-browser.nvim'
-
-  use 'folke/which-key.nvim'
-
-  use 'tpope/vim-fugitive'
-
-  use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'L3MON4D3/LuaSnip'
-  use 'ervandew/supertab'
-  use 'nvim-lua/plenary.nvim'
-
-  use 'goolord/alpha-nvim'
-
-  use 'norcalli/nvim-colorizer.lua'
-
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons' -- optional, for file icons
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
-  }
 
-  use 'airblade/vim-rooter'
+    use 'github/copilot.vim'
+
+    use 'tpope/vim-commentary'
+
+    use 'windwp/nvim-autopairs'
+
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, { "cljoly/telescope-repo.nvim" } }
+    }
+    use 'nvim-telescope/telescope-file-browser.nvim'
+
+    use 'folke/which-key.nvim'
+
+    use 'tpope/vim-fugitive'
+
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'L3MON4D3/LuaSnip'
+    use 'ervandew/supertab'
+    use 'nvim-lua/plenary.nvim'
+
+    use 'goolord/alpha-nvim'
+
+    use 'norcalli/nvim-colorizer.lua'
+
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons' -- optional, for file icons
+        }
+    }
+
+    use 'airblade/vim-rooter'
+
+    use "folke/todo-comments.nvim"
 end)
 
 vim.cmd [[colorscheme gruvbox]]
@@ -67,7 +69,7 @@ require'colorizer'.setup()
 require'telescope'.load_extension'repo'
 vim.g['rooter_cd_cmd'] = 'lcd'
 require("nvim-autopairs").setup {}
-
+dofile(root .. "packs/todo.lua")
 
 
 vim.opt.rnu = true 
