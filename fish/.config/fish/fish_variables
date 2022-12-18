@@ -3,6 +3,7 @@
 SETUVAR --export EDITOR:nvim
 SETUVAR --export MANPAGER:sh\x20\x2dc\x20\x27col\x20\x2dbx\x20\x7c\x20bat\x20\x2dl\x20man\x20\x2dp\x27
 SETUVAR --export OPENAI_API_KEY:sk\x2dxaLt76AW9s6dkKwmfEQ1T3BlbkFJ3SfJlALwf8OMiCKkyOw3
+SETUVAR --export PAGER:bat
 SETUVAR --path PATH:/home/max/\x2elocal/share/gem/ruby/3\x2e0\x2e0/bin/\x1e/home/max/\x2elocal/share/CEdev/bin/\x1e/home/max/\x2elocal/bin/\x1e/home/max/\x2ecargo/bin/\x1e/home/max/\x2eemacs\x2ed/bin/\x1e/home/max/\x2elocal/share/gem/ruby/3\x2e0\x2e0/bin/\x1e/home/max/\x2elocal/share/CEdev/bin/\x1e/home/max/\x2elocal/bin/\x1e/home/max/\x2ecargo/bin/\x1e/home/max/\x2eemacs\x2ed/bin/\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/bin\x1e/usr/bin/site_perl\x1e/usr/bin/vendor_perl\x1e/usr/bin/core_perl\x1e\x2enix\x2dprofile/bin/
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
