@@ -25,6 +25,8 @@ alias woman="man"
 alias ga="git add"
 alias gc="git commit"
 alias gcm="git commit -m"
+alias gca="git commit -a"
+alias gcam="git commit -am"
 alias gp="git push"
 alias gs="git status"
 
