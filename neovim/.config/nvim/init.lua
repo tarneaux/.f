@@ -101,3 +101,7 @@ vim.cmd.highlight('GitGutterDelete', 'guibg=NONE')
 
 
 vim.opt.signcolumn = 'number'
+
+
+-- set cursor back to beam on exit
+vim.cmd [[autocmd VimLeave * set guicursor=a:ver25-blinkon0]]
