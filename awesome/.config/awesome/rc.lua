@@ -18,7 +18,7 @@ beautiful.init(cdir .. "theme/theme.lua")
 
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "alacritty"
 editor = "nvim"
 editor_cmd = terminal .. " " .. editor
 
@@ -42,6 +42,10 @@ awful.spawn.with_shell("mpd")
 awful.spawn.with_shell('rsync -r -aAXv --exclude=".cache/" --exclude="max/.local/share/Trash/" ~ user@chankla:~/backups')
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("nextcloud --background")
+
+
+awful.spawn.with_shell("sudo mount /dev/sdb1 /mnt/hdd")
+awful.spawn.with_shell("pgrep rsync || rsync -r --progress .nc/ /mnt/hdd/Nextcloud.bak/")
 
 -- Configuration for my wifi adapter
 awful.spawn.with_shell("eject /dev/cdrom")

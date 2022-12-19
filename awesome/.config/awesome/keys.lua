@@ -29,7 +29,7 @@ globalkeys = gears.table.join(
               {description = "open a terminal", group = "launcher"}),
 
     -- Open project in terminal
-    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn.with_shell("kitty -d ~/Projects/(/bin/ls ~/Projects/ | dmenu -i -l 10)") end,
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn.with_shell("alacritty --working-directory ~/Projects/(/bin/ls ~/Projects/ | dmenu -i -l 10)") end,
               {description = "open a project in a new terminal", group = "launcher"}),
 
     -- Reload awesome
