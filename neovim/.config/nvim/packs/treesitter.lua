@@ -4,3 +4,9 @@ require'nvim-treesitter.configs'.setup {
         enable = true
     }
 }
+
+require'nvim-treesitter.configs'.setup {
+  indent = {
+    enable = true
+  }
+}
