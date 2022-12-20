@@ -55,6 +55,8 @@ require('packer').startup(function(use)
     use 'airblade/vim-rooter'
 
     use "folke/todo-comments.nvim"
+
+    use "NMAC427/guess-indent.nvim"
 end)
 
 vim.cmd [[colorscheme gruvbox]]
@@ -70,9 +72,10 @@ require'telescope'.load_extension'repo'
 vim.g['rooter_cd_cmd'] = 'lcd'
 require("nvim-autopairs").setup {}
 dofile(root .. "packs/todo.lua")
+require('guess-indent').setup {}
 
 
-vim.opt.rnu = true 
+vim.opt.rnu = true
 
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
