@@ -11,6 +11,9 @@ globalkeys = gears.table.join(
     -- Applications launcher
     awful.key({ modkey,           }, "p", function() awful.spawn.with_shell("dmenu_run") end,
               {description = "launch dmenu", group = "launcher"}),
+    -- Window focus with dmenu
+    awful.key({ modkey,           }, "y", function() awful.spawn.with_shell("~/.config/scripts/dwin.sh") end,
+              {description = "focus window with dmenu", group = "launcher"}),
     -- Brave browser
     awful.key({ modkey,           }, "b", function() awful.spawn.with_shell("brave") end,
               {description = "launch brave", group = "launcher"}),
@@ -101,8 +104,8 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "y", function () awful.screen.focus_relative( 1) end,
-              {description = "focus the next screen", group = "screen"}),
+    -- awful.key({ modkey,           }, "y", function () awful.screen.focus_relative( 1) end,
+    --           {description = "focus the next screen", group = "screen"}),
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "i", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
@@ -154,8 +157,8 @@ clientkeys = gears.table.join(
               {description = "close", group = "client"}),
     awful.key({ modkey            }, "c",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "y",      function (c) c:move_to_screen()               end,
-              {description = "move to screen", group = "client"}),
+    -- awful.key({ modkey, "Shift"   }, "y",      function (c) c:move_to_screen()               end,
+    --           {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "l",
         function (c)
             -- The client currently has the input focus, so it cannot be
