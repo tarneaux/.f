@@ -2,6 +2,8 @@ if [ (tty) = "/dev/tty1" ]
     startx
 end
 
+fish_vi_key_bindings
+
 alias vim="nvim"
 alias v="nvim"
 
