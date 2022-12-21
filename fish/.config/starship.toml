@@ -17,7 +17,7 @@ ahead = "↑"
 behind = "↓"
 diverged = "↕"
 untracked = "?"
-stashed = "$"
+stashed = "" # Here we use the nerd font icon to prevent an error
 modified = "!"
 staged = "+"
 renamed = "»"
@@ -28,3 +28,123 @@ symbol = "שׂ "
 
 [cmd_duration]
 format = "[$duration]($style) "
+
+
+
+
+
+
+
+
+# Disable all language specific modules
+
+[bun]
+disabled = true
+
+[buf]
+disabled = true
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[crystal]
+disabled = true
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[golang]
+disabled = true
+
+[haxe]
+disabled = true
+
+[helm]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[lua]
+disabled = true
+
+[meson]
+disabled = true
+
+[nim]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[opa]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[python]
+disabled = true
+
+[raku]
+disabled = true
+
+[red]
+disabled = true
+
+[rlang]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[swift]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[vlang]
+disabled = true
+
+[zig]
+disabled = true
