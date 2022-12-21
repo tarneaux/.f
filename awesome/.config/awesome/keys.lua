@@ -24,9 +24,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "z", function() awful.spawn.with_shell(terminal_cmd .. " ncmpcpp") end,
               {description = "launch ncmpcpp", group = "launcher"}),
 
-    -- Discord
-    awful.key({ modkey,           }, "d", function() awful.spawn.with_shell("discord") end,
-              {description = "launch discord", group = "launcher"}),
     -- Open terminal
     awful.key({ modkey,           }, "Return", function () awful.spawn.with_shell(terminal) end,
               {description = "open a terminal", group = "launcher"}),
@@ -183,7 +180,7 @@ clientkeys = gears.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-local tagkeys = { "a", "r", "s", "t", "g"}
+local tagkeys = { "a", "r", "s", "t", "d"}
 for i = 1, 9 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
