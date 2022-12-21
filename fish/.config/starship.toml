@@ -6,7 +6,7 @@ error_symbol = "[λ](bold red)"
 vimcmd_symbol = "[](bold green)"
 vimcmd_replace_one_symbol = "[](bold purple)"
 vimcmd_replace_symbol = "[](bold purple)"
-vimcmd_visula_symbol = "[](bold yellow)"
+vimcmd_visual_symbol = "[](bold yellow)"
 
 [line_break]
 disabled = true
