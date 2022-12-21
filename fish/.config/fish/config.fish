@@ -2,11 +2,6 @@ if [ (tty) = "/dev/tty1" ]
     startx
 end
 
-function fish_prompt
-    ~/.config/fish/prompt.sh $status
-end
-
-
 alias vim="nvim"
 alias v="nvim"
 
@@ -37,7 +32,7 @@ alias gs="git status"
 alias gl="git log --decorate --oneline --graph"
 alias gd="git diff"
 
-alias panacopy="sudo mount /dev/disk/by-uuid/9016-4EF8 /mnt/pana/; rsync /mnt/pana/DCIM/102_PANA/ ~/Downloads/pana/ -r --progress -aAXv;"
+alias panacopy="sudo mount /dev/disk/by-uuid/9016-4EF8 /mnt/pana/; rsync /mnt/pana/DCIM/102_PANA/ ~/Pictures/pana/ -r --progress -aAXv"
 
 export BARTIB_FILE="$HOME/.config/bartib/bartib.txt"
 
@@ -64,3 +59,5 @@ if status is-interactive
     bind --user \e, 'history-token-search-backward'
     bind --user \e\; 'history-token-search-forward'
 end
+
+starship init fish | source
