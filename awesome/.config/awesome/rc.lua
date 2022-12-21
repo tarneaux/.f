@@ -40,7 +40,7 @@ dofile(cdir .. "signals.lua")
 awful.spawn.with_shell("syncthing")
 awful.spawn.with_shell("mpd")
 awful.spawn.with_shell('rsync -r -aAXv --exclude=".cache/" --exclude="max/.local/share/Trash/" ~ user@chankla:~/backups')
--- awful.spawn.with_shell("picom")
+awful.spawn.with_shell("picom")
 awful.spawn.with_shell("nextcloud --background")
 
 
