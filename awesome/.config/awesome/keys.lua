@@ -21,8 +21,8 @@ globalkeys = gears.table.join(
     --awful.key({ modkey,           }, "r", function() awful.spawn.with_shell("newsflash") end,
               --{description = "launch newsflash", group = "launcher"}),
     -- ncmpcpp
-    -- awful.key({ modkey,           }, "u", function() awful.spawn.with_shell(terminal .. " ncmpcpp") end,
-    --           {description = "launch ncmpcpp", group = "launcher"}),
+    awful.key({ modkey,           }, "z", function() awful.spawn.with_shell(terminal_cmd .. " ncmpcpp") end,
+              {description = "launch ncmpcpp", group = "launcher"}),
 
     -- Discord
     awful.key({ modkey,           }, "d", function() awful.spawn.with_shell("discord") end,
