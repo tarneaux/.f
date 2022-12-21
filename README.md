@@ -9,8 +9,8 @@
 - Editor: `neovim`. [config](neovim/.config/nvim)
 - Font: `BlexMono Nerd Font`.
 - Colorscheme: `gruvbox`.
-- Shell: `fish` [config](fish/.config/fish/)
-- Prompt: customized `starship` [config](fish/.config/starship.toml)
+- Shell: `fish`. [config](fish/.config/fish/)
+- Prompt: customized `starship`. [config](fish/.config/starship.toml)
 
 
 ## Installing
