@@ -25,6 +25,7 @@ alias md="mkdir"
 alias mds='mkdir -p'
 
 alias ga="git add"
+alias gap="git add -p"
 alias gc="git commit"
 alias gcm="git commit -m"
 alias gca="git commit -a"
