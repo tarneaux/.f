@@ -49,5 +49,4 @@ awful.spawn.with_shell("sudo mount /dev/sdb1 /mnt/hdd")
 awful.spawn.with_shell("pgrep rsync || rsync -r --progress .nc/ /mnt/hdd/Nextcloud.bak/")
 
 -- Configuration for my wifi adapter
-awful.spawn.with_shell("eject /dev/cdrom")
--- awful.spawn.with_shell("~/.config/scripts/wifi_driver.sh")
+awful.spawn.with_shell("~/.config/scripts/wifi_driver.sh")
