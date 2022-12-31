@@ -74,6 +74,11 @@ require("nvim-autopairs").setup {}
 dofile(root .. "packs/todo.lua")
 require('guess-indent').setup {}
 
+-- enable copilot for yaml files
+vim.cmd [[
+let g:copilot_filetypes = {'yaml': v:true}
+]]
+
 
 vim.opt.rnu = true
 
