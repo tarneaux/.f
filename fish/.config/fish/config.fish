@@ -35,8 +35,6 @@ alias gs="git status"
 alias gl="git log --decorate --oneline --graph"
 alias gd="git diff"
 
-alias rsync="rsync -aAXv"
-
 export BARTIB_FILE="$HOME/.config/bartib/bartib.txt"
 
 # Colorize grep output (good for log files)
