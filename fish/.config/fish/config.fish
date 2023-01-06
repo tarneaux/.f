@@ -37,8 +37,6 @@ alias gd="git diff"
 
 alias rsync="rsync -aAXv"
 
-alias panacopy="sudo mount /dev/disk/by-uuid/9016-4EF8 /mnt/pana/; rsync /mnt/pana/DCIM/102_PANA/ ~/Pictures/pana/ -r --progress -aAXv"
-
 export BARTIB_FILE="$HOME/.config/bartib/bartib.txt"
 
 # Colorize grep output (good for log files)
