@@ -14,8 +14,6 @@ alias l="ls"
 
 alias cat="bat"
 
-alias icat="kitty +kitten icat"
-
 alias rm="trash"
 
 alias cp="cp -i"
