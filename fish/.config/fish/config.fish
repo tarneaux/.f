@@ -32,6 +32,8 @@ alias gp="git push"
 alias gs="git status"
 alias gl="git log --decorate --oneline --graph"
 alias gd="git diff"
+alias gb="git branch"
+alias gco="git checkout"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
