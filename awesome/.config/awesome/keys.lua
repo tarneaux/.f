@@ -7,7 +7,7 @@ require("awful.hotkeys_popup.keys")
 
 ModKey = "Mod4"
 
-globalkeys = gears.table.join(
+local globalkeys = gears.table.join(
     -- Applications launcher
     awful.key({ ModKey,           }, "p", function() awful.spawn.with_shell("dmenu_run") end,
               {description = "launch dmenu", group = "launcher"}),
@@ -143,7 +143,7 @@ globalkeys = gears.table.join(
               {description="show help", group="awesome"})
 )
 
-clientkeys = gears.table.join(
+ClientKeys = gears.table.join(
     awful.key({ ModKey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
