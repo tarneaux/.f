@@ -8,7 +8,7 @@ dashboard.section.buttons.val = {
     dashboard.button( "spc f r", "  Recently used files" , ":Telescope oldfiles<CR>"),
     dashboard.button( "q", "  Quit NVIM" , ":qa<CR>"),
 }
-local handle = io.popen('fortune linux softwareengineering -s')
+local handle = io.popen('fortune linux -s')
 local fortune = handle:read("*a")
 handle:close()
 dashboard.section.header.val = fortune
