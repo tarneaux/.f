@@ -44,7 +44,7 @@ set -Ux EDITOR nvim
 set -Ux PAGER bat
 
 
-set PATH ~/.local/share/gem/ruby/3.0.0/bin/ ~/.local/share/CEdev/bin/ ~/.local/bin/ /home/max/.cargo/bin/ ~/.emacs.d/bin/ ~/.nix-profile/bin/ $PATH
+set PATH ~/.local/share/gem/ruby/3.0.0/bin/ ~/.local/share/CEdev/bin/ ~/.local/bin/ /home/max/.cargo/bin/ ~/.emacs.d/bin/ ~/.nix-profile/bin/ ~/.config/scripts/ $PATH
 
 
 # remove the default fish greeting for a more minimal prompt

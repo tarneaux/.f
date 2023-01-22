@@ -57,6 +57,8 @@ require('packer').startup(function(use)
     use "folke/todo-comments.nvim"
 
     use "NMAC427/guess-indent.nvim"
+
+    use 'kblin/vim-fountain'
 end)
 
 vim.cmd [[colorscheme gruvbox]]

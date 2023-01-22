@@ -1,0 +1,6 @@
+#! /bin/bash
+while true
+do
+    inotifywait -e close_write $1
+    textplay < $1 | prince - -o $2
+done
