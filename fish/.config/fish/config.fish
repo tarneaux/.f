@@ -22,6 +22,8 @@ alias mv='mv -i'
 alias md="mkdir"
 alias mds='mkdir -p'
 
+alias find="echo 'Use fd instead of find' && /bin/find"
+
 alias ga="git add"
 alias gap="git add -p"
 alias gc="git commit"
