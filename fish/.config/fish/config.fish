@@ -61,4 +61,21 @@ if status is-interactive
     bind --user \e\; 'history-token-search-forward'
 end
 
+
+# XDG Base Directory Specification
+set -gx XDG_CONFIG_HOME ~/.config
+set -gx XDG_DATA_HOME ~/.local/share
+set -gx XDG_CACHE_HOME ~/.cache
+set -gx XDG_STATE_HOME ~/.local/state
+
+# Per app config
+set -gx CARGO_HOME $XDG_DATA_HOME/cargo
+set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
+set -gx NODE_REPL_HISTORY $XDG_DATA_HOME/node_repl_history
+set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc
+alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
+
+
 starship init fish | source
+
