@@ -4,6 +4,8 @@ xrdb ~/.Xresources
 
 xsetroot -solid darkgrey
 
+xmodmap ~/.Xmodmap
+
 /* setxkbmap fr */
 /* setxkbmap us -device $(xinput -list | grep -i "tarneaux supersplit  " | grep -oP "(?<==)[0-9]*") */
 
