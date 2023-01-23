@@ -39,7 +39,7 @@ dofile(cdir .. "signals.lua")
 -- awful.spawn.with_shell("if not pgrep Discord; discord --start-minimized; end")
 -- awful.spawn.with_shell("kill conky; conky")
 awful.spawn.with_shell("mpd")
-awful.spawn.with_shell('rsync -r -aAXv --exclude=".cache/" --exclude="max/.local/share/Trash/" ~ user@chankla:~/backups')
+awful.spawn.with_shell('rsync -r -aAXv --delete --exclude=".cache/" --exclude=".nc" --exclude=".local/share/Trash/" --exclude=".cargo" --exclude=".gradle" --exclude=".npm" ~/ user@chankla:~/backups/max/')
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("nextcloud --background")
 
