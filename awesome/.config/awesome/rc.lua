@@ -48,3 +48,8 @@ awful.spawn.with_shell("sudo mount /dev/sdb1 /mnt/hdd && pgrep rsync || rsync -r
 
 -- Configuration for my wifi adapter
 awful.spawn.with_shell("~/.config/scripts/wifi_driver.sh")
+
+
+awful.spawn.with_shell("emacs --daemon")
+
+awful.spawn.with_shell("xmodmap ~/.Xmodmap")

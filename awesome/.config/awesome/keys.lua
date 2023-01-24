@@ -17,9 +17,9 @@ local globalkeys = gears.table.join(
     -- Brave browser
     awful.key({ ModKey,           }, "b", function() awful.spawn.with_shell("brave") end,
               {description = "launch brave", group = "launcher"}),
-    -- newsflash
-    --awful.key({ ModKey,           }, "r", function() awful.spawn.with_shell("newsflash") end,
-              --{description = "launch newsflash", group = "launcher"}),
+    -- Emacs
+    awful.key({ ModKey,           }, "g", function() awful.spawn.with_shell("emacsclient -c -a emacs") end,
+              {description = "launch emacs", group = "launcher"}),
     -- ncmpcpp
     awful.key({ ModKey,           }, "z", function() awful.spawn.with_shell(terminal_cmd .. " ncmpcpp") end,
               {description = "launch ncmpcpp", group = "launcher"}),
