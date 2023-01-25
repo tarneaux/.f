@@ -101,6 +101,10 @@
 
 
 ;; svg tag mode
+(use-package svg-tag-mode
+  :hook ((prog-mode . svg-tag-mode)
+         (org-mode . svg-tag-mode)))
+
 (require 'svg-tag-mode)
 
 (defconst date-re "[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\}")
@@ -180,5 +184,4 @@
           ((lambda (tag)
              (svg-tag-make tag :end -1 :inverse t :crop-left t :margin 0 :face 'org-date))))))
 
-(global-svg-tag-mode)
 
