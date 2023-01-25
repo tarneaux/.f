@@ -59,3 +59,6 @@
 
 ;; crdt.el: CRDTs in Emacs
 (package! crdt)
+
+
+(package! svg-tag-mode)
