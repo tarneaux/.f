@@ -24,6 +24,13 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.ansiblels.setup {
+  capabilities = capabilities,
+  cmd = { "ansible-language-server", "--stdio" },
+  filetypes = { "yaml" },
+  root_dir = lspconfig.util.root_pattern(".git", "."),
+}
+
 -- luasnip setup
 local luasnip = require 'luasnip'
 
