@@ -57,8 +57,4 @@
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 
-;; crdt.el: CRDTs in Emacs
-(package! crdt)
-
-
 (package! svg-tag-mode)
