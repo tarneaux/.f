@@ -161,7 +161,6 @@
                                                               :end -1
                                                               :crop-left t))))
 
-
         ;; Active date (with or without day name, with or without time)
         (,(format "\\(<%s>\\)" date-re) .
          ((lambda (tag)
