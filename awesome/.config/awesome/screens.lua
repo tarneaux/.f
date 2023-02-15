@@ -15,6 +15,9 @@ local function set_wallpaper(s)
         end
         gears.wallpaper.maximized(wallpaper, s, false)
     end
+    if beautiful.wallpaper_color then
+        gears.wallpaper.set(beautiful.wallpaper_color)
+    end
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)

@@ -142,6 +142,7 @@ theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = "/usr/share/icons/Tela-circle-dark"
 
-theme.wallpaper = "~/.config/awesome/theme/railway.jpg"
+-- theme.wallpaper = "~/.config/awesome/theme/railway.jpg"
+theme.wallpaper_color = "#282828"
 
 return theme
