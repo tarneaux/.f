@@ -32,5 +32,6 @@ wk.register({
         q = { "<cmd>q<cr>", "Quit" },
         w = { "<cmd>w<cr>", "Write" },
         r = { "<cmd>Telescope repo list<cr>", "Registers" },
+        t = { "<cmd>TroubleToggle<cr>", "Show errors" },
     }
 })

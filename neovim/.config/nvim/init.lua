@@ -59,6 +59,9 @@ require('packer').startup(function(use)
     use "NMAC427/guess-indent.nvim"
 
     use 'kblin/vim-fountain'
+
+    use 'nvim-tree/nvim-web-devicons'
+    use 'folke/trouble.nvim'
 end)
 
 vim.cmd [[colorscheme gruvbox]]
@@ -75,6 +78,7 @@ vim.g['rooter_cd_cmd'] = 'lcd'
 require("nvim-autopairs").setup {}
 dofile(root .. "packs/todo.lua")
 require('guess-indent').setup {}
+require('trouble').setup {}
 
 -- enable copilot for yaml files
 vim.cmd [[
