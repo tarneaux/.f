@@ -1,1 +1,1 @@
-awesome dmenu alacritty neovim conky git fish stow ttf-ibmplex-mono-nerd upower exa ripgrep trash-cli bat ttf-dejavu mpc mpd starship noto-fonts-emoji maim xclip wmctrl xdotool fd
+awesome dmenu alacritty neovim conky git fish stow ttf-ibmplex-mono-nerd upower exa ripgrep trash-cli bat ttf-dejavu mpc mpd starship noto-fonts-emoji maim xclip wmctrl xdotool fd ytfzf yt-dlp mpv

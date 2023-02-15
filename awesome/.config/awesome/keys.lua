@@ -12,7 +12,7 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,           }, "p", function() awful.spawn.with_shell("dmenu_run") end,
               {description = "launch dmenu", group = "launcher"}),
     -- Window focus with dmenu
-    awful.key({ ModKey,           }, "y", function() awful.spawn.with_shell("~/.config/scripts/dwin.sh") end,
+    awful.key({ ModKey,           }, "y", function() awful.spawn.with_shell("~/.config/scripts/yt.sh") end,
               {description = "focus window with dmenu", group = "launcher"}),
     -- Brave browser
     awful.key({ ModKey,           }, "b", function() awful.spawn.with_shell("brave") end,
