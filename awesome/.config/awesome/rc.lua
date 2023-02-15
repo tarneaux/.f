@@ -38,18 +38,8 @@ dofile(cdir .. "signals.lua")
 -- Autostart
 -- awful.spawn.with_shell("if not pgrep Discord; discord --start-minimized; end")
 -- awful.spawn.with_shell("kill conky; conky")
+awful.spawn.with_shell("xmodmap ~/.Xmodmap")
 awful.spawn.with_shell("mpd")
-awful.spawn.with_shell('rsync -r -aAXv --delete --exclude=".cache/" --exclude=".nc" --exclude=".local/share/Trash/" --exclude=".cargo" --exclude=".gradle" --exclude=".npm" ~/ user@chankla:~/backups/max/')
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("nextcloud --background")
-
-
-awful.spawn.with_shell("sudo mount /dev/sdb1 /mnt/hdd && pgrep rsync || rsync -r --progress .nc/ /mnt/hdd/Backups/nextcloud")
-
--- Configuration for my wifi adapter
-awful.spawn.with_shell("~/.config/scripts/wifi_driver.sh")
-
-
 awful.spawn.with_shell("emacs --daemon")
-
-awful.spawn.with_shell("xmodmap ~/.Xmodmap")
