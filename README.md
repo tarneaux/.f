@@ -17,7 +17,7 @@
 - On a fresh arch install, run:
 ```bash
 # install yay
-sudo pacman -S --needed git base-devel
+doas pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -si

@@ -45,11 +45,11 @@ local globalkeys = gears.table.join(
               {description = "change screen layout", group = "awesome"}),
 
     -- Shutdown the computer
-    awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end,
+    awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("doas shutdown now") end,
               {description = "shutdown", group = "launcher"}),
 
     -- Hibernate the computer
-    awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("sudo systemctl hibernate") end,
+    awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("doas systemctl hibernate") end,
               {description = "hibernate", group = "launcher"}),
 
     -- Print area / window
@@ -57,9 +57,9 @@ local globalkeys = gears.table.join(
               {description = "print area", group = "launcher"}),
 
     -- change brightness
-    awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end,
+    awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | doas tee /sys/class/backlight/intel_backlight/brightness') end,
               {description = "increase brightness", group = "launcher"}),
-    awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)-500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end,
+    awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)-500" | doas tee /sys/class/backlight/intel_backlight/brightness') end,
               {description = "decrease brightness", group = "launcher"}),
 
         -- Change volume

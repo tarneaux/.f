@@ -1,5 +1,6 @@
 #! /bin/bash
 textplay < $1 | prince - -o $2
+zathura $2 &
 while true
 do
     inotifywait -e close_write $1
