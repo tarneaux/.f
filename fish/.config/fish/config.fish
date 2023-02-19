@@ -2,8 +2,6 @@ if [ (tty) = "/dev/tty1" ]
     startx
 end
 
-source ~/.config/bitwarden.fish
-
 alias d="doas"
 
 alias vim="nvim"
