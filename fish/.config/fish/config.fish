@@ -4,6 +4,7 @@ end
 
 alias d="doas"
 
+alias e="emacsclient -a emacs"
 alias vim="nvim"
 
 alias cp="cp -i"
@@ -80,6 +81,20 @@ set -gx NODE_REPL_HISTORY $XDG_DATA_HOME/node_repl_history
 set -gx PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
+
+# Broot function (needed for broot to work)
+function br --wraps=broot
+    set -l cmd_file (mktemp)
+    if broot --outcmd $cmd_file $argv
+        read --local --null cmd < $cmd_file
+        rm -f $cmd_file
+        eval $cmd
+    else
+        set -l code $status
+        rm -f $cmd_file
+        return $code
+    end
+end
 
 starship init fish | source
 
