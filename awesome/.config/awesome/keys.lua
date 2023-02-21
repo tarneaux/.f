@@ -116,10 +116,10 @@ local globalkeys = gears.table.join(
               {description = "increase the number of master clients", group = "layout"}),
     awful.key({ ModKey,           }, "o",     function () awful.tag.incnmaster(-1, nil, true) end,
               {description = "decrease the number of master clients", group = "layout"}),
-    --awful.key({ ModKey, "Control" }, "j",     function () awful.tag.incncol( 1, nil, true)    end,
-              --{description = "increase the number of columns", group = "layout"}),
-    --awful.key({ ModKey, "Control" }, "m",     function () awful.tag.incncol(-1, nil, true)    end,
-              --{description = "decrease the number of columns", group = "layout"}),
+    awful.key({ ModKey, "Control" }, "e",     function () awful.tag.incncol( 1, nil, true)    end,
+              {description = "increase the number of columns", group = "layout"}),
+    awful.key({ ModKey, "Control" }, "i",     function () awful.tag.incncol(-1, nil, true)    end,
+              {description = "decrease the number of columns", group = "layout"}),
     awful.key({ ModKey, }, "u",
               function ()
                   local c = awful.client.restore()
