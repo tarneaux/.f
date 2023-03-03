@@ -55,6 +55,8 @@ alias pacman="printf \"\e[41mIT'S BLOAT!\e[0m\n\"; doas pacman --color=always"
 alias vpup="doas wg-quick up vpn"
 alias vpdown="doas wg-quick down vpn"
 
+alias cop="github-copilot-cli what-the-shell"
+
 set -Ux MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -Ux EDITOR nvim
 set -Ux PAGER bat
