@@ -119,3 +119,8 @@ vim.opt.signcolumn = 'number'
 
 -- set cursor back to beam on exit
 vim.cmd [[autocmd VimLeave * set guicursor=a:ver25-blinkon0]]
+
+
+
+-- Bind S to replace every occurence (normal mode)
+vim.cmd [[map S :%s//g<Left><Left>]]
