@@ -3,6 +3,7 @@ if [ (tty) = "/dev/tty1" ]
 end
 
 alias d="doas"
+alias sudo="doas"
 
 alias e="emacsclient -a emacs"
 alias vim="nvim"
@@ -45,6 +46,9 @@ alias gl="git log --decorate --oneline --graph"
 alias gd="git diff"
 alias gb="git branch"
 alias gco="git checkout"
+
+
+alias pacman="printf \"\e[41mIT'S BLOAT.\e[0m\n\"; doas pacman --color=always"
 
 
 set -Ux MANPAGER "sh -c 'col -bx | bat -l man -p'"
