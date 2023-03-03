@@ -52,6 +52,8 @@ alias ot="odt2txt --width=-1"
 
 alias pacman="printf \"\e[41mIT'S BLOAT!\e[0m\n\"; doas pacman --color=always"
 
+alias vpup="doas wg-quick up vpn"
+alias vpdown="doas wg-quick down vpn"
 
 set -Ux MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -Ux EDITOR nvim
