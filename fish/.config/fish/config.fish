@@ -7,6 +7,7 @@ alias sudo="doas"
 
 alias e="emacsclient -a emacs"
 alias vim="nvim"
+alias fm="ranger"
 
 alias cp="cp -i"
 alias mv='mv -i'
@@ -48,7 +49,7 @@ alias gb="git branch"
 alias gco="git checkout"
 
 
-alias pacman="printf \"\e[41mIT'S BLOAT.\e[0m\n\"; doas pacman --color=always"
+alias pacman="printf \"\e[41mIT'S BLOAT!\e[0m\n\"; doas pacman --color=always"
 
 
 set -Ux MANPAGER "sh -c 'col -bx | bat -l man -p'"
