@@ -14,11 +14,14 @@ wk.register({
         g = {
             name = "Git",
             c = { "<cmd>Git commit<cr>", "Commit" },
-            a = { "<cmd>Git add " .. vim.fn.expand('%:p') .. "<cr>", "Add current file" },
+            a = { "<cmd>Git add " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file" },
+            A = { "<cmd>Git add --patch " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file selectively" },
+            u = { "<cmd>Git restore --staged " .. vim.fn.expand('%:p') .. "<cr>", "Unstage current file" },
             p = { "<cmd>Git push<cr>", "Push" },
             s = { "<cmd>Git status<cr>", "Status" },
             d = { "<cmd>Git diff<cr>", "Diff" },
-            r = { "<cmd>Git restore ".. vim.fn.expand('%:p') .."<cr>", "Restore state of current file to the one in the last commit" },
+            r = { "<cmd>Git restore ".. vim.fn.expand('%:p') .."<cr>", "Restore current file" },
+            R = { "<cmd>Git restore --patch ".. vim.fn.expand('%:p') .."<cr>", "Restore current file selectively" },
         },
         b = {
             name = "Buffers",
