@@ -41,4 +41,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvi
 
   `stow */`
 
-
+- If you want to have my dmscripts (awesomewm shortcut super+y), run:
+  ```bash
+  git clone https://github.com/tarneaux/dmscripts ~/.config/dmscripts
+  ```

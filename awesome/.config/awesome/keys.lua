@@ -10,8 +10,8 @@ ModKey = "Mod4"
 local globalkeys = gears.table.join(
     -- Applications launcher
     awful.key({ ModKey,           }, "p", function() awful.spawn.with_shell("dmenu_run") end),
-    -- Window focus with dmenu
-    awful.key({ ModKey,           }, "y", function() awful.spawn.with_shell("~/.config/scripts/yt.sh") end),
+    -- Dmscripts
+    awful.key({ ModKey,           }, "y", function() awful.spawn.with_shell("bash ~/.config/dmscripts/main.sh") end),
     -- Brave browser
     awful.key({ ModKey,           }, "b", function() awful.spawn.with_shell("librewolf") end),
     -- Emacs
