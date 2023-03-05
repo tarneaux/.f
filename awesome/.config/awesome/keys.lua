@@ -74,12 +74,12 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,           }, "i",
         function ()
             awful.client.focus.byidx( 1)
-        end 
+        end
     ),
     awful.key({ ModKey,           }, "e",
         function ()
             awful.client.focus.byidx(-1)
-        end 
+        end
     ),
     -- awful.key({ ModKey,           }, "y", function () awful.screen.focus_relative( 1) end),
     -- Layout manipulation

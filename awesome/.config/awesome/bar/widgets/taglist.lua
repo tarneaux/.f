@@ -24,7 +24,7 @@ local taglist = function(s)
         awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
     )
 
-    mytaglist = awful.widget.taglist {
+    local mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
         style = {shape = gears.shape.circle},
@@ -45,7 +45,7 @@ local taglist = function(s)
             widget = wibox.container.background,
             shape = gears.shape.circle,
             id    = 'background_role',
-            create_callback = function(self, c3, index, objects)
+            create_callback = function(self, _, _, _)
                 self:connect_signal('mouse::enter', function()
                     if self.bg ~= beautiful.bg_accent then
                         self.backup     = self.bg
@@ -56,10 +56,6 @@ local taglist = function(s)
                 self:connect_signal('mouse::leave', function()
                     if self.has_backup then self.bg = self.backup end
                 end)
-                self:connect_signal('button::press', function(self, lx, ly, button, data, tags)
-                    if button == 1 then
-                    end
-                end)
             end,
             update_callback = function(self, c3, _)
                 -- Prevent the bug where there is on tag with a background because the mouse was on the tag before the user switched to it
@@ -69,9 +65,7 @@ local taglist = function(s)
                     self.backup = beautiful.bg_normal
                 end
             end
-
-        },
-        buttons = taglist_buttons
+        }
     }
     return mytaglist
 end

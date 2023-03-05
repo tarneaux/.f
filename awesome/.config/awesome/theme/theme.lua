@@ -84,66 +84,8 @@ theme.tasklist_fg_normal = theme.color14
 theme.titlebar_fg_focus = theme.color15
 theme.titlebar_fg_normal = theme.color14
 
--- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
--- menu_[border_color|border_width]
-theme.menu_submenu_icon = "~/.config/awesome/themes/default/submenu.png"
-theme.menu_height = 15
-theme.menu_width  = 100
-
--- You can add as many variables as
--- you wish and access them by using
--- beautiful.variable in your rc.lua
---theme.bg_widget = "#cc0000"
-
--- Define the image to load
-theme.titlebar_close_button_normal = "~/.config/awesome/theme/titlebar/close_normal.svg"
-theme.titlebar_close_button_focus  = "~/.config/awesome/theme/titlebar/close_focus.svg"
-theme.tasklist_close_button  = "~/.config/awesome/theme/tasklist/close.svg"
-
-theme.titlebar_ontop_button_normal_inactive = "~/.config/awesome/theme/titlebar/ontop_normal_inactive.svg"
-theme.titlebar_ontop_button_focus_inactive  = "~/.config/awesome/theme/titlebar/ontop_focus_inactive.svg"
-theme.titlebar_ontop_button_normal_active = "~/.config/awesome/theme/titlebar/ontop_normal_active.svg"
-theme.titlebar_ontop_button_focus_active  = "~/.config/awesome/theme/titlebar/ontop_focus_active.svg"
-
-theme.titlebar_sticky_button_normal_inactive = "~/.config/awesome/theme/titlebar/sticky_normal_inactive.svg"
-theme.titlebar_sticky_button_focus_inactive  = "~/.config/awesome/theme/titlebar/sticky_focus_inactive.svg"
-theme.titlebar_sticky_button_normal_active = "~/.config/awesome/theme/titlebar/sticky_normal_active.svg"
-theme.titlebar_sticky_button_focus_active  = "~/.config/awesome/theme/titlebar/sticky_focus_active.svg"
-
-theme.titlebar_floating_button_normal_inactive = "~/.config/awesome/theme/titlebar/floating_normal_inactive.svg"
-theme.titlebar_floating_button_focus_inactive  = "~/.config/awesome/theme/titlebar/floating_focus_inactive.svg"
-theme.titlebar_floating_button_normal_active = "~/.config/awesome/theme/titlebar/floating_normal_active.svg"
-theme.titlebar_floating_button_focus_active  = "~/.config/awesome/theme/titlebar/floating_focus_active.svg"
-
-theme.titlebar_maximized_button_normal_inactive = "~/.config/awesome/theme/titlebar/maximized_normal_inactive.svg"
-theme.titlebar_maximized_button_focus_inactive  = "~/.config/awesome/theme/titlebar/maximized_focus_inactive.svg"
-theme.titlebar_maximized_button_normal_active = "~/.config/awesome/theme/titlebar/maximized_normal_active.svg"
-theme.titlebar_maximized_button_focus_active  = "~/.config/awesome/theme/titlebar/maximized_focus_active.svg"
-
--- You can use your own layout icons like this:
-theme.layout_fairh = "~/.config/awesome/themes/default/layouts/fairhw.png"
-theme.layout_fairv = "~/.config/awesome/themes/default/layouts/fairvw.png"
-theme.layout_floating  = "~/.config/awesome/themes/default/layouts/floatingw.png"
-theme.layout_magnifier = "~/.confige/awesome/themes/default/layouts/magnifierw.png"
-theme.layout_max = "~/.config/awesome/themes/default/layouts/maxw.png"
-theme.layout_fullscreen = "~/.config/awesome/themes/default/layouts/fullscreenw.png"
-theme.layout_tilebottom = "~/.config/awesome/themes/default/layouts/tilebottomw.png"
-theme.layout_tileleft   = "~/.config/awesome/themes/default/layouts/tileleftw.png"
-theme.layout_tile = "~/.config/awesome/themes/default/layouts/tilew.png"
-theme.layout_tiletop = "~/.config/awesome/themes/default/layouts/tiletopw.png"
-theme.layout_spiral  = "~/.config/awesome/themes/default/layouts/spiralw.png"
-theme.layout_dwindle = "~/.config/awesome/themes/default/layouts/dwindlew.png"
-
-
-theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
-
--- Define the icon theme for application icons. If not set then the icons 
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = "/usr/share/icons/Tela-circle-dark"
-
-theme.wallpaper = "~/.config/awesome/theme/railway.jpg"
+-- theme.wallpaper = "~/.config/awesome/theme/railway.jpg"
 -- theme.wallpaper_color = "#1d2021"
--- theme.wallpaper_folder = "~/.config/awesome/theme/walls/"
+theme.wallpaper_folder = "~/.config/awesome/theme/walls/"
 
 return theme
