@@ -19,7 +19,10 @@ local function set_wallpaper(s)
         gears.wallpaper.set(beautiful.wallpaper_color)
     end
     if beautiful.wallpaper_folder then
-        awful.spawn.with_shell("feh --bg-fill --randomize " .. beautiful.wallpaper_folder)
+        local f = io.popen("sh -c \"find ".. beautiful.wallpaper_folder .. " -name '*.png' | shuf -n 1 | xargs echo -n\"")
+        local wallpaper = f:read("*all") or ""
+        f:close()
+        gears.wallpaper.maximized(wallpaper, s, false)
     end
 end
 
