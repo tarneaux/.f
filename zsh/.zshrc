@@ -27,6 +27,11 @@ eval "$(starship init zsh)"
 # Disable vi mode.
 bindkey -e
 
+# Let me use the keys on my keyboard.
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
+
 # Basic auto/tab complete
 autoload -U compinit
 zstyle ':completion:*' menu select
