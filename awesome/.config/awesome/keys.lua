@@ -16,8 +16,10 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,           }, "b", function() awful.spawn.with_shell("librewolf") end),
     -- Emacs
     awful.key({ ModKey,           }, "g", function() awful.spawn.with_shell("emacsclient -c -a emacs") end),
+    -- Zathura
+    awful.key({ ModKey,           }, "z", function() awful.spawn.with_shell("zathura") end),
     -- ncmpcpp
-    awful.key({ ModKey,           }, "z", function() awful.spawn.with_shell(terminal_cmd .. " ncmpcpp") end),
+    awful.key({ ModKey,           }, "slash", function() awful.spawn.with_shell(terminal_cmd .. " ncmpcpp") end),
 
     -- Open terminal
     awful.key({ ModKey,           }, "Return", function () awful.spawn.with_shell(terminal) end),
