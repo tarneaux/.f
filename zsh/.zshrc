@@ -27,12 +27,17 @@ eval "$(starship init zsh)"
 # Disable vi mode.
 bindkey -e
 
-# Basic auto/tab complete:
+# Basic auto/tab complete
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
+
+# Save history in cache
+HISTSIZE=999999999
+SAVEHIST=999999999
+HISTFILE=~/.cache/zsh_history
 
 # ==================== #
 #   Aliases and vars   #
