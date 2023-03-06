@@ -43,9 +43,6 @@ HISTFILE=~/.cache/zsh_history
 #   Aliases and vars   #
 # ==================== #
 
-alias d="doas"
-alias sudo="doas"
-
 alias e="emacsclient -a emacs"
 alias vim="nvim"
 alias fm="ranger"
