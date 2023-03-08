@@ -25,7 +25,7 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,           }, "Return", function () awful.spawn.with_shell(terminal) end),
 
     -- Open project in terminal
-    awful.key({ ModKey, "Shift"   }, "Return", function () awful.spawn.with_shell("alacritty --working-directory ~/Projects/(/bin/ls ~/Projects/ | dmenu -i -l 10)") end),
+    awful.key({ ModKey, "Shift"   }, "Return", function () awful.spawn.with_shell("/bin/ls ~/repo/ | dmenu -p 'repository:' -i -l 10 | xargs -I {} -r alacritty --working-directory ~/repo/{}") end),
 
     -- Reload awesome
     awful.key({ ModKey,  }, "q", awesome.restart),
