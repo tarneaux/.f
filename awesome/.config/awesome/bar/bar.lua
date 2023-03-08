@@ -7,6 +7,7 @@ local clock = require("bar/widgets/clock")
 local vpn = require("bar/widgets/vpn")
 local mpd = require("bar/widgets/mpd")
 local spacer = require("bar/widgets/spacer")
+local layout = require("bar/widgets/layout")
 
 
 local bar = function(s)
@@ -22,7 +23,8 @@ local bar = function(s)
                 layout = wibox.layout.align.horizontal,
                 {
                     layout = wibox.layout.align.horizontal,
-                    taglist(s)
+                    taglist(s),
+                    layout(s)
                 },
                 nil,
                 {
