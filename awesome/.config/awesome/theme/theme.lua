@@ -1,6 +1,6 @@
-----------------------------------
--- Monokai Dimmed awesome theme --
-----------------------------------
+---------------------------
+-- Gruvbox awesome theme --
+---------------------------
 
 theme = {}
 
@@ -39,44 +39,10 @@ theme.bar_fg = theme.foreground
 theme.font          = "BlexMono Nerd Font Mono 8"
 
 theme.bg_normal     = theme.background
-theme.bg_focus      = theme.background
-theme.bg_urgent     = theme.background
-theme.bg_minimize   = theme.background
-theme.bg_systray    = theme.background
-
-theme.fg_normal     = theme.foreground
-theme.fg_focus      = theme.foreground
-theme.fg_urgent     = theme.foreground
-theme.fg_minimize   = theme.foreground
 
 theme.border_width  = 2
 theme.border_normal = theme.color8
 theme.border_focus  = theme.color15
-theme.border_marked = "#91231c"
-
-
-
--- There are other variable sets
--- overriding the default one when
--- defined, the sets are:
--- taglist_[bg|fg]_[focus|urgent|occupied|empty]
--- tasklist_[bg|fg]_[focus|urgent]
--- titlebar_[bg|fg]_[normal|focus]
--- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
--- mouse_finder_[color|timeout|animate_timeout|radius|factor]
--- Example:
---theme.taglist_bg_focus = "#ff0000"
-
-theme.taglist_fg_focus = theme.fg_accent
-theme.taglist_fg_occupied = theme.fg_accent
-theme.taglist_fg_empty = theme.fg_inactive
-theme.taglist_bg_focus = theme.bg_accent
-
-theme.tasklist_fg_focus = theme.color15
-theme.tasklist_fg_normal = theme.color14
-
-theme.titlebar_fg_focus = theme.color15
-theme.titlebar_fg_normal = theme.color14
 
 -- theme.wallpaper = "~/.config/awesome/theme/walls/railway.jpg"
 theme.wallpaper = "~/.config/awesome/theme/walls/calvin.png"
