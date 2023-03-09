@@ -35,6 +35,10 @@ dofile(cdir .. "rules.lua")
 -- Signals and titlebars
 dofile(cdir .. "signals.lua")
 
+-- Window swallowing
+local bling = require("bling")
+bling.module.window_swallowing.start()
+
 -- Autostart
 -- awful.spawn.with_shell("if not pgrep Discord; discord --start-minimized; end")
 -- awful.spawn.with_shell("kill conky; conky")
