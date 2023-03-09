@@ -15,7 +15,9 @@ client.connect_signal("manage", function (c)
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
-    c.shape = theme.bar_shape
+    c.shape = function(cr, w, h)
+        gears.shape.octogon(cr, w, h, 5)
+    end
 end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
