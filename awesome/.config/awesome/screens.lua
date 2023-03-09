@@ -20,7 +20,10 @@ local function set_wallpaper(s)
     end
     if beautiful.wallpaper_folder then
         local f = io.popen("sh -c \"find ".. beautiful.wallpaper_folder .. " -name '*.png' | shuf -n 1 | xargs echo -n\"")
-        local wallpaper = f:read("*all") or ""
+        if f == nil then
+            return
+        end
+        local wallpaper = f:read("*all")
         f:close()
         gears.wallpaper.maximized(wallpaper, s, false)
     end
