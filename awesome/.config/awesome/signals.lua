@@ -1,6 +1,4 @@
 local awful = require("awful")
-local gears = require("gears")
-local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 -- Signal function to execute when a new client appears.
@@ -14,9 +12,6 @@ client.connect_signal("manage", function (c)
       and not c.size_hints.program_position then
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
-    end
-    c.shape = function(cr, w, h)
-        gears.shape.octogon(cr, w, h, 5)
     end
 end)
 
