@@ -2,8 +2,6 @@
 -- Monokai Dimmed awesome theme --
 ----------------------------------
 
-local gears = require("gears")
-
 theme = {}
 
 theme.background = "#282828"
