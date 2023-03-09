@@ -27,7 +27,6 @@ editor_cmd = terminal_cmd .. " " .. editor
 -- Screens and layouts
 dofile(cdir .. "screens.lua")
 
-dofile(cdir .. "mouse.lua")
 dofile(cdir .. "keys.lua")
 
 dofile(cdir .. "rules.lua")
