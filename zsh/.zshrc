@@ -16,6 +16,24 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Syntax highlighting
 zinit light zdharma-continuum/fast-syntax-highlighting
 
+# Fish-like history search pt. 2: pressing ↑ will search through history
+zinit light zsh-users/zsh-history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
+HISTORY_SUBSTRING_SEARCH_FUZZY='true'
+
+# Fish-like history search pt. 2: the grayed out part
+zinit light zsh-users/zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+
+# Additions to the default completion system
+zinit light zsh-users/zsh-completions
+
+# zaw - trigger with ^z
+zinit light zsh-users/zaw
+
 
 # ==================== #
 #    Miscellaneous     #
