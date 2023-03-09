@@ -35,12 +35,8 @@ theme.fg_inactive = theme.color14
 theme.useless_gap = 5
 theme.gap_single_client = true
 
-theme.bar_rounding = 0
 theme.bar_bg = theme.background
 theme.bar_fg = theme.foreground
-theme.bar_shape = function (cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, theme.bar_rounding)
-end
 
 theme.font          = "BlexMono Nerd Font Mono 8"
 
