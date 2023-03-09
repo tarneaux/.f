@@ -30,26 +30,20 @@ local globalkeys = gears.table.join(
     -- Reload awesome
     awful.key({ ModKey,  }, "q", awesome.restart),
 
-    -- change the screen layout
-    awful.key({ ModKey   }, "1", function () awful.spawn.with_shell("xrandr --output eDP-1 --mode 1366x768 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-1 --off --output HDMI-2 --off --output DP-2 --off --output HDMI-3 --off") end),
-
-    -- change the screen layout
-    awful.key({ ModKey   }, "2", function () awful.spawn.with_shell("xrandr --output eDP-1 --off --output DP-1 --off --output HDMI-1 --off --output HDMI-2 --mode 2560x1080 --pos 0x0 --rotate normal --output DP-2 --off --output HDMI-3 --off") end),
-
     -- Shutdown the computer
     awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("doas shutdown now") end),
 
     -- Hibernate the computer
     awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("doas systemctl hibernate") end),
 
-    -- Print area / window
+    -- Screenshot area / window
     awful.key({}, "Print", function() awful.spawn.with_shell("maim --select | xclip -selection clipboard -target image/png") end),
 
-    -- change brightness
+    -- change brightness. Only works on my laptop (asus something)
     awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | doas tee /sys/class/backlight/intel_backlight/brightness') end),
     awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)-500" | doas tee /sys/class/backlight/intel_backlight/brightness') end),
 
-        -- Change volume
+    -- Media keys
     awful.key({}, "XF86AudioRaiseVolume", function ()
               awful.spawn.with_shell("pactl set-sink-volume 0 +5%")
               end),
@@ -69,10 +63,7 @@ local globalkeys = gears.table.join(
               awful.spawn.with_shell("mpc toggle")
               end),
 
-    awful.key({ ModKey,           }, "Left",   awful.tag.viewprev),
-    awful.key({ ModKey,           }, "Right",  awful.tag.viewnext),
-    awful.key({ ModKey,           }, "Escape", awful.tag.history.restore),
-
+    -- Focus (colemak hjkl=neio)
     awful.key({ ModKey,           }, "i",
         function ()
             awful.client.focus.byidx( 1)
@@ -83,16 +74,21 @@ local globalkeys = gears.table.join(
             awful.client.focus.byidx(-1)
         end
     ),
-    -- awful.key({ ModKey,           }, "y", function () awful.screen.focus_relative( 1) end),
-    -- Layout manipulation
-    awful.key({ ModKey, "Shift"   }, "i", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ ModKey, "Shift"   }, "e", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ ModKey, "Shift"   }, "o",     function () awful.tag.incmwfact( 0.05)          end),
-    awful.key({ ModKey, "Shift"   }, "n",     function () awful.tag.incmwfact(-0.05)          end),
-    awful.key({ ModKey,           }, "n",     function () awful.tag.incnmaster( 1, nil, true) end),
-    awful.key({ ModKey,           }, "o",     function () awful.tag.incnmaster(-1, nil, true) end),
-    awful.key({ ModKey, "Control" }, "e",     function () awful.tag.incncol( 1, nil, true)    end),
-    awful.key({ ModKey, "Control" }, "i",     function () awful.tag.incncol(-1, nil, true)    end),
+
+    -- Layout manipulation (still colemak keys)
+    awful.key({ ModKey, "Shift"   }, "i",     function () awful.client.swap.byidx(  1)        end), -- Swap with next client
+    awful.key({ ModKey, "Shift"   }, "e",     function () awful.client.swap.byidx( -1)        end), -- Swap with previous client
+    awful.key({ ModKey, "Shift"   }, "o",     function () awful.tag.incmwfact( 0.05)          end), -- Increase master width factor
+    awful.key({ ModKey, "Shift"   }, "n",     function () awful.tag.incmwfact(-0.05)          end), -- Decrease master width factor
+    awful.key({ ModKey,           }, "n",     function () awful.tag.incnmaster( 1, nil, true) end), -- Increase the number of master clients
+    awful.key({ ModKey,           }, "o",     function () awful.tag.incnmaster(-1, nil, true) end), -- Decrease the number of master clients
+    awful.key({ ModKey, "Shift"   }, "m",     function () awful.tag.incncol( 1, nil, true)    end), -- Increase the number of columns
+    awful.key({ ModKey, "Shift"   }, "/",     function () awful.tag.incncol(-1, nil, true)    end), -- Decrease the number of columns
+
+    -- Change layout
+    awful.key({ ModKey,           }, ",", function () awful.layout.inc( 1)                end),
+
+    -- Restore last minimized client
     awful.key({ ModKey, }, "u",
               function ()
                   local c = awful.client.restore()
@@ -103,11 +99,11 @@ local globalkeys = gears.table.join(
                     )
                   end
               end),
-    -- Bookmarks with dmenu
+
+    -- Bookmarks with dmenu (lets you choose a line from ~/.config/awesome/bookmarks and types it for you)
     awful.key({ ModKey }, "m", function ()
         awful.spawn.with_shell("grep -v '^#' ~/.config/awesome/bookmarks | dmenu -p 'Select bookmark:' -i -l 10 | xargs -r xdotool type")
-    end),
-    awful.key({ ModKey,           }, ",", function () awful.layout.inc( 1)                end)
+    end)
 )
 
 ClientKeys = gears.table.join(
@@ -130,21 +126,9 @@ ClientKeys = gears.table.join(
             c.maximized = not c.maximized
             c:raise()
         end)
-    --awful.key({ ModKey, "Control" }, "h",
-        --function (c)
-            --c.maximized_vertical = not c.maximized_vertical
-            --c:raise()
-        --end ),
-    --awful.key({ ModKey, "Shift"   }, "h",
-        --function (c)
-            --c.maximized_horizontal = not c.maximized_horizontal
-            --c:raise()
-        --end )
 )
 
 -- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
 local tagkeys = { "a", "r", "s", "t", "d"}
 for i = 1, 9 do
     globalkeys = gears.table.join(globalkeys,
