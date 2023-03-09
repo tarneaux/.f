@@ -14,23 +14,28 @@
 
 
 ## Installing
-- On a fresh arch install, run:
+- On a fresh arch install, run these commands:
+  - install yay
 ```bash
-# install yay
 doas pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -si
-
-# clone this repo
-git clone https://github.com/tarneaux/.f.git
-
+```
+  - clone this repo
+```bash
+git clone --recurse-submodules https://github.com/tarneaux/.f.git
+```
+  - cd into it
+```bash
 cd .f
-
-# install dependencies
+```
+  - install dependencies
+```bash
 yay -S $(cat toinstall.txt)
-
-# install packer
+```
+  - install packer (for neovim)
+```bash
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 - run `stow <configs_to_install>`
