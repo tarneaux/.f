@@ -84,7 +84,8 @@ theme.tasklist_fg_normal = theme.color14
 theme.titlebar_fg_focus = theme.color15
 theme.titlebar_fg_normal = theme.color14
 
-theme.wallpaper = "~/.config/awesome/theme/calvin.png"
+-- theme.wallpaper = "~/.config/awesome/theme/walls/railway.jpg"
+theme.wallpaper = "~/.config/awesome/theme/walls/calvin.png"
 -- theme.wallpaper_color = "#1d2021"
 -- theme.wallpaper_folder = "~/.config/awesome/theme/walls/"
 
