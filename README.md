@@ -38,10 +38,6 @@
     ```bash
     mkdir ~/.config
     ```
-  - install packer (for neovim)
-    ```bash
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-    ```
 - run `stow <configs_to_install>`
 
   For example:
@@ -49,6 +45,13 @@
   `stow awesome/`
 
   `stow */`
+
+- If you want to use my neovim configs, do this:
+  - install packer (for neovim)
+    ```bash
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    ```
+  - Open nvim, which will probably show some errors. Just install the packages by running `:PackerInstall`, restart nvim and you'll be alright.
 
 - If you want to have my dmscripts (awesomewm shortcut super+y), run:
   ```bash
