@@ -24,7 +24,7 @@
     ```
   - clone this repo
     ```bash
-    git clone --recurse-submodules https://github.com/tarneaux/.f.git
+    git clone --recurse-submodules https://github.com/tarneaux/.f.git ~/.f
     ```
   - cd into it
     ```bash
@@ -33,6 +33,10 @@
   - install dependencies
     ```bash
     yay -S $(cat toinstall.txt)
+    ```
+  - Before stowing any configurations, make sure there is a .config directory in your $HOME:
+    ```bash
+    mkdir ~/.config
     ```
   - install packer (for neovim)
     ```bash
