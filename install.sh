@@ -59,7 +59,7 @@ fi
 
 # Install some basic dependencies
 log "Installing dependencies (git, base-devel, sudo)..."
-[[ -z $no_interaction ]] && echo "Continue? [Y/n] " && read -n 1 -r && echo && [[ $REPLY =~ ^[Nn]$ ]] && log "Exiting." && exit 1
+[[ -z $no_interaction ]] && read -p "Continue? [Y/n]" -n 1 -r && echo && [[ $REPLY =~ ^[Nn]$ ]] && log "Exiting." && exit 1
 
 pacman -Syu --needed git base-devel sudo --noconfirm > /dev/null
 
