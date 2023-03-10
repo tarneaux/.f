@@ -61,7 +61,7 @@ fi
 log "Installing dependencies (git, base-devel, sudo)..."
 [[ -n $no_interaction ]] && echo "Continue? [Y/n] " && read -n 1 -r && echo && [[ $REPLY =~ ^[Nn]$ ]] && log "Exiting." && exit 1
 
-pacman -S --needed git base-devel sudo --noconfirm > /dev/null
+pacman -Syu --needed git base-devel sudo --noconfirm > /dev/null
 
 # Create a user
 log "Creating user $user..."
