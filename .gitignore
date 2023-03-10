@@ -1,5 +1,6 @@
 # vim undodir - security issue when published as it contains undo histories of files
 neovim/.config/nvim/undodir/*
+neovim/.config/nvim/plugin
 
 # vpn credentials and ovpn files
 vpn/.config/vpn/pass.txt
@@ -9,3 +10,4 @@ fish/.config/fish/conf.d/
 fish/.config/fish/completions/
 fish/.config/fish/functions/
 fish/.config/fish/fish_variables
+
