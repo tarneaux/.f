@@ -11,20 +11,23 @@ print_usage() {
     echo "Usage: install.sh [-h] [-n]"
     echo "  -n: No interaction mode.  Do not prompt for confirmations."
     echo "  -h: Print this help message"
+    exit 1
 }
 
 log() {
     printf "${emphasis}${1}${normal}\n"
 }
 
-while getopts "hnv" opt; do
+while getopts "hnvu:" opt; do
     case $opt in
         h)
             print_usage
-            exit 0
             ;;
         n)
             no_interaction=1
+            ;;
+        u)
+            user=$OPTARG
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
@@ -34,13 +37,16 @@ while getopts "hnv" opt; do
     esac
 done
 
+if [[ -z $user ]]; then
+    echo "You must specify the wanted username with the -u flag."
+    exit 1
+fi
 
 # Actual script starts here
 
-# Check that the user isn't root
-if [[ $EUID -eq 0 ]]; then
-    log "This script should not be run as root or with sudo. We will be taking care of sudoing when needed."
-    log "This is because AUR packages cannot be installed as root."
+# Check that we are running on a brand new Arch install without any user
+if [[ -n $(ls /home) ]]; then
+    log "It appears that you already have a user set up on this system. This script is only for a fresh install."
     log "Exiting."
     exit 1
 fi
@@ -51,59 +57,29 @@ if ! command -v pacman &> /dev/null; then
     exit 1
 fi
 
+# Install some basic dependencies
+log "Installing dependencies (git, base-devel, sudo)..."
+[[ -n $no_interaction ]] && echo "Continue? [Y/n] " && read -n 1 -r && echo && [[ $REPLY =~ ^[Nn]$ ]] && log "Exiting." && exit 1
+
+sudo pacman -S --needed git base-devel sudo --noconfirm > /dev/null
+
+# Create a user
+log "Creating user $user..."
+sudo useradd -m -s /bin/bash $user
+sudo passwd $user
+
+# Make the sudoers file
+log "Writing config to /etc/sudoers..."
+$sudoers_file_contents="root ALL=(ALL) ALL\n$user ALL=(ALL) NOPASSWD: ALL"
+echo $visudo_file_contents | sudo EDITOR='tee -a' visudo
+
+# Run the rest of the script as the new user
+log "Switching to user $user..."
+
 # Clone the repository
-# TODO: remove the --branch once the script is done
+sudo -u $user bash << EOF
+# TODO: remove the --branch part once the script is done
 log "Cloning the repository into '~/.f'... Note that it will be hidden from ls as it starts with a period."
 git clone https://github.com/tarneaux/.f.git ~/.f --depth 1 --branch installer
 cd ~/.f
-
-log "Updating system..."
-[[ -n $no_interaction ]] && sudo pacman -Syu --noconfirm || sudo pacman -Syu
-
-installer() {
-    packages=`cat $1 | grep -v ^# | grep -v ^$`
-
-    if [[ -z $no_interaction ]]; then
-        log "The following packages will be installed: $(echo $packages | tr -d '\n')"
-        read -p "Continue? [Y/n] " -n 1 -r
-        echo
-        [[ $REPLY =~ ^[Nn]$ ]] && log "Skipping. You may need to install these for the dotfiles to work." && return
-    fi
-
-    for package in $packages; do
-        log "Installing $package"
-        $2 -S --needed $package --noconfirm > /dev/null
-    done
-}
-
-# Pacman packages
-log "Pacman packages"
-installer pacman_packages.txt "sudo pacman"
-
-
-# AUR packages
-
-# See if yay is installed and install it if not
-if ! command -v yay &> /dev/null; then
-    log "Yay not found."
-    if [[ -z $no_interaction ]]; then
-        log "We will be installing yay, an AUR helper."
-        read -p "Continue? [Y/n] " -n 1 -r
-        echo
-        [[ $REPLY =~ ^[Nn]$ ]] && log "Exiting." && exit 1
-    fi
-    log "Installing yay..."
-    sudo pacman -S --needed base-devel git --noconfirm > /dev/null
-    git clone https://aur.archlinux.org/yay.git /tmp/yay > /dev/null
-    cd /tmp/yay
-    makepkg -si --noconfirm > /dev/null
-    cd -
-fi
-
-
-log "AUR packages"
-installer aur_packages.txt "yay"
-
-
-# Go back to the original directory
-cd -
+bash install/install.sh
