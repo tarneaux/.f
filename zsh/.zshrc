@@ -24,6 +24,10 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
 HISTORY_SUBSTRING_SEARCH_FUZZY='true'
 
+# Ignore duplicate commands in history. Goes hand in hand with the above plugin as it makes it easier
+# to search through history without duplicates.
+setopt HIST_IGNORE_ALL_DUPS
+
 # Fish-like history search pt. 2: the grayed out part
 zinit light zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
