@@ -24,10 +24,6 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
 HISTORY_SUBSTRING_SEARCH_FUZZY='true'
 
-# Ignore duplicate commands in history. Goes hand in hand with the above plugin as it makes it easier
-# to search through history without duplicates.
-setopt HIST_IGNORE_ALL_DUPS
-
 # Fish-like history search pt. 2: the grayed out part
 zinit light zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
@@ -61,10 +57,17 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# Save history in cache
+# History options
+# Infinite history
 HISTSIZE=999999999
 SAVEHIST=999999999
 HISTFILE=~/.cache/zsh_history
+
+# Ignore duplicate commands in history. Goes hand in hand with the zsh-users history plugins as it makes it easier
+# to search through history without duplicates.
+setopt HIST_IGNORE_ALL_DUPS
+# write to history file immediately after each command
+setopt INC_APPEND_HISTORY
 
 # ==================== #
 #   Aliases and vars   #
