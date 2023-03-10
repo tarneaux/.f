@@ -37,6 +37,25 @@ done
 
 # Actual script starts here
 
+# Check that the user isn't root
+if [[ $EUID -eq 0 ]]; then
+    log "This script should not be run as root or with sudo. We will be taking care of sudoing when needed."
+    log "This is because AUR packages cannot be installed as root."
+    log "Exiting."
+    exit 1
+fi
+
+# Check that the user is on Arch
+if ! command -v pacman &> /dev/null; then
+    log "This script is only compatible with Arch Linux."
+    exit 1
+fi
+
+# Clone the repository
+# TODO: remove the --branch once the script is done
+log "Cloning the repository into '~/.f'... Note that it will be hidden from ls as it starts with a period."
+git clone https://github.com/tarneaux/.f.git ~/.f --depth 1 --branch installer
+cd ~/.f
 
 log "Updating system..."
 [[ -n $no_interaction ]] && sudo pacman -Syu --noconfirm || sudo pacman -Syu
@@ -74,7 +93,7 @@ if ! command -v yay &> /dev/null; then
         [[ $REPLY =~ ^[Nn]$ ]] && log "Exiting." && exit 1
     fi
     log "Installing yay..."
-    sudo pacman -S --needed base-devel git --noconfirm
+    sudo pacman -S --needed base-devel git --noconfirm > /dev/null
     git clone https://aur.archlinux.org/yay.git /tmp/yay > /dev/null
     cd /tmp/yay
     makepkg -si --noconfirm > /dev/null
@@ -86,3 +105,5 @@ log "AUR packages"
 installer aur_packages.txt "yay"
 
 
+# Go back to the original directory
+cd -
