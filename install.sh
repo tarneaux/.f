@@ -59,7 +59,7 @@ fi
 
 # Install some basic dependencies
 log "Installing dependencies (git, base-devel, sudo)..."
-[[ -z $no_interaction ]] && read -p "Continue? [Y/n]" -n 1 -r && echo && [[ $REPLY =~ ^[Nn]$ ]] && log "Exiting." && exit 1
+[[ -z $no_interaction ]] && read -p "Continue? [Y/n] " -n 1 -r && echo && [[ $REPLY =~ ^[Nn]$ ]] && log "Exiting." && exit 1
 
 pacman -Syu --needed git base-devel sudo --noconfirm > /dev/null
 
@@ -70,7 +70,7 @@ sudo passwd $user
 
 # Make the sudoers file
 log "Writing config to /etc/sudoers..."
-$sudoers_file_contents="root ALL=(ALL) ALL\n$user ALL=(ALL) NOPASSWD: ALL"
+sudoers_file_contents="root ALL=(ALL) ALL\n$user ALL=(ALL) NOPASSWD: ALL"
 echo $visudo_file_contents | sudo EDITOR='tee -a' visudo
 
 # Run the rest of the script as the new user
