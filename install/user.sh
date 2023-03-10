@@ -1,6 +1,8 @@
 # This script will be run by the install script after the user has been created.
 # It isn't meant to be run directly, and that's why there's no shebang.
 
+set -e
+
 log "Updating system..."
 [[ -n $no_interaction ]] && sudo pacman -Syu --noconfirm || sudo pacman -Syu
 
