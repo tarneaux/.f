@@ -3,6 +3,22 @@
 
 set -e
 
+emphasis="\e[1;32m"
+normal="\e[0m"
+
+# Handle flags
+
+print_usage() {
+    echo "Usage: install.sh [-h] [-n]"
+    echo "  -n: No interaction mode.  Do not prompt for confirmations."
+    echo "  -h: Print this help message"
+    exit 1
+}
+
+log() {
+    printf "${emphasis}${1}${normal}\n"
+}
+
 log "Updating system..."
 [[ -n $no_interaction ]] && sudo pacman -Syu --noconfirm || sudo pacman -Syu
 

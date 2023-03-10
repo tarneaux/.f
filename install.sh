@@ -5,40 +5,14 @@ set -e
 emphasis="\e[1;32m"
 normal="\e[0m"
 
-# Handle flags
-
-print_usage() {
-    echo "Usage: install.sh [-h] [-n]"
-    echo "  -n: No interaction mode.  Do not prompt for confirmations."
-    echo "  -h: Print this help message"
-    exit 1
-}
-
 log() {
     printf "${emphasis}${1}${normal}\n"
 }
 
-while getopts "hnvu:" opt; do
-    case $opt in
-        h)
-            print_usage
-            ;;
-        n)
-            no_interaction=1
-            ;;
-        u)
-            user=$OPTARG
-            ;;
-        \?)
-            echo "Invalid option: -$OPTARG" >&2
-            print_usage
-            exit 1
-            ;;
-    esac
-done
+user=$1
 
 if [[ -z $user ]]; then
-    echo "You must specify the wanted username with the -u flag."
+    echo "You must specify the wanted username after the command."
     exit 1
 fi
 
@@ -82,4 +56,4 @@ sudo -u $user bash << EOF
 log "Cloning the repository into '~/.f'... Note that it will be hidden from ls as it starts with a period."
 git clone https://github.com/tarneaux/.f.git ~/.f --depth 1 --branch installer
 cd ~/.f
-bash install/install.sh
+bash install/user.sh
