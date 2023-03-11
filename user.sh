@@ -41,4 +41,4 @@ log "Now run config.sh to select configs to stow."
 
 log "If you want to get back here later on, just run 'cd ~/.f'."
 
-
+cd ~/.f
