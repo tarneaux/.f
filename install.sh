@@ -60,5 +60,5 @@ sudo -u $user bash << EOF
 # TODO: remove the --branch part once the script is done
 git clone https://github.com/tarneaux/.f.git ~/.f --depth 1 --branch installer
 cd ~/.f
-bash install/user.sh
+bash user.sh run_correctly
 EOF

@@ -1,6 +1,13 @@
 # This script will be run by the install script after the user has been created.
 # It isn't meant to be run directly, and that's why there's no shebang.
 
+# Prevent the script from being run directly
+if [ "$1" != "run_correctly" ]; then
+    echo "This script is not meant to be run directly. If you just installed Arch, run the install.sh script instead."
+    echo "If you want to reconfigure your system, run the config.sh script instead."
+    exit 1
+fi
+
 set -e
 
 emphasis="\e[1;32m"
