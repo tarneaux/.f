@@ -58,7 +58,7 @@ log "Cloning the repository into '~/.f'... Note that it will be hidden from ls a
 # Clone the repository
 sudo -u $user bash << EOF
 # TODO: remove the --branch part once the script is done
-git clone https://github.com/tarneaux/.f.git ~/.f --depth 1 --branch installer --recurse-submodules
+git clone https://github.com/tarneaux/.f.git ~/.f --depth 1 --recurse-submodules
 cd ~/.f
 bash user.sh run_correctly
 EOF
