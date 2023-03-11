@@ -18,7 +18,7 @@
 ### With the install script:
 ```bash
 curl -o /tmp/install.sh https://raw.githubusercontent.com/tarneaux/.f/master/install.sh
-bash /tmp/install.sh
+bash /tmp/install.sh <username to create>
 ```
 
 ### Manually
