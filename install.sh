@@ -53,10 +53,11 @@ EOF
 # Run the rest of the script as the new user
 log "Switching to user $user..."
 
+log "Cloning the repository into '~/.f'... Note that it will be hidden from ls as it starts with a period."
+
 # Clone the repository
 sudo -u $user bash << EOF
 # TODO: remove the --branch part once the script is done
-log "Cloning the repository into '~/.f'... Note that it will be hidden from ls as it starts with a period."
 git clone https://github.com/tarneaux/.f.git ~/.f --depth 1 --branch installer
 cd ~/.f
 bash install/user.sh
