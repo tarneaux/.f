@@ -36,7 +36,7 @@ packages=`cat packages.txt | grep -v ^# | grep -v ^$`
 
 for package in $packages; do
     log "Installing $package"
-    $2 -S --needed $package --noconfirm
+    yay -S --needed $package --noconfirm
 done
 
 log "Done!"
