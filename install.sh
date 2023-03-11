@@ -43,8 +43,12 @@ sudo passwd $user
 
 # Make the sudoers file
 log "Writing config to /etc/sudoers..."
-sudoers_file_contents="root ALL=(ALL) ALL\n$user ALL=(ALL) NOPASSWD: ALL"
-echo $visudo_file_contents | sudo EDITOR='tee -a' visudo
+
+sudo EDITOR='tee' visudo << EOF
+root ALL=(ALL) ALL
+$user ALL=(ALL) NOPASSWD: ALL
+EOF
+
 
 # Run the rest of the script as the new user
 log "Switching to user $user..."
@@ -56,3 +60,4 @@ log "Cloning the repository into '~/.f'... Note that it will be hidden from ls a
 git clone https://github.com/tarneaux/.f.git ~/.f --depth 1 --branch installer
 cd ~/.f
 bash install/user.sh
+EOF

@@ -29,5 +29,4 @@ fd
 ytfzf
 yt-dlp
 mpv
-doas
 ranger

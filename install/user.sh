@@ -6,53 +6,32 @@ set -e
 emphasis="\e[1;32m"
 normal="\e[0m"
 
-# Handle flags
-
-print_usage() {
-    echo "Usage: install.sh [-h] [-n]"
-    echo "  -n: No interaction mode.  Do not prompt for confirmations."
-    echo "  -h: Print this help message"
-    exit 1
-}
-
 log() {
     printf "${emphasis}${1}${normal}\n"
 }
 
-log "Updating system..."
+# pacman and AUR packages will both be installed with yay
 
-installer() {
-    packages=`cat $1 | grep -v ^# | grep -v ^$`
-
-    for package in $packages; do
-        log "Installing $package"
-        $2 -S --needed $package --noconfirm > /dev/null
-    done
-}
-
-# Pacman packages
-log "Pacman packages"
-installer pacman_packages.txt "sudo pacman"
-
-
-# AUR packages
-
-# See if yay is installed and install it if not
-if ! command -v yay &> /dev/null; then
-    log "Yay not found."
-    log "Installing yay..."
-    sudo pacman -S --needed base-devel git --noconfirm > /dev/null
-    git clone https://aur.archlinux.org/yay.git /tmp/yay > /dev/null
-    cd /tmp/yay
-    makepkg -si --noconfirm > /dev/null
-    cd -
-fi
-
+log "Installing yay..."
+sudo pacman -S --needed base-devel git --noconfirm > /dev/null
+git clone https://aur.archlinux.org/yay.git /tmp/yay > /dev/null
+cd /tmp/yay
+makepkg -si --noconfirm > /dev/null
+cd -
 
 log "AUR packages"
 installer aur_packages.txt "yay"
 
+packages=`cat packages.txt | grep -v ^# | grep -v ^$`
 
-# Go back to the original directory
-cd -
+for package in $packages; do
+    log "Installing $package"
+    $2 -S --needed $package --noconfirm
+done
+
+log "Done!"
+log "Now run config.sh to select configs to stow."
+
+log "If you want to get back here later on, just run 'cd ~/.f'."
+
 
