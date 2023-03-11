@@ -14,7 +14,7 @@ emphasis="\e[1;32m"
 normal="\e[0m"
 
 log() {
-    printf "${emphasis}${1}${normal}\n"
+    printf "${emphasis}${1}${norma}\n"
 }
 
 # pacman and AUR packages will both be installed with yay
@@ -38,11 +38,11 @@ done
 
 log "Done!"
 
-cd ~/.f
-
-log "Now run:"
+log "Now log in as your new user, and cd into ~/.f and run:"
 log "   - 'stow */' if you want to install all the dotfiles"
 log "   - 'stow zsh' if you want to install only the zsh dotfiles. This works for any other dotfile folder."
-
+log ""
+log "You may also want to set your new user's shell with 'chsh -s /bin/zsh' or 'chsh -s /bin/fish'."
+log ""
 log "If you want to get back here later on, just run 'cd ~/.f'."
 
