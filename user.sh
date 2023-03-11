@@ -20,15 +20,14 @@ log() {
 # pacman and AUR packages will both be installed with yay
 
 log "Installing yay..."
-sudo pacman -S --needed base-devel git --noconfirm > /dev/null
+# deps (git and base-devel) are already installed by the root install script
 git clone https://aur.archlinux.org/yay.git /tmp/yay > /dev/null
 cd /tmp/yay
 
 # run makepkg without interaction: https://bbs.archlinux.org/viewtopic.php?pid=1529136#p1529136
 source PKGBUILD
-sudo pacman -S --asdeps $depends $makedepends
-sudo -u nobody makepkg 
-
+sudo pacman -S --asdeps $depends $makedepends --noconfirm
+makepkg
 cd -
 
 log "AUR packages"
