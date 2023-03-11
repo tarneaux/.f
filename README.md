@@ -14,6 +14,14 @@
 
 
 ## Installing
+
+### With the install script:
+```bash
+curl -o /tmp/install.sh https://raw.githubusercontent.com/tarneaux/.f/master/install.sh
+bash /tmp/install.sh <username to create>
+```
+
+### Manually
 - On a fresh arch install, run these commands:
   - install yay
     ```bash

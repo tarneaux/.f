@@ -1,0 +1,33 @@
+# This file lists all packages that will be installed by the installer script (install.sh).
+# You can add comments by starting a line with a #.
+# Empty lines will be ignored.
+
+awesome
+dmenu
+alacritty
+neovim
+conky
+git
+fish
+stow
+ttf-ibmplex-mono-nerd
+upower
+exa
+ripgrep
+trash-cli
+bat
+ttf-dejavu
+mpc
+mpd
+starship
+noto-fonts-emoji
+maim
+xclip
+wmctrl
+xdotool
+fd
+ytfzf
+yt-dlp
+mpv
+ranger
+zsh
