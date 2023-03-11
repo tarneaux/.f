@@ -26,7 +26,7 @@ cd /tmp/yay
 
 # run makepkg without interaction: https://bbs.archlinux.org/viewtopic.php?pid=1529136#p1529136
 source PKGBUILD
-pacman -S --asdeps $depends $makedepends
+sudo pacman -S --asdeps $depends $makedepends
 sudo -u nobody makepkg 
 
 cd -
