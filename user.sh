@@ -32,7 +32,6 @@ sudo -u nobody makepkg
 cd -
 
 log "AUR packages"
-installer aur_packages.txt "yay"
 
 packages=`cat packages.txt | grep -v ^# | grep -v ^$`
 
