@@ -24,10 +24,7 @@ log "Installing yay..."
 git clone https://aur.archlinux.org/yay.git /tmp/yay > /dev/null
 cd /tmp/yay
 
-# run makepkg without interaction: https://bbs.archlinux.org/viewtopic.php?pid=1529136#p1529136
-source PKGBUILD
-sudo pacman -S --asdeps $depends $makedepends --noconfirm
-makepkg
+makepkg -si --noconfirm
 cd -
 
 log "AUR packages"
