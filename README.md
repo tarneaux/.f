@@ -17,7 +17,8 @@
 
 ### With the install script:
 ```bash
-curl -s https://raw.githubusercontent.com/tarneaux/.f/master/install.sh | sh
+curl -o /tmp/install.sh https://raw.githubusercontent.com/tarneaux/.f/master/install.sh
+bash /tmp/install.sh
 ```
 
 ### Manually
