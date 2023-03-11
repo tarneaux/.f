@@ -37,8 +37,12 @@ for package in $packages; do
 done
 
 log "Done!"
-log "Now run config.sh to select configs to stow."
+
+cd ~/.f
+
+log "Now run:"
+log "   - 'stow */' if you want to install all the dotfiles"
+log "   - 'stow zsh' if you want to install only the zsh dotfiles. This works for any other dotfile folder."
 
 log "If you want to get back here later on, just run 'cd ~/.f'."
 
-cd ~/.f
