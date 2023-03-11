@@ -30,3 +30,4 @@ ytfzf
 yt-dlp
 mpv
 ranger
+zsh
