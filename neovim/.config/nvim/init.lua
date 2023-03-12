@@ -8,31 +8,41 @@ require('packer').startup(function(use)
     -- Gruvbox theme
     use 'morhetz/gruvbox'
 
+    -- Git diff in the sign column
     use 'airblade/vim-gitgutter'
 
     use 'nvim-treesitter/nvim-treesitter'
 
+    -- Status line
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
+    -- Autocomplete with github copilot
     use 'github/copilot.vim'
 
+    -- Commenting with gcc
     use 'tpope/vim-commentary'
 
+    -- Automatic closing of brackets, quotes, etc.
     use 'windwp/nvim-autopairs'
 
+    -- Telescope for searching
     use {
         'nvim-telescope/telescope.nvim',
         requires = { {'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}, { "cljoly/telescope-repo.nvim" } }
     }
     use 'nvim-telescope/telescope-file-browser.nvim'
 
+    -- Which key: show keybindings when you don't know them
+    -- (wait a little bit after pressing a key)
     use 'folke/which-key.nvim'
 
+    -- Git integration: so useful it should be illegal
     use 'tpope/vim-fugitive'
 
+    -- LSP (Language Server Protocol) for autocompletion
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -41,10 +51,13 @@ require('packer').startup(function(use)
     use 'ervandew/supertab'
     use 'nvim-lua/plenary.nvim'
 
+    -- Dashboard
     use 'goolord/alpha-nvim'
 
+    -- Colorizer: #ff0000 -> red
     use 'norcalli/nvim-colorizer.lua'
 
+    -- Nerdtree (file explorer)
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
@@ -52,15 +65,22 @@ require('packer').startup(function(use)
         }
     }
 
+    -- Changes Vim working directory to project root (git, mercurial, etc.)
     use 'airblade/vim-rooter'
 
+    -- Highlight todos (write todo in all caps to highlight)
     use "folke/todo-comments.nvim"
 
+    -- Guess indentation style of buffers
     use "NMAC427/guess-indent.nvim"
 
+    -- Fountain screenplay format
     use 'kblin/vim-fountain'
 
+    -- Some icons
     use 'nvim-tree/nvim-web-devicons'
+
+    -- Show diagnostics with :Trouble
     use 'folke/trouble.nvim'
 end)
 
