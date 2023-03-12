@@ -99,7 +99,7 @@ vim.opt.swapfile = false
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.undofile = true
-vim.opt.undodir = root .. "undodir"
+vim.opt.undodir = vim.fn.expand('~/.local/share/nvim/undodir')
 
 
 vim.opt.scrolloff = 1
