@@ -28,6 +28,9 @@ require('packer').startup(function(use)
     -- Automatic closing of brackets, quotes, etc.
     use 'windwp/nvim-autopairs'
 
+    -- Change the surround type with cs, and more
+    use 'tpope/vim-surround'
+
     -- Telescope for searching
     use {
         'nvim-telescope/telescope.nvim',
