@@ -31,3 +31,5 @@ yt-dlp
 mpv
 ranger
 zsh
+fortune-mod
+fortune-mod-calvin
