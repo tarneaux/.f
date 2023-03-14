@@ -31,17 +31,17 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,  }, "q", awesome.restart),
 
     -- Shutdown the computer
-    awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("doas shutdown now") end),
+    awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end),
 
     -- Hibernate the computer
-    awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("doas systemctl hibernate") end),
+    awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("sudo systemctl hibernate") end),
 
     -- Screenshot area / window
     awful.key({}, "Print", function() awful.spawn.with_shell("maim --select | xclip -selection clipboard -target image/png") end),
 
     -- change brightness. Only works on my laptop (asus something)
-    awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | doas tee /sys/class/backlight/intel_backlight/brightness') end),
-    awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)-500" | doas tee /sys/class/backlight/intel_backlight/brightness') end),
+    awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
+    awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)-500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
 
     -- Media keys
     awful.key({}, "XF86AudioRaiseVolume", function ()
