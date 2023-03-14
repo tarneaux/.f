@@ -1,12 +1,13 @@
+require('orgmode').setup_ts_grammar()
+
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = {"c", "lua", "rust", "python", "javascript", "markdown", "yaml"},
+    ensure_installed = {"c", "lua", "rust", "python", "javascript", "markdown", "yaml", "org"},
     highlight = {
         enable = true,
+        additional_vim_regex_highlighting = {'org'},
     },
 }
 
-require'nvim-treesitter.configs'.setup {
-  indent = {
-    enable = true
-  }
-}
+require('orgmode').setup()
+
+-- We don't enable treesitter indentation as it breaks orgmode

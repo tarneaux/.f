@@ -82,6 +82,9 @@ require('packer').startup(function(use)
 
     -- Show diagnostics with :Trouble
     use 'folke/trouble.nvim'
+
+    -- orgmode like with emacs
+    use "nvim-orgmode/orgmode"
 end)
 
 vim.cmd [[colorscheme gruvbox]]
