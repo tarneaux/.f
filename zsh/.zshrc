@@ -69,6 +69,10 @@ setopt HIST_IGNORE_ALL_DUPS
 # write to history file immediately after each command
 setopt INC_APPEND_HISTORY
 
+# Just type a directory's name to cd into it
+setopt autocd
+
+
 # ==================== #
 #   Aliases and vars   #
 # ==================== #
