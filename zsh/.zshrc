@@ -131,3 +131,4 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR=nvim
 export PAGER=bat
 
+export QMK_HOME=~/.config/qmk/qmk_firmware
