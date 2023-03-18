@@ -132,3 +132,5 @@ export EDITOR=nvim
 export PAGER=bat
 
 export QMK_HOME=~/.config/qmk/qmk_firmware
+
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
