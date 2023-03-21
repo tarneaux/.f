@@ -45,10 +45,10 @@ local globalkeys = gears.table.join(
 
     -- Media keys
     awful.key({}, "XF86AudioRaiseVolume", function ()
-              awful.spawn.with_shell("pactl set-sink-volume 0 +5%")
+              awful.spawn.with_shell("pactl set-sink-volume 0 +2%")
               end),
     awful.key({}, "XF86AudioLowerVolume", function ()
-              awful.spawn.with_shell("pactl set-sink-volume 0 -5%")
+              awful.spawn.with_shell("pactl set-sink-volume 0 -2%")
               end),
     awful.key({}, "XF86AudioMute", function ()
               awful.spawn.with_shell("pactl set-sink-mute 0 toggle")
