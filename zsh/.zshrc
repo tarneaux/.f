@@ -122,8 +122,8 @@ alias gco="git checkout"
 
 alias ot="odt2txt --width=-1"
 
-alias vpup="doas wg-quick up vpn"
-alias vpdown="doas wg-quick down vpn"
+alias vpup="sudo wg-quick up vpn"
+alias vpdown="sudo wg-quick down vpn"
 
 alias cop="github-copilot-cli what-the-shell"
 
