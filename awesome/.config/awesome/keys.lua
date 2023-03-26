@@ -12,7 +12,7 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,           }, "p", function() awful.spawn.with_shell("dmenu_run") end),
     -- Dmscripts
     awful.key({ ModKey,           }, "y", function() awful.spawn.with_shell("bash ~/.config/dmscripts/main.sh") end),
-    -- Brave browser
+    -- Librewolf (web browser)
     awful.key({ ModKey,           }, "b", function() awful.spawn.with_shell("librewolf") end),
     -- Emacs
     awful.key({ ModKey,           }, "g", function() awful.spawn.with_shell("emacsclient -c -a emacs") end),
