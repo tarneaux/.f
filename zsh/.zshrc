@@ -16,7 +16,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Syntax highlighting
 zinit light zdharma-continuum/fast-syntax-highlighting
 
-# Fish-like history search pt. 2: pressing ↑ will search through history
+# Fish-like history search pt. 1: pressing ↑ will search through history
 zinit light zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
