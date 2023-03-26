@@ -1,0 +1,58 @@
+* Restart awesome: super + q
+* Lauching apps
+** Terminal (alacritty): super + enter
+** Applications launcher (dmenu): super + p
+** Browser (librewolf): super + b
+** File manager (thunar): super + j
+** Music player (ncmpcpp): super + /
+** PDF reader (zathura): super + z
+** Image viewer (nsxiv): super + x
+** Emacs: super + g
+
+*** Additional
+**** Open project in terminal: super + shift + enter
+**** Screenshot: printscreen
+**** Bookmark tool: super + m
+***** This will cat the file ~/.config/awesome/bookmarks, let you choose a line with dmenu and type the line with xdotool.
+***** This is useful when you write a long string a lot. For me it's my github ([[https://github.com/tarneaux]]).
+
+* Window management
+** Do note that these keybindings are made for colemak. If you use qwerty, you will have to change them (e.g neio -> hjkl)
+
+** Focus
+*** Focus previous window: super + e
+*** Focus next window: super + i
+
+** Workspaces
+
+*** Workspace keys: ~arstd~
+
+*** Switch to workspace: super + workspace key
+*** Move current window to workspace: super + shift + workspace key
+*** Show another workspace in addition to the current one: super + ctrl + workspace key
+*** Tag current window with workspace: super + shift + ctrl + workspace key
+
+
+** Layout manipulation
+*** Next layout: super + ,
+*** Master count +1: super + n
+*** Master count -1: super + u
+*** Master size +5%: super + shift + u
+*** Master size -5%: super + shift + n
+*** Add a column: super + shift + m
+*** Remove a column: super + shift + /
+
+** Window manipulation
+*** Swap current window with previous: super + shift + e
+*** Swap current window with next: super + shift + i
+*** Minimize current window: super + l
+*** Restore minimized window: super + u
+*** Maximize/unmaximize current window: super + .
+*** Make/unmake current window fullscreen: super + f
+*** Float/unfloat current window: super + c
+
+
+* Power management
+** Shutdown: super + ctrl + q
+** Hibernate: super + ctrl + h
+
