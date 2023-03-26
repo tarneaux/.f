@@ -31,10 +31,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 # Additions to the default completion system
 zinit light zsh-users/zsh-completions
 
-# zaw - trigger with ^z
-zinit light zsh-users/zaw
-
-
 # ==================== #
 #    Miscellaneous     #
 # ==================== #
