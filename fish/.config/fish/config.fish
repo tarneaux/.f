@@ -2,9 +2,6 @@ if [ (tty) = "/dev/tty1" ]
     startx
 end
 
-alias d="doas"
-alias sudo="doas"
-
 alias e="emacsclient -a emacs"
 alias vim="nvim"
 alias fm="ranger"
@@ -50,8 +47,8 @@ alias gco="git checkout"
 
 alias ot="odt2txt --width=-1"
 
-alias vpup="doas wg-quick up vpn"
-alias vpdown="doas wg-quick down vpn"
+alias vpup="sudo wg-quick up vpn"
+alias vpdown="sudo wg-quick down vpn"
 
 alias cop="github-copilot-cli what-the-shell"
 
