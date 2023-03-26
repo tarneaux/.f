@@ -104,7 +104,7 @@ local globalkeys = gears.table.join(
 
     -- Bookmarks with dmenu (lets you choose a line from ~/.config/awesome/bookmarks and types it for you)
     awful.key({ ModKey }, "m", function ()
-        awful.spawn.with_shell("grep -v '^#' ~/.config/awesome/bookmarks | dmenu -p 'Select bookmark:' -i -l 10 | xargs -r xdotool type")
+        awful.spawn.with_shell("grep -v '^#' ~/.config/awesome/bookmarks | grep -v -e '^$' | dmenu -p 'Select bookmark:' -i -l 10 | xargs -r xdotool type")
     end)
 )
 
