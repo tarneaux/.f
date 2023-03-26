@@ -137,6 +137,14 @@ export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 #     Keybindings      #
 # ==================== #
 
+# Pageup
+bindkey '^[[5~' insert-last-word
+
+# Pagedown
+bindkey '^[[6~' backward-kill-word
+
+
+
 # Without this, tmux will not work well with the HOME and END keys.
 # See https://stackoverflow.com/questions/161676/home-end-keys-in-zsh-dont-work-with-putty
 
