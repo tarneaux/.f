@@ -1,8 +1,11 @@
 -- This file configures the keybindings of awesome.
+-- I have made it so that it matches my keyboard layout (colemak).
+-- This means that you may have to change some shortcuts.
+-- arstdhneio is the whole colemak home row, from left to right. Change those keys to match your keyboard layout.
+-- Remember that almost all the keys are bound to something, so changing one you might need to change another.
 
 local awful = require("awful")
 local gears = require("gears")
-local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 ModKey = "Mod4"
