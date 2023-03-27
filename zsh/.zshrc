@@ -91,14 +91,40 @@ alias rm="/bin/rm -i"
 alias grep='grep --color=auto'
 
 # One letter commands for the lazy
-alias v="vim"
+v() {
+    if [[ -z "$1" ]]; then
+        gitroot=$(git rev-parse --show-toplevel 2> /dev/null)
+        if [[ -n "$gitroot" ]]; then
+            cd "$gitroot"
+        fi
+        choice=$(fd -H -t f \
+            | fzf)
+        if [[ -n "$choice" ]]; then
+            nvim "$choice"
+        fi
+    else
+        nvim "$@"
+    fi
+}
+
+r() {
+    cd $HOME/repo
+    choice=$(fd .git -H -t d \
+        | sed 's/\/.git//' \
+        | fzf)
+    if [[ -n "$choice" ]]; then
+        cd "$choice"
+    else
+        cd - > /dev/null
+    fi
+}
+
 alias t='tree'
 alias l="ls"
 alias c="cd"
 alias m="mkdir"
 alias mp="mkdir -p"
-alias r="trash"
-alias t="tree"
+alias t="trash"
 alias b="bat"
 alias f="fd"
 alias g="git"
