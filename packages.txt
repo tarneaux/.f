@@ -34,3 +34,4 @@ zsh
 fortune-mod
 fortune-mod-calvin
 tmux
+fzf
