@@ -40,7 +40,7 @@ bash /tmp/install.sh <username to create>
     ```
   - install dependencies
     ```bash
-    yay -S $(cat toinstall.txt)
+    yay -S $(cat packages.txt)
     ```
   - Before stowing any configurations, make sure there is a .config directory in your $HOME:
     ```bash
