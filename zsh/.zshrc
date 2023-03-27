@@ -98,6 +98,7 @@ v() {
             cd "$gitroot"
         fi
         choice=$(fd -H -t f \
+            | sort -u \
             | fzf)
         if [[ -n "$choice" ]]; then
             nvim "$choice"
@@ -111,6 +112,7 @@ r() {
     cd $HOME/repo
     choice=$(fd .git -H -t d \
         | sed 's/\/.git//' \
+        | sort -u \
         | fzf)
     if [[ -n "$choice" ]]; then
         cd "$choice"
