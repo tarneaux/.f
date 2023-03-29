@@ -2,7 +2,7 @@
 -- Gruvbox awesome theme --
 ---------------------------
 
-theme = {}
+local theme = {}
 
 theme.background = "#282828"
 theme.foreground = "#ebdbb2"
