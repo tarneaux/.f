@@ -42,6 +42,7 @@ bash /tmp/install.sh <username to create>
     ```bash
     yay -S $(cat packages.txt)
     ```
+    You may run into errors while running this command. If you do just remove the comments in packages.txt.
   - Before stowing any configurations, make sure there is a .config directory in your $HOME:
     ```bash
     mkdir ~/.config
