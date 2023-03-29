@@ -97,7 +97,7 @@ v() {
         if [[ -n "$gitroot" ]]; then
             cd "$gitroot"
         fi
-        choice=$(fd -H -t f \
+        choice=$(fd -H -t f --exclude .git \
             | sort -u \
             | fzf)
         if [[ -n "$choice" ]]; then
