@@ -9,33 +9,33 @@ require("awful.autofocus")
 
 
 -- Global variables
-cdir = gears.filesystem.get_configuration_dir()
-home = os.getenv("HOME")
+Cdir = gears.filesystem.get_configuration_dir()
+Home = os.getenv("HOME")
 
-terminal = "alacritty"
-terminal_cmd = terminal .. " -e "
-editor = "nvim"
-editor_cmd = terminal_cmd .. " " .. editor
+Terminal = "alacritty"
+TerminalCmd = Terminal .. " -e "
+Editor = "nvim"
+EditorCmd = TerminalCmd .. " " .. Editor
 
 
 -- Error handling: this isn't useful here, but is if the config is used as fallback.
-dofile(cdir .. "error_handling.lua")
+dofile(Cdir .. "error_handling.lua")
 
 -- Themes define colours, font and wallpapers.
-beautiful.init(cdir .. "theme/theme.lua")
+beautiful.init(Cdir .. "theme/theme.lua")
 
 -- Screens, layouts, tags
-dofile(cdir .. "screens.lua")
+dofile(Cdir .. "screens.lua")
 
 -- Key bindings
-dofile(cdir .. "keys.lua")
+dofile(Cdir .. "keys.lua")
 
 -- Rules: how windows are placed and managed
 -- If you want to make specific programs appear on specific tags, you can do that here.
-dofile(cdir .. "rules.lua")
+dofile(Cdir .. "rules.lua")
 
 -- Signals: what to do when a window is created, moved, etc.
-dofile(cdir .. "signals.lua")
+dofile(Cdir .. "signals.lua")
 
 
 

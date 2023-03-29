@@ -22,12 +22,12 @@ local globalkeys = gears.table.join(
     -- Zathura: PDF viewer. Archlinux package: zathura.
     awful.key({ ModKey,           }, "z", function() awful.spawn.with_shell("zathura") end),
     -- Ranger: terminal file manager. Archlinux package: ranger.
-    awful.key({ModKey,            }, "j", function() awful.spawn.with_shell(terminal_cmd .. "ranger") end),
+    awful.key({ModKey,            }, "j", function() awful.spawn.with_shell(TerminalCmd .. "ranger") end),
     -- ncmpcpp: terminal music player/mpd frontend. Archlinux package: ncmpcpp.
-    awful.key({ ModKey,           }, "slash", function() awful.spawn.with_shell(terminal_cmd .. " ncmpcpp") end),
+    awful.key({ ModKey,           }, "slash", function() awful.spawn.with_shell(TerminalCmd .. " ncmpcpp") end),
 
     -- Open terminal (I use alacritty)
-    awful.key({ ModKey,           }, "Return", function () awful.spawn.with_shell(terminal) end),
+    awful.key({ ModKey,           }, "Return", function () awful.spawn.with_shell(Terminal) end),
 
     -- Reload awesomewm. This is useful when you change the config file.
     awful.key({ ModKey,  }, "q", awesome.restart),
