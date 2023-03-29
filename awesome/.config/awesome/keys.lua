@@ -11,34 +11,31 @@ require("awful.hotkeys_popup.keys")
 ModKey = "Mod4"
 
 local globalkeys = gears.table.join(
-    -- Applications launcher
+    -- Applications launcher: dmenu. Archlinux package: dmenu
     awful.key({ ModKey,           }, "p", function() awful.spawn.with_shell("dmenu_run") end),
-    -- Dmscripts
+    -- Dmscripts (my own scripts): see the dotfile's README for more info
     awful.key({ ModKey,           }, "y", function() awful.spawn.with_shell("bash ~/.config/dmscripts/main.sh") end),
-    -- Librewolf (web browser)
+    -- Librewolf (web browser). You can change this to match your browser.
     awful.key({ ModKey,           }, "b", function() awful.spawn.with_shell("librewolf") end),
-    -- Emacs
+    -- Emacs: I use emacsclient to open emacs. You can change this to match your editor, or just remove it.
     awful.key({ ModKey,           }, "g", function() awful.spawn.with_shell("emacsclient -c -a emacs") end),
-    -- Zathura
+    -- Zathura: PDF viewer. Archlinux package: zathura.
     awful.key({ ModKey,           }, "z", function() awful.spawn.with_shell("zathura") end),
-    -- Ranger
+    -- Ranger: terminal file manager. Archlinux package: ranger.
     awful.key({ModKey,            }, "j", function() awful.spawn.with_shell(terminal_cmd .. "ranger") end),
-    -- ncmpcpp
+    -- ncmpcpp: terminal music player/mpd frontend. Archlinux package: ncmpcpp.
     awful.key({ ModKey,           }, "slash", function() awful.spawn.with_shell(terminal_cmd .. " ncmpcpp") end),
 
-    -- Open terminal
+    -- Open terminal (I use alacritty)
     awful.key({ ModKey,           }, "Return", function () awful.spawn.with_shell(terminal) end),
 
-    -- Open project in terminal
-    awful.key({ ModKey, "Shift"   }, "Return", function () awful.spawn.with_shell("/bin/ls ~/repo/ | dmenu -p 'repository:' -i -l 10 | xargs -I {} -r alacritty --working-directory ~/repo/{}") end),
-
-    -- Reload awesome
+    -- Reload awesomewm. This is useful when you change the config file.
     awful.key({ ModKey,  }, "q", awesome.restart),
 
     -- Shutdown the computer
     awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end),
 
-    -- Hibernate the computer
+    -- Hibernate the computer: you need some configuration for this to work. See the archwiki, page on hibernation.
     awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("sudo systemctl hibernate") end),
 
     -- Screenshot area / window
@@ -105,27 +102,32 @@ local globalkeys = gears.table.join(
                   end
               end),
 
-    -- Bookmarks with dmenu (lets you choose a line from ~/.config/awesome/bookmarks and types it for you)
+    -- Bookmarks with dmenu (lets you choose a line from ~/.config/awesome/bookmarks and types it for you using xdotool)
     awful.key({ ModKey }, "m", function ()
         awful.spawn.with_shell("grep -v '^#' ~/.config/awesome/bookmarks | grep -v -e '^$' | dmenu -p 'Select bookmark:' -i -l 10 | xargs -r xdotool type")
     end)
 )
 
+-- Keys for clients (windows)
 ClientKeys = gears.table.join(
+    -- Toggle fullscreen = no borders, bar, titlebar, or gaps
     awful.key({ ModKey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
             c:raise()
         end),
+    -- Close client
     awful.key({ ModKey,           }, "w",      function (c) c:kill()                         end),
+    -- Toggle floating
     awful.key({ ModKey            }, "c",  awful.client.floating.toggle                     ),
-    -- awful.key({ ModKey, "Shift"   }, "y",      function (c) c:move_to_screen()               end),
+    -- Minimize client
     awful.key({ ModKey,           }, "l",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end),
+    -- Restore last minimized client
     awful.key({ ModKey,           }, ".",
         function (c)
             c.maximized = not c.maximized
@@ -134,8 +136,10 @@ ClientKeys = gears.table.join(
 )
 
 -- Bind all key numbers to tags.
+-- Colemak's "arstd" = qwerty's "asdfg"
 local tagkeys = { "a", "r", "s", "t", "d"}
-for i = 1, 9 do
+-- Here change the number 5 to the number of buttons you set just above.
+for i = 1, 5 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         awful.key({ ModKey }, tagkeys[i],
@@ -146,7 +150,7 @@ for i = 1, 9 do
                            tag:view_only()
                         end
                   end),
-        -- Toggle tag display.
+        -- Toggle tag display. (in awesomewm you can view multiple tags at once)
         awful.key({ ModKey, "Control" }, tagkeys[i],
                   function ()
                       local screen = awful.screen.focused()
@@ -165,7 +169,7 @@ for i = 1, 9 do
                           end
                      end
                   end),
-        -- Toggle tag on focused client.
+        -- Toggle tag on focused client. (clients/windows can be tagged with multiple tags)
         awful.key({ ModKey, "Control", "Shift" }, tagkeys[i],
                   function ()
                       if client.focus then
@@ -178,6 +182,7 @@ for i = 1, 9 do
     )
 end
 
+-- Mouse bindings. You shouldn't need to change these.
 ClientButtons = gears.table.join(
     awful.button({ }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
@@ -192,5 +197,5 @@ ClientButtons = gears.table.join(
     end)
 )
 
--- Set keys
+-- Set keys. Without this line all of this file is useless!
 root.keys(globalkeys)
