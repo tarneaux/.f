@@ -10,7 +10,6 @@ require("awful.autofocus")
 
 -- Global variables
 Cdir = gears.filesystem.get_configuration_dir()
-Home = os.getenv("HOME")
 
 Terminal = "alacritty"
 TerminalCmd = Terminal .. " -e "
