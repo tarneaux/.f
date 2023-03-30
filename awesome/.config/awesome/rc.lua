@@ -14,7 +14,6 @@ Cdir = gears.filesystem.get_configuration_dir()
 Terminal = "alacritty"
 TerminalCmd = Terminal .. " -e "
 Editor = "nvim"
-EditorCmd = TerminalCmd .. " " .. Editor
 
 
 -- Error handling: this isn't useful here, but is if the config is used as fallback.
