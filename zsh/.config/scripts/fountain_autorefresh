@@ -1,4 +1,7 @@
 #! /bin/bash
+
+set -e
+
 textplay < $1 | prince - -o $2
 zathura $2 &
 while true

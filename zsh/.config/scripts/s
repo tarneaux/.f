@@ -1,6 +1,7 @@
 #! /bin/bash
 
 # This script searches through stalled git repositories.
+set -e
 
 cd $HOME/repo/stalled
 choice=$(fd .git -H -t d \

@@ -4,6 +4,8 @@
 # - no arguments: choose the file with fzf
 # - else: run nvim as if this was just an alias
 
+set -e
+
 if [[ -z "$1" ]]; then
     gitroot=$(git rev-parse --show-toplevel 2> /dev/null)
     if [[ -n "$gitroot" ]]; then

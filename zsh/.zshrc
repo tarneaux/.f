@@ -77,7 +77,6 @@ setopt autocd
 # Some of these are one-letter aliases
 export PATH="$HOME/.config/scripts:$PATH"
 
-
 alias e="emacsclient -a emacs"
 alias vim="nvim"
 alias fm="ranger"

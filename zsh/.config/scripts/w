@@ -4,7 +4,7 @@
 # It will also remove empty directories so that it doesn't clutter up the directory tree.
 
 set -e
-cd $HOME/repos
+cd $HOME/repo
 src=$(fd .git -H -t d \
     | sed 's/\/.git//' \
     | sort -u \

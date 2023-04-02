@@ -4,6 +4,8 @@
 # and cd's into the selected one.
 # It ignores repositories that are in the "stalled" directory.
 
+set -e
+
 cd $HOME/repo
 choice=$(fd .git -H -t d --exclude stalled \
     | sed 's/\/.git//' \
