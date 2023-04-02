@@ -13,4 +13,4 @@ choice=$(fd .git -H -t d --exclude stalled \
     | fzf)
 cd - > /dev/null
 [[ -n "$choice" ]] \
-    && cd "$HOME/repo/$choice"
+    && cd "$HOME/repo/$choice" && $SHELL

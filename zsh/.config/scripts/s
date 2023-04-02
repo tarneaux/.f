@@ -10,4 +10,4 @@ choice=$(fd .git -H -t d \
     | fzf)
 cd - > /dev/null
 [[ -n "$choice" ]] \
-    && cd "$HOME/repo/stalled/$choice"
+    && cd "$HOME/repo/stalled/$choice" && $SHELL
