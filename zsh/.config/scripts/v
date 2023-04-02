@@ -1,0 +1,20 @@
+#! /bin/bash
+
+# Open a file in neovim:
+# - no arguments: choose the file with fzf
+# - else: run nvim as if this was just an alias
+
+if [[ -z "$1" ]]; then
+    gitroot=$(git rev-parse --show-toplevel 2> /dev/null)
+    if [[ -n "$gitroot" ]]; then
+        cd "$gitroot"
+    fi
+    choice=$(fd -H -t f --exclude .git \
+        | sort -u \
+        | fzf)
+    if [[ -n "$choice" ]]; then
+        nvim "$choice"
+    fi
+else
+    nvim "$@"
+fi

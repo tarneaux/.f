@@ -1,0 +1,14 @@
+#! /bin/bash
+
+# This script searches through all git repositories in $HOME/repo
+# and cd's into the selected one.
+# It ignores repositories that are in the "stalled" directory.
+
+cd $HOME/repo
+choice=$(fd .git -H -t d --exclude stalled \
+    | sed 's/\/.git//' \
+    | sort -u \
+    | fzf)
+cd - > /dev/null
+[[ -n "$choice" ]] \
+    && cd "$HOME/repo/$choice"

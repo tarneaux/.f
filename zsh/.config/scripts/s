@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# This script searches through stalled git repositories.
+
+cd $HOME/repo/stalled
+choice=$(fd .git -H -t d \
+    | sed 's/\/.git//' \
+    | sort -u \
+    | fzf)
+cd - > /dev/null
+[[ -n "$choice" ]] \
+    && cd "$HOME/repo/stalled/$choice"

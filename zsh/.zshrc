@@ -73,6 +73,11 @@ setopt autocd
 #   Aliases and vars   #
 # ==================== #
 
+# Add custom scripts to path
+# Some of these are one-letter aliases
+export PATH="$HOME/.config/scripts:$PATH"
+
+
 alias e="emacsclient -a emacs"
 alias vim="nvim"
 alias fm="ranger"
@@ -91,37 +96,7 @@ alias rm="/bin/rm -i"
 alias grep='grep --color=auto'
 
 # One letter commands for the lazy
-v() {
-    if [[ -z "$1" ]]; then
-        gitroot=$(git rev-parse --show-toplevel 2> /dev/null)
-        if [[ -n "$gitroot" ]]; then
-            cd "$gitroot"
-        fi
-        choice=$(fd -H -t f --exclude .git \
-            | sort -u \
-            | fzf)
-        if [[ -n "$choice" ]]; then
-            nvim "$choice"
-        fi
-    else
-        nvim "$@"
-    fi
-}
 
-r() {
-    cd $HOME/repo
-    choice=$(fd .git -H -t d \
-        | sed 's/\/.git//' \
-        | sort -u \
-        | fzf)
-    if [[ -n "$choice" ]]; then
-        cd "$choice"
-    else
-        cd - > /dev/null
-    fi
-}
-
-alias t='tree'
 alias l="ls"
 alias c="cd"
 alias m="mkdir"
