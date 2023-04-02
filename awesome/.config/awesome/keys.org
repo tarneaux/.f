@@ -35,6 +35,7 @@
 
 ** Layout manipulation
 *** Next layout: super + ,
+*** Toggle maximized layout: super + .
 *** Master count +1: super + n
 *** Master count -1: super + u
 *** Master size +5%: super + shift + u
@@ -47,7 +48,6 @@
 *** Swap current window with next: super + shift + i
 *** Minimize current window: super + l
 *** Restore minimized window: super + u
-*** Maximize/unmaximize current window: super + .
 *** Make/unmake current window fullscreen: super + f
 *** Float/unfloat current window: super + c
 

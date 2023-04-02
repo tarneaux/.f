@@ -10,6 +10,8 @@ require("awful.hotkeys_popup.keys")
 
 ModKey = "Mod4"
 
+local previous_layout = nil
+
 local globalkeys = gears.table.join(
     -- Applications launcher: dmenu. Archlinux package: dmenu
     awful.key({ ModKey,           }, "p", function() awful.spawn.with_shell("dmenu_run") end),
@@ -90,6 +92,23 @@ local globalkeys = gears.table.join(
     -- Change layout
     awful.key({ ModKey,           }, ",", function () awful.layout.inc( 1)                end),
 
+    -- Toggle maximized layout
+    -- This will just crash if you set the default layout to maximized, but else it works well.
+    awful.key({ ModKey,           }, ".", function ()
+        local screen = awful.screen.focused()
+        local tag = screen.selected_tag
+        local current_layout = tag.layout
+
+        local toggled_layout = awful.layout.suit.max
+
+        if current_layout.name == toggled_layout.name then
+            awful.layout.set(previous_layout, tag)
+        else
+            previous_layout = current_layout
+            awful.layout.set(toggled_layout, tag)
+        end
+    end),
+
     -- Restore last minimized client
     awful.key({ ModKey, }, "u",
               function ()
@@ -126,12 +145,6 @@ ClientKeys = gears.table.join(
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
-        end),
-    -- Restore last minimized client
-    awful.key({ ModKey,           }, ".",
-        function (c)
-            c.maximized = not c.maximized
-            c:raise()
         end)
 )
 
