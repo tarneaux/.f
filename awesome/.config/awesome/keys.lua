@@ -20,7 +20,7 @@ local globalkeys = gears.table.join(
     -- Librewolf (web browser). You can change this to match your browser.
     awful.key({ ModKey,           }, "b", function() awful.spawn.with_shell("librewolf") end),
     -- Emacs: I use emacsclient to open emacs. You can change this to match your editor, or just remove it.
-    awful.key({ ModKey,           }, "g", function() awful.spawn.with_shell("emacsclient -c -a emacs") end),
+    awful.key({ ModKey,           }, "g", function() awful.spawn.with_shell("emacsclient -c -a 'emacs -q --load ~/.config/emacs/init.el'") end),
     -- Zathura: PDF viewer. Archlinux package: zathura.
     awful.key({ ModKey,           }, "z", function() awful.spawn.with_shell("zathura") end),
     -- Ranger: terminal file manager. Archlinux package: ranger.
