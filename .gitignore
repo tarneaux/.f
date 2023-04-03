@@ -19,3 +19,4 @@ emacs/.emacs.d/elpa
 # And projectile bookmarks
 emacs/.emacs.d/projectile-bookmarks.eld
 emacs/.emacs.d/auto-save-list
+emacs/.emacs.d/transient/
