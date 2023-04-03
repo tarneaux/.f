@@ -26,7 +26,6 @@
 (global-display-line-numbers-mode t)
 (setq display-line-numbers 'relative)
 
-
 (require 'package)
 
 ;; Prevent cluttering of .emacs.d
@@ -65,8 +64,12 @@
 
 ;; Gruvbox theme
 (use-package gruvbox-theme
-  :config (load-theme 'gruvbox-dark-medium t))
+  :config (load-theme 'gruvbox-dark-medium t)
+  (set-face-attribute 'line-number nil :background "#0000" :foreground "#504945")
+  (set-face-attribute 'line-number-current-line nil :background "#0000"))
 
+
+;; set color of line numbers
 
 ;; LSP
 (use-package lsp-mode
