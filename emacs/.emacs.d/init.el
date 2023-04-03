@@ -6,7 +6,11 @@
 ;; Store all backup and autosave files in the tmp dir
 (setq backup-directory-alist `(("." . "~/.local/share/emacs/backup")))
 
+;; Disable auto-save
+(setq auto-save-default nil)
 
+;; Enable automatic bracket insertion by pairs.
+(electric-pair-mode 1)
 
 (require 'package)
 
@@ -39,6 +43,10 @@
 ;; Actually change the cursor in terminal
 (use-package evil-terminal-cursor-changer
   :config (evil-terminal-cursor-changer-activate))
+
+;; Surround text objects with "S<textobject>"
+(use-package evil-surround
+  :config (global-evil-surround-mode 1))
 
 ;; Gruvbox theme
 (use-package gruvbox-theme
@@ -75,8 +83,9 @@
   (setq org-log-done 'time)
   (setq org-todo-keywords
         '((sequence "TODO" "LATER" "DONE")))
+  ;; Open files folded
+  (setq org-startup-folded t)
 )
-
 
 
 (custom-set-variables
