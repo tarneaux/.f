@@ -1,0 +1,4 @@
+* Words of warning
+  This is my emacs config. It is completely broken: reloading the config doesn't work, and a lot of other things too. So don't use this one.
+
+  Thanks.
