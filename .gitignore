@@ -13,3 +13,9 @@ fish/.config/fish/fish_variables
 
 # Bookmarks from awesomewm - may contain sensitive information
 awesome/.config/awesome/bookmarks
+
+# Ingore emacs elpa packages
+emacs/.emacs.d/elpa
+# And projectile bookmarks
+emacs/.emacs.d/projectile-bookmarks.eld
+emacs/.emacs.d/auto-save-list
