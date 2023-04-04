@@ -1,22 +1,24 @@
 # .f
 
 ## Screenshot
-![test](https://user-images.githubusercontent.com/62650051/229812179-9b6f8e52-110c-45ba-9de2-9f7c92e3811f.png)
+![screenshot](https://user-images.githubusercontent.com/62650051/229812179-9b6f8e52-110c-45ba-9de2-9f7c92e3811f.png)
 
 
 ## What's used
 - WM: `awesomewm`. [config](awesome/.config/awesome)
 - Bar: the awesomewm bar. [config](awesome/.config/awesome)
-- Editor: `neovim`. [config](neovim/.config/nvim)
+- Editors:
+  - `neovim`. [config](neovim/.config/nvim)
+  - `emacs` for org-mode. [config](emacs/.emacs.d)
 - Font: `BlexMono Nerd Font`.
 - Colorscheme: `gruvbox`.
-- Shell: `fish`. [config](fish/.config/fish/)
+- Shell: `zsh`. [config](zsh/.config/zsh/). I once used `fish` ([config](fish/.config/fish/))
 - Prompt: customized `starship`. [config](fish/.config/starship.toml)
 
 
 ## Installing
 
-### With the install script:
+### With the install script (fast but not recommended):
 ```bash
 curl -o /tmp/install.sh https://raw.githubusercontent.com/tarneaux/.f/master/install.sh
 bash /tmp/install.sh <username to create>
