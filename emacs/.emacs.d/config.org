@@ -147,7 +147,7 @@ I use the powerline modeline.
 #+BEGIN_SRC emacs-lisp
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
-  :config (setq org-superstar-headline-bullets-list '("◉" "○" "✸" "✿")))
+  :config (setq org-superstar-headline-bullets-list '("•")))
 #+END_SRC
 ** Org-evil: evil bindings for org mode
 #+BEGIN_SRC emacs-lisp

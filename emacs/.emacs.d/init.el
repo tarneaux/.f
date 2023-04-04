@@ -95,7 +95,7 @@
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
-  :config (setq org-superstar-headline-bullets-list '("◉" "○" "✸" "✿")))
+  :config (setq org-superstar-headline-bullets-list '("•")))
 
 (use-package org-evil
   :after (evil org)
