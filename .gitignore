@@ -15,4 +15,4 @@ fish/.config/fish/fish_variables
 awesome/.config/awesome/bookmarks
 
 # Ignore build emacs config
-emacs/.config/emacs/config.el
+emacs/.emacs.d/straight

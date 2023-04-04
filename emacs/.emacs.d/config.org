@@ -1,0 +1,191 @@
+#+PROPERTY: header-args :tangle init.el
+
+This is my emacs config.
+As you may notice there is only github copilot enabled, and this is because I only use emacs for org and fountain documents.
+For actual programming, I use nvim.
+
+* Basic setup
+** Reload config
+This is a bit trickier than the default because we need to tangle config.org to init.el, and then load init.el. This function reloads the config.
+#+BEGIN_SRC emacs-lisp
+(defun reload-config ()
+  (interactive)
+  (org-babel-tangle-file "~/.emacs.d/config.org")
+  (load-file "~/.emacs.d/init.el"))
+#+END_SRC
+And set the binding: ~C-c r~.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c r") 'reload-config)
+#+END_SRC
+Warning: this might not actually reload some stuff, like contents of use-package blocks. I'm not sure how to fix this.
+** Set default directory
+#+BEGIN_SRC emacs-lisp
+(setq default-directory "~/")
+#+END_SRC
+** Dectlutter working directory
+#+BEGIN_SRC emacs-lisp
+;; Prevent emacs from creating lockfiles because they are just annoying
+(setq create-lockfiles nil)
+
+;; Store a limited number of backup files in ~/.local/share/emacs/backups
+(unless (file-exists-p "~/.local/share/emacs/backups")
+  (make-directory "~/.local/share/emacs/backups" t))
+(setq backup-directory-alist '(("." . "~/.local/share/emacs/backups")))
+(setq backup-by-copying t
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
+;; Store auto-save files in ~/.local/share/emacs/autosaves
+(unless (file-exists-p "~/.local/share/emacs/autosaves")
+  (make-directory "~/.local/share/emacs/autosaves" t))
+(setq auto-save-file-name-transforms
+      `((".*" "~/.local/share/emacs/autosaves/\\1" t)))
+#+END_SRC
+** Store undo history
+#+BEGIN_SRC emacs-lisp
+;; Store undo history in ~/.local/share/emacs/undo
+(unless (file-exists-p "~/.local/share/emacs/undo")
+  (make-directory "~/.local/share/emacs/undo" t))
+(setq undo-tree-history-directory-alist '(("." . "~/.local/share/emacs/undo")))
+#+END_SRC
+* Package management
+** Install straight.el
+The package manager I use. The code comes from the [[https://github.com/radian-software/straight.el][straight.el README]].
+#+BEGIN_SRC emacs-lisp
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+(setq package-enable-at-startup nil)
+#+END_SRC
+** Auto-install packages
+After this snippet, ~use-package~ is available and all packages are installed with ~straight.el~.
+#+BEGIN_SRC emacs-lisp
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+#+END_SRC
+* Appearance
+** Set font
+#+BEGIN_SRC emacs-lisp
+(set-face-attribute 'default nil :font "BlexMono Nerd Font Mono-9")
+#+END_SRC
+** Disable some UI elements
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+#+END_SRC
+** Line numbers
+I use relative line numbers.
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode)
+#+END_SRC
+** Set theme (gruvbox)
+#+BEGIN_SRC emacs-lisp
+(use-package gruvbox-theme
+  :config
+  (load-theme 'gruvbox-dark-medium t)
+  ;; I don't like the default line number colors
+  (set-face-attribute 'line-number nil :background "#0000" :foreground "#504945")
+  (set-face-attribute 'line-number-current-line nil :background "#0000")
+  ;; Disable highlighting of new lines
+  (set-face-attribute 'fringe nil :background "#0000"))
+#+END_SRC
+
+** Better modeline
+I use the powerline modeline.
+#+BEGIN_SRC emacs-lisp
+(use-package powerline
+  :config
+  (powerline-default-theme))
+#+END_SRC
+
+* Evil mode
+** Install evil
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+  :config
+  (evil-mode 1))
+#+END_SRC
+** Actually change the cursor in terminal
+#+BEGIN_SRC emacs-lisp
+(use-package evil-terminal-cursor-changer
+  :config
+  (evil-terminal-cursor-changer-activate))
+#+END_SRC
+
+* Org mode
+** Install and configure org mode
+#+BEGIN_SRC emacs-lisp
+(use-package org
+   :config
+   (setq org-starttup-indented t
+         org-hide-leading-stars t
+         org-ellipsis " ▾"
+         org-src-fontify-natively t
+         org-src-tab-acts-natively t
+         org-src-preserve-indentation t
+         org-confirm-babel-evaluate nil
+         org-src-window-setup 'current-window
+         org-log-done 'time
+         org-todo-keywords '((sequence "TODO" "LATER" "DONE"))
+         org-startup-folded t
+         org-hide-emphasis-markers t))
+#+END_SRC
+** Org-superstar: prettier bullets
+#+BEGIN_SRC emacs-lisp
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode)
+  :config (setq org-superstar-headline-bullets-list '("◉" "○" "✸" "✿")))
+#+END_SRC
+** Org-evil: evil bindings for org mode
+#+BEGIN_SRC emacs-lisp
+(use-package org-evil
+  :after (evil org)
+  :config
+  (org-evil-mode 1))
+#+END_SRC
+
+* Completion
+** Company
+#+BEGIN_SRC emacs-lisp
+(use-package company
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
+#+END_SRC
+** Github copilot
+#+BEGIN_SRC emacs-lisp
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :config (global-copilot-mode)
+          (with-eval-after-load 'company
+            ;; disable inline previews
+            (delq 'company-preview-if-just-one-frontend company-frontends))
+            
+          (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+          (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
+#+END_SRC
+
+* Fountain mode
+#+BEGIN_SRC emacs-lisp
+(use-package fountain-mode
+  :mode "\\.fountain\\'")
+#+END_SRC
+* Misc
+** Which-key
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :config
+  (which-key-mode))
+#+END_SRC
