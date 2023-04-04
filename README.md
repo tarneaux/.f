@@ -9,7 +9,7 @@
 - Bar: the awesomewm bar. ([config](awesome/.config/awesome))
 - Editors:
   - `neovim`. ([config](neovim/.config/nvim))
-  - `emacs` for org-mode. ([config](emacs/.emacs.d))
+  - `emacs` for org-mode and screenplays. ([config](emacs/.emacs.d))
 - Font: `BlexMono Nerd Font`.
 - Colorscheme: `gruvbox`.
 - Shell: `zsh` ([config](zsh/.config/zsh/)). I once used `fish` ([config](fish/.config/fish/))
