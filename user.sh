@@ -14,7 +14,7 @@ emphasis="\e[1;32m"
 normal="\e[0m"
 
 log() {
-    printf "${emphasis}${1}${norma}\n"
+    printf "${emphasis}${1}${normal}\n"
 }
 
 # pacman and AUR packages will both be installed with yay
