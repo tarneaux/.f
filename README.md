@@ -12,7 +12,7 @@
   - `emacs` for org-mode and screenplays. ([config](emacs/.emacs.d))
 - Font: `BlexMono Nerd Font`.
 - Colorscheme: `gruvbox`.
-- Shell: `zsh` ([config](zsh/.config/zsh/)). I once used `fish` ([config](fish/.config/fish/))
+- Shell: `zsh` ([config](zsh/)). I once used `fish` ([config](fish/.config/fish/))
 - Prompt: customized `starship`. ([config](fish/.config/starship.toml))
 
 
