@@ -7,7 +7,7 @@
 set -e
 
 if [[ -z "$1" ]]; then
-    gitroot=$(git rev-parse --show-toplevel 2> /dev/null)
+    gitroot=$(git rev-parse --show-toplevel 2> /dev/null || echo "")
     if [[ -n "$gitroot" ]]; then
         cd "$gitroot"
     fi
