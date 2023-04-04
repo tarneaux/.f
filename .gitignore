@@ -16,3 +16,4 @@ awesome/.config/awesome/bookmarks
 
 # Ignore build emacs config
 emacs/.emacs.d/straight
+emacs/.emacs.d/url
