@@ -112,9 +112,56 @@
           (with-eval-after-load 'company
             ;; disable inline previews
             (delq 'company-preview-if-just-one-frontend company-frontends))
-            
-          (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-          (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
+	    (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+	    (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
+
+(setenv "PATH" (concat (getenv "PATH") ":~/.local/bin"))
+(setq exec-path (append exec-path '("~/.local/bin")))
+
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((python-mode . lsp)
+         (rust-mode . lsp)
+	 (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :config
+  ;; Enable sideline
+  (setq lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-diagnostics t
+        lsp-ui-sideline-delay 0.5))
+
+(use-package company-lsp
+  :commands company-lsp)
+
+(defun my-lsp-completion-at-point ()
+  (if (and (bound-and-true-p lsp-mode)
+	   (lsp-feature? "textDocument/completion"))
+      (lsp-completion-at-point)
+    (company-capf 'candidates)))
+
+(use-package flycheck
+  :init (global-flycheck-mode))
+
+(electric-pair-mode 1)
+
+(use-package rust-mode
+  :mode "\\.rs\\'")
+
+(use-package tree-sitter
+  :config
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+(use-package tree-sitter-langs)
+
+(use-package treemacs
+  :config
+  ;; icon size
+  (setq treemacs-resize-icons 8))
+(use-package treemacs-evil)
 
 (use-package fountain-mode
   :mode "\\.fountain\\'")

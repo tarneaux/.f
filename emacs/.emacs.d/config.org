@@ -172,11 +172,84 @@ I use the powerline modeline.
           (with-eval-after-load 'company
             ;; disable inline previews
             (delq 'company-preview-if-just-one-frontend company-frontends))
-            
-          (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-          (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
+	    (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+	    (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
 #+END_SRC
 
+** LSP
+*** Add some paths
+LSP needs some binaries to work, and some will be installed to ~/.local/bin, so we need to add that to the PATH variable.
+#+BEGIN_SRC emacs-lisp
+(setenv "PATH" (concat (getenv "PATH") ":~/.local/bin"))
+(setq exec-path (append exec-path '("~/.local/bin")))
+#+END_SRC
+*** Install lsp-mode
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((python-mode . lsp)
+         (rust-mode . lsp)
+	 (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+#+END_SRC
+*** Install lsp-ui
+#+BEGIN_SRC emacs-lisp
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :config
+  ;; Enable sideline
+  (setq lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-diagnostics t
+        lsp-ui-sideline-delay 0.5))
+#+END_SRC
+*** Install company-lsp
+#+BEGIN_SRC emacs-lisp
+(use-package company-lsp
+  :commands company-lsp)
+#+END_SRC
+*** Allow lsp to work with copilot
+Here we prioritize lsp over copilot, because copilot sometimes gets in the way sometimes.
+#+BEGIN_SRC emacs-lisp
+(defun my-lsp-completion-at-point ()
+  (if (and (bound-and-true-p lsp-mode)
+	   (lsp-feature? "textDocument/completion"))
+      (lsp-completion-at-point)
+    (company-capf 'candidates)))
+#+END_SRC
+*** Install flycheck
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+  :init (global-flycheck-mode))
+#+END_SRC
+** Auto close brackets
+#+BEGIN_SRC emacs-lisp
+(electric-pair-mode 1)
+#+END_SRC
+
+** Rust
+*** Install rust-mode
+#+BEGIN_SRC emacs-lisp
+(use-package rust-mode
+  :mode "\\.rs\\'")
+#+END_SRC
+
+** Treesitter
+#+BEGIN_SRC emacs-lisp
+(use-package tree-sitter
+  :config
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+(use-package tree-sitter-langs)
+#+END_SRC
+* Treemacs
+#+BEGIN_SRC emacs-lisp
+(use-package treemacs
+  :config
+  ;; icon size
+  (setq treemacs-resize-icons 8))
+(use-package treemacs-evil)
+#+END_SRC
 * Fountain mode
 #+BEGIN_SRC emacs-lisp
 (use-package fountain-mode
