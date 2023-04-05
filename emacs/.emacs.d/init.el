@@ -48,7 +48,7 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
-(set-face-attribute 'default nil :font "BlexMono Nerd Font Mono-9")
+(set-face-attribute 'default nil :font "Fantasque Sans Mono-9")
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -82,7 +82,7 @@
    :config
    (setq org-starttup-indented t
          org-hide-leading-stars t
-         org-ellipsis " ▾"
+         org-ellipsis " "
          org-src-fontify-natively t
          org-src-tab-acts-natively t
          org-src-preserve-indentation t
@@ -95,7 +95,7 @@
 
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
-  :config (setq org-superstar-headline-bullets-list '("•")))
+  :config (setq org-superstar-headline-bullets-list '("")))
 
 (use-package org-evil
   :after (evil org)

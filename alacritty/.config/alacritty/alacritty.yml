@@ -26,7 +26,7 @@ scrolling:
 
 font:
   normal:
-    family: BlexMono Nerd Font
+    family: Fantasque Sans Mono
 
     # The `style` can be specified to pick a specific face.
     style: Regular

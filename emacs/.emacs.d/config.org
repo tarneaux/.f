@@ -77,7 +77,7 @@ After this snippet, ~use-package~ is available and all packages are installed wi
 * Appearance
 ** Set font
 #+BEGIN_SRC emacs-lisp
-(set-face-attribute 'default nil :font "BlexMono Nerd Font Mono-9")
+(set-face-attribute 'default nil :font "Fantasque Sans Mono-9")
 #+END_SRC
 ** Disable some UI elements
 #+BEGIN_SRC emacs-lisp
@@ -132,7 +132,7 @@ I use the powerline modeline.
    :config
    (setq org-starttup-indented t
          org-hide-leading-stars t
-         org-ellipsis " ▾"
+         org-ellipsis " "
          org-src-fontify-natively t
          org-src-tab-acts-natively t
          org-src-preserve-indentation t
@@ -147,7 +147,7 @@ I use the powerline modeline.
 #+BEGIN_SRC emacs-lisp
 (use-package org-superstar
   :hook (org-mode . org-superstar-mode)
-  :config (setq org-superstar-headline-bullets-list '("•")))
+  :config (setq org-superstar-headline-bullets-list '("")))
 #+END_SRC
 ** Org-evil: evil bindings for org mode
 #+BEGIN_SRC emacs-lisp
