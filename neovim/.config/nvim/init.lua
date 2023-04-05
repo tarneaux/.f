@@ -91,18 +91,20 @@ require('packer').startup(function(use)
 end)
 
 vim.cmd [[colorscheme gruvbox]]
+
 dofile(root .. "packs/treesitter.lua")
 dofile(root .. "packs/lualine.lua")
 dofile(root .. "packs/whichkey.lua")
 dofile(root .. "packs/lsp.lua")
 dofile(root .. "packs/alpha.lua")
 dofile(root .. "packs/nvim-tree.lua")
+dofile(root .. "packs/todo.lua")
+
 vim.opt.termguicolors = true
 require'colorizer'.setup()
 require'telescope'.load_extension'repo'
 vim.g['rooter_cd_cmd'] = 'lcd'
 require("nvim-autopairs").setup {}
-dofile(root .. "packs/todo.lua")
 require('guess-indent').setup {}
 require('trouble').setup {}
 
