@@ -2,16 +2,18 @@ local wibox = require("wibox")
 local awful = require("awful")
 local gears = require("gears")
 
+local icon = " "
+
 local mpd = wibox.widget.textbox()
-mpd:set_text(" ")
+mpd:set_text(icon)
 
 
 local function update_mpd()
     awful.spawn.easy_async_with_shell("mpc current", function(stdout)
         if stdout ~= "" then
-            mpd:set_text(" " .. stdout)
+            mpd:set_text(icon .. stdout)
         else
-            mpd:set_text(" not playing")
+            mpd:set_text(icon .. "not playing")
         end
     end)
 end

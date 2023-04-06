@@ -11,10 +11,10 @@ local status = wibox.widget {
 local is_running = function ()
     awful.spawn.easy_async('sudo wg show', function(stdout)
         if stdout == '' then
-            status.text = "vpn: down"
+            status.text = " "
             return false
         else
-            status.text = "vpn: up"
+            status.text = " "
             return true
         end
     end)
