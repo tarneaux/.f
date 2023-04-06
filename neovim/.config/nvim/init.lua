@@ -198,7 +198,7 @@ require("lazy").setup({
         "akinsho/org-bullets.nvim",
         opts = {
             symbols = {
-                headlines = {"#"},
+                headlines = {"*"},
             },
             concealcursor = true
         }
