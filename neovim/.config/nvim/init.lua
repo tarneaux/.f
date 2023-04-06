@@ -103,6 +103,7 @@ require("lazy").setup({
                 },
                 sources = {
                     { name = "nvim_lsp" },
+                    { name = "orgmode"}
                 },
             })
         end
