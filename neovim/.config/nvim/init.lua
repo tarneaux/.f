@@ -272,6 +272,11 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("cache") .. "/undo"
 
+-- Set tab width to 4 spaces
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+
 -- Enable mouse support just in case I turn into a normie (magic!)
 vim.opt.mouse = "a"
 
