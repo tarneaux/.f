@@ -119,9 +119,7 @@ require("lazy").setup({
         end
     },
     -- trouble: show errors with :Trouble
-    {
-        'folke/trouble.nvim',
-    },
+    'folke/trouble.nvim',
     -- which-key: shortcuts
     {
         "folke/which-key.nvim",
@@ -139,22 +137,19 @@ require("lazy").setup({
                         b = {"<cmd>Telescope buffers<cr>", "Find buffers"},
                         h = {"<cmd>Telescope help_tags<cr>", "Find help"},
                     },
-                    o = { ":NvimTreeToggle<cr>", "Open/close NvimTree" },
+                    n = { ":NvimTreeToggle<cr>", "Open/close NvimTree" },
                     t = { ":TroubleToggle<cr>", "Open/close Trouble" },
                     g = {
                         name = "Git",
-                        g = {
-                            name = "Git",
-                            c = { "<cmd>Git commit<cr>", "Commit" },
-                            a = { "<cmd>Git add " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file" },
-                            A = { "<cmd>Git add --patch " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file selectively" },
-                            u = { "<cmd>Git restore --staged " .. vim.fn.expand('%:p') .. "<cr>", "Unstage current file" },
-                            p = { "<cmd>Git push<cr>", "Push" },
-                            s = { "<cmd>Git status<cr>", "Status" },
-                            d = { "<cmd>Git diff<cr>", "Diff" },
-                            r = { "<cmd>Git restore ".. vim.fn.expand('%:p') .."<cr>", "Restore current file" },
-                            R = { "<cmd>Git restore --patch ".. vim.fn.expand('%:p') .."<cr>", "Restore current file selectively" },
-                        },
+                        c = { "<cmd>Git commit<cr>", "Commit" },
+                        a = { "<cmd>Git add " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file" },
+                        A = { "<cmd>Git add --patch " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file selectively" },
+                        u = { "<cmd>Git restore --staged " .. vim.fn.expand('%:p') .. "<cr>", "Unstage current file" },
+                        p = { "<cmd>Git push<cr>", "Push" },
+                        s = { "<cmd>Git status<cr>", "Status" },
+                        d = { "<cmd>Git diff<cr>", "Diff" },
+                        r = { "<cmd>Git restore ".. vim.fn.expand('%:p') .."<cr>", "Restore current file" },
+                        R = { "<cmd>Git restore --patch ".. vim.fn.expand('%:p') .."<cr>", "Restore current file selectively" },
                     },
                     w = { ":w<cr>", "Save" },
                     q = { ":q<cr>", "Quit" },
@@ -168,7 +163,13 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-lua/popup.nvim",
+            "joaomsa/telescope-orgmode.nvim",
         },
+        init = function()
+            local telescope = require("telescope")
+            -- Telescope orgmode integration: search headings and refile
+            telescope.load_extension("orgmode")
+        end
     },
     -- NvimTree: file explorer
     {
@@ -192,7 +193,20 @@ require("lazy").setup({
     -- orgmode
     {
         "nvim-orgmode/orgmode",
-        opts = {}
+        opts = {
+            org_agenda_files = {"~/org/**"},
+            org_default_notes_file = "~/org/refile.org",
+        },
+        init = function ()
+            local wk = require("which-key")
+            wk.register({
+                ["<leader>o"] = {
+                    name = "Org",
+                    R = { "<cmd>Telescope orgmode refile_heading<cr>", "org refile to heading" },
+                    s = { "<cmd>Telescope orgmode search_headings<cr>", "org search" },
+                }
+            })
+        end
     },
     -- prettier orgmode bullets
     {
@@ -203,6 +217,18 @@ require("lazy").setup({
             },
             concealcursor = true
         }
+    },
+    -- orgmode and markdown tables. See the repo's README for more info
+    {
+        "dhruvasagar/vim-table-mode",
+        init = function ()
+            -- Enable table mode in orgmode
+            vim.cmd [[ au FileType org silent TableModeEnable ]]
+            -- Same for markdown
+            vim.cmd [[ au FileType markdown TableModeEnable ]]
+            -- According to my tests there is no problem with other filetypes, even when 
+            -- opening a non-org file after an org file.
+        end
     },
     -- Easily comment/decomment code
     "tpope/vim-commentary",
