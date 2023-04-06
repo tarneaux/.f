@@ -58,13 +58,6 @@ bash /tmp/install.sh <username to create>
 
   `stow */`
 
-- If you want to use my neovim configs, do this:
-  - install packer (for neovim)
-    ```bash
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-    ```
-  - Open nvim, which will probably show some errors. Just install the packages by running `:PackerInstall`, restart nvim and you'll be alright.
-
 - If you want to use any of my configs that run in an X window (terminal, emacs, awesomewm), you will need the font I use: [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans/releases).
   To install it, just copy everything from the `TTF` directory in the archive to `/usr/share/fonts/TTF/`.
 
