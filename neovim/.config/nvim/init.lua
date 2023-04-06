@@ -119,38 +119,24 @@ require("lazy").setup({
         end
     },
     -- trouble: show errors with :Trouble
-    'folke/trouble.nvim',
+    {
+        'folke/trouble.nvim',
+        init = function ()
+            require("which-key").register({
+                ["<space>t"] = { ":TroubleToggle<cr>", "Open/close Trouble" },
+            })
+        end
+    },
     -- which-key: shortcuts
     {
         "folke/which-key.nvim",
         init = function ()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
-            wk = require('which-key')
+            local wk = require('which-key')
             wk.setup{}
             wk.register({
                 ["<space>"] = {
-                    f = {
-                        name = "Find",
-                        f = {"<cmd>Telescope find_files<cr>", "Find files"},
-                        g = {"<cmd>Telescope live_grep<cr>", "Find in files"},
-                        b = {"<cmd>Telescope buffers<cr>", "Find buffers"},
-                        h = {"<cmd>Telescope help_tags<cr>", "Find help"},
-                    },
-                    n = { ":NvimTreeToggle<cr>", "Open/close NvimTree" },
-                    t = { ":TroubleToggle<cr>", "Open/close Trouble" },
-                    g = {
-                        name = "Git",
-                        c = { "<cmd>Git commit<cr>", "Commit" },
-                        a = { "<cmd>Git add " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file" },
-                        A = { "<cmd>Git add --patch " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file selectively" },
-                        u = { "<cmd>Git restore --staged " .. vim.fn.expand('%:p') .. "<cr>", "Unstage current file" },
-                        p = { "<cmd>Git push<cr>", "Push" },
-                        s = { "<cmd>Git status<cr>", "Status" },
-                        d = { "<cmd>Git diff<cr>", "Diff" },
-                        r = { "<cmd>Git restore ".. vim.fn.expand('%:p') .."<cr>", "Restore current file" },
-                        R = { "<cmd>Git restore --patch ".. vim.fn.expand('%:p') .."<cr>", "Restore current file selectively" },
-                    },
                     w = { ":w<cr>", "Save" },
                     q = { ":q<cr>", "Quit" },
                 }
@@ -169,6 +155,15 @@ require("lazy").setup({
             local telescope = require("telescope")
             -- Telescope orgmode integration: search headings and refile
             telescope.load_extension("orgmode")
+            require("which-key").register({
+                ["<space>f"] = {
+                    name = "Find",
+                    f = {"<cmd>Telescope find_files<cr>", "Find files"},
+                    g = {"<cmd>Telescope live_grep<cr>", "Find in files"},
+                    b = {"<cmd>Telescope buffers<cr>", "Find buffers"},
+                    h = {"<cmd>Telescope help_tags<cr>", "Find help"},
+                }
+            })
         end
     },
     -- NvimTree: file explorer
@@ -177,13 +172,34 @@ require("lazy").setup({
         init = function ()
             vim.g.loaded_netrw = 1
             vim.g.loaded_netrwPlugin = 1
+            require("which-key").register({
+                ["<space>e"] = { ":NvimTreeToggle<cr>", "Open/close NvimTree" },
+            })
         end,
         opts = {}
     },
     -- change project root to git root
     "airblade/vim-rooter",
     -- Git helper
-    "tpope/vim-fugitive",
+    {
+        "tpope/vim-fugitive",
+        init = function ()
+            require("which-key").register({
+                ["<space>g"] = {
+                    name = "Git",
+                    c = { "<cmd>Git commit<cr>", "Commit" },
+                    a = { "<cmd>Git add " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file" },
+                    A = { "<cmd>Git add --patch " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file selectively" },
+                    u = { "<cmd>Git restore --staged " .. vim.fn.expand('%:p') .. "<cr>", "Unstage current file" },
+                    p = { "<cmd>Git push<cr>", "Push" },
+                    s = { "<cmd>Git status<cr>", "Status" },
+                    d = { "<cmd>Git diff<cr>", "Diff" },
+                    r = { "<cmd>Git restore ".. vim.fn.expand('%:p') .."<cr>", "Restore current file" },
+                    R = { "<cmd>Git restore --patch ".. vim.fn.expand('%:p') .."<cr>", "Restore current file selectively" },
+                }
+            })
+        end
+    },
     -- Auto close brackets that aren't annoying (= closing already closed brackets)
     {
         "windwp/nvim-autopairs",
@@ -198,8 +214,7 @@ require("lazy").setup({
             org_default_notes_file = "~/org/refile.org",
         },
         init = function ()
-            local wk = require("which-key")
-            wk.register({
+            require("which-key").register({
                 ["<leader>o"] = {
                     name = "Org",
                     R = { "<cmd>Telescope orgmode refile_heading<cr>", "org refile to heading" },
