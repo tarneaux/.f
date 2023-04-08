@@ -292,3 +292,6 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Prevents the cursor from staying a block when exiting vim
 vim.cmd [[autocmd VimLeave * set guicursor=a:ver25-blinkon0]]
+
+-- Bind S to replace every occurence (normal mode)
+vim.cmd [[map S :%s//g<Left><Left>]]
