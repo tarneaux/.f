@@ -54,18 +54,11 @@ theme.border_normal = theme.color8
 theme.border_focus  = theme.color15
 theme.border_marked = "#91231c"
 
-
-
--- There are other variable sets
--- overriding the default one when
--- defined, the sets are:
--- taglist_[bg|fg]_[focus|urgent|occupied|empty]
--- tasklist_[bg|fg]_[focus|urgent]
--- titlebar_[bg|fg]_[normal|focus]
--- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
--- mouse_finder_[color|timeout|animate_timeout|radius|factor]
--- Example:
---theme.taglist_bg_focus = "#ff0000"
+theme.notification_border_color = theme.color8
+theme.notification_border_width = 2
+theme.notification_max_width = 500
+theme.notification_max_height = 100
+theme.notification_icon_size = 100
 
 theme.taglist_fg_focus = theme.fg_accent
 theme.taglist_fg_occupied = theme.fg_accent
