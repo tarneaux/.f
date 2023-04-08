@@ -62,5 +62,5 @@ awful.spawn.with_shell("mpd")
 awful.spawn.with_shell("emacs --daemon -q --load ~/.config/emacs/init.el")
 
 -- Unison sync script: syncs files with my server.
-awful.spawn.with_shell("~/.config/scripts/unison-sync")
+awful.spawn.with_shell("pgrep unison-sync || ~/.config/scripts/unison-sync")
 
