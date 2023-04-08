@@ -4,7 +4,7 @@
 # It notifies you when a conflict occurs and allows you to resolve it manually by running the script again with the -i option.
 
 # Change the following variables to suit your needs:
-REMOTE_HOST="cocinero-max" # the remote host to sync with. Can be an IP address, a hostname, or an SSH alias.
+REMOTE_HOST="cocinero-max" # the remote host to sync with. This MUST be an SSH alias as defined in your ~/.ssh/config file.
 REMOTE_DIR="sync"          # the remote directory
 LOCAL_DIR="$HOME/.sync"    # the local directory, preferably an absolute path.
 
@@ -12,6 +12,11 @@ LOCAL_DIR="$HOME/.sync"    # the local directory, preferably an absolute path.
 YELLOW='\033[1;33m'
 ENDCOLOR='\033[0m'
 
+# Verify the remote host is defined in ~/.ssh/config
+grep -q "^Host ${REMOTE_HOST}$" ~/.ssh/config || {
+    echo "The remote host '${REMOTE_HOST}' is not defined in ~/.ssh/config."
+    exit 1
+}
 
 # parse arguments
 while getopts 'ih' opt; do

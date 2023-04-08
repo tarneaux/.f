@@ -60,3 +60,7 @@ awful.spawn.with_shell("mpd")
 -- Orgmode is also configured in neovim, so I only rarely use emacs.
 -- Running it in the backgroud allows it to start faster when I need it.
 awful.spawn.with_shell("emacs --daemon -q --load ~/.config/emacs/init.el")
+
+-- Unison sync script: syncs files with my server.
+awful.spawn.with_shell("~/.config/scripts/unison-sync")
+
