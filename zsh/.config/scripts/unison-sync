@@ -1,0 +1,53 @@
+#! /bin/bash
+
+# This script is used to sync a local directory with a remote one using unison.
+# It notifies you when a conflict occurs and allows you to resolve it manually by running the script again with the -i option.
+
+# Change the following variables to suit your needs:
+REMOTE_HOST="cocinero-max" # the remote host to sync with. Can be an IP address, a hostname, or an SSH alias.
+REMOTE_DIR="sync"          # the remote directory
+LOCAL_DIR="$HOME/.sync"    # the local directory, preferably an absolute path.
+
+# colors, you should not need to change these
+YELLOW='\033[1;33m'
+ENDCOLOR='\033[0m'
+
+
+# parse arguments
+while getopts 'ih' opt; do
+    case "$opt" in
+      i)
+          interactive=1
+          ;;
+      h)
+          echo "Usage: $0 [-i] [-h]"
+          echo "  -i: interactive mode: allows you to resolve conflicts manually, only syncs once"
+          echo "  -h: this help"
+          exit 0
+          ;;
+  esac
+done
+
+
+# Verify notify-send is installed.
+which notify-send &>/dev/null || {
+    echo "notify-send is not installed. This script needs it to work."
+    exit 1
+}
+
+if [[ -n "$interactive" ]]; then
+    # interactive mode: sync once with user input and exit
+    printf "${YELLOW}Reminder: when faced with a conflict, use '<' and '>' to select which way to force the sync, "
+    printf "or just press enter to skip the file and solve the conflict manually later.${ENDCOLOR}\n"
+    exec unison -auto -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
+fi
+
+while true; do
+    unison -auto -batch -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
+    # check if unison ran into an error
+    [[ $? -eq 0 ]] || {
+        notify-send -t 0 "Unison ran into a conflict or another error" "File sync is stopped, please use '$0 -i' to resolve conflicts manually."
+        exit 1
+    }
+    sleep 10
+done
