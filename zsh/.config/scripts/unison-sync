@@ -47,12 +47,20 @@ if [[ -n "$interactive" ]]; then
     exec unison -auto -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
 fi
 
+counter=0 # count how many times we've failed to sync
+
 while true; do
     unison -auto -batch -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
     # check if unison ran into an error
     [[ $? -eq 0 ]] || {
-        notify-send -t 0 "Unison ran into a conflict or another error" "File sync is stopped, please use '$0 -i' to resolve conflicts manually."
-        exit 1
+        counter=$((counter+1))
+        # if we've failed 10 times in a row, exit
+        [[ $counter -ge 10 ]] && {
+            notify-send -t 0 "Unison ran into a conflict or another error" "File sync is stopped, please use '$0 -i' to resolve conflicts manually."
+            exit 1
+        }
+    } && {
+        counter=0
     }
     sleep 10
 done
