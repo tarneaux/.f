@@ -1,0 +1,47 @@
+#! /bin/bash
+
+# This script is used to ssh into servers into a specific directory to manage the service.
+# We use a cache file for the list of services to avoid having to wait a few seconds for the list to be generated each time.
+
+# Basic options, change these to fit your needs
+REMOTE_SERVICE_DIR="~/services" # The remote directory where the services are located
+SERVERS="issou" # The hostname/IP/ssh alias of the servers
+
+# Advanced options. You shouldn't need to change this.
+SERVICE_FILE="$HOME/.cache/services" # The file where the list of services will be stored
+
+# regenerate the cache in the background
+dir=$(dirname $0)
+
+# Get the list of services in the background
+{
+    services=""
+    for server in $SERVERS; do
+      server_services=`ssh $server "cd $REMOTE_SERVICE_DIR && /bin/ls -d */"`
+      for service in $server_services; do
+        service=`echo "$service" | sed 's/\/$//'`
+        services=`printf "$services\n$server:$service"`
+      done
+    done
+    # Remove first line (empty)
+    services=`echo "$services" | tail -n +2`
+    echo "$services" > ~/.cache/services
+} &
+
+
+# get the list of services from the cache and wait if it's not ready
+[[ -f $SERVICE_FILE ]] || { echo "Waiting for services list to be generated..."; while [[ ! -f $SERVICE_FILE ]]; do sleep 0.1; done; }
+
+# get the list of services
+services=$(cat $SERVICE_FILE)
+
+# get the service to ssh into
+service=$(echo "$services" | fzf)
+
+[ -z "$service" ] && exit 0
+
+service_server=$(echo $service | awk -F ":" '{print $1}')
+service_name=$(echo $service | awk -F ":" '{print $2}')
+
+# ssh into the server
+ssh -t $service_server "cd $REMOTE_SERVICE_DIR/$service_name && zsh"
