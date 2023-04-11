@@ -18,7 +18,7 @@
 
 ## Installing
 
-> :warning: These configurations are made to work well with my own keyboard layout. For example, when using the awesomewm configurations, you may need to change some keys. You can find my keyboard layout [in monkeyboard.pdf](monkeyboard.pdf).
+> :warning: These configurations are made to work well with my own keyboard layout. For example, when using the awesomewm configurations, you may need to change some keys. You can find my keyboard layout in [monkeyboard.pdf](monkeyboard.pdf).
 
 ### With the install script (fast, on a new arch install):
 ```bash
