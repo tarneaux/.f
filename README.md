@@ -24,6 +24,8 @@ curl -o /tmp/install.sh https://raw.githubusercontent.com/tarneaux/.f/master/ins
 bash /tmp/install.sh <username to create>
 ```
 
+> :warning: These configurations are made to work well with my own keyboard layout. For example, when using the awesomewm configurations, you may need to change some keys. You can find my keyboard layout [in monkeyboard.pdf](monkeyboard.pdf).
+
 ### Manually
 - On a fresh arch install, run these commands:
   - install yay
