@@ -8,10 +8,10 @@ alacritty
 neovim
 conky
 git
-fish
+# fish
 stow
-ttf-ibmplex-mono-nerd
-upower
+# ttf-ibmplex-mono-nerd # For the old font
+# upower # If you want to use the battery widget
 exa
 ripgrep
 trash-cli
