@@ -219,15 +219,24 @@ require("lazy").setup({
         opts = {
             org_agenda_files = {"~/org/**"},
             org_default_notes_file = "~/org/refile.org",
+            org_todo_keywords = {"TODO", "NEXT", "LATER", "DONE", "NEVER"},
+            org_hide_emphasis_markers = true,
+            -- Org ellipsis with a chevron
+            org_ellipsis = " ",
+            org_indent_mode = "noindent",
+            org_archive_location = "~/org/archive.org::/",
+            org_blank_before_new_entry = {heading = false, plain_list_item = false},
         },
         init = function ()
             require("which-key").register({
                 ["<leader>o"] = {
                     name = "Org",
-                    R = { "<cmd>Telescope orgmode refile_heading<cr>", "org refile to heading" },
+                    r = { "<cmd>Telescope orgmode refile_heading<cr>", "org refile to heading" },
                     s = { "<cmd>Telescope orgmode search_headings<cr>", "org search" },
                 }
             })
+            -- We need to enable conceal for org_hide_emphasis_markers to work
+            vim.opt.conceallevel = 3
         end
     },
     -- prettier orgmode bullets
