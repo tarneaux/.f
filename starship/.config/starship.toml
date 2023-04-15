@@ -29,9 +29,11 @@ symbol = "שׂ "
 [cmd_duration]
 format = "[$duration]($style) "
 
+[hostname]
+format = "[$hostname]($style) "
 
-
-
+[username]
+disabled = true
 
 
 
