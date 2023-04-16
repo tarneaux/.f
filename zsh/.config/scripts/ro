@@ -7,8 +7,8 @@
 set -e
 
 cd $HOME/repo
-choice=$(fd .git -H -t d --exclude stalled \
-    | sed 's/\/.git//' \
+choice=$(/bin/ls \
+    | grep -v stalled \
     | sort -u \
     | fzf)
 cd - > /dev/null

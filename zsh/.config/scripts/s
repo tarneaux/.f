@@ -4,8 +4,7 @@
 set -e
 
 cd $HOME/repo/stalled
-choice=$(fd .git -H -t d \
-    | sed 's/\/.git//' \
+choice=$(/bin/ls \
     | sort -u \
     | fzf)
 cd - > /dev/null
