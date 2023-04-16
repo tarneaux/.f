@@ -303,9 +303,6 @@ vim.opt.mouse = "a"
 -- Enable system clipboard support
 vim.opt.clipboard = "unnamedplus"
 
--- Prevents the cursor from staying a block when exiting vim
-vim.cmd [[autocmd VimLeave * set guicursor=a:ver25-blinkon0]]
-
 -- Word wrap
 vim.opt.wrap = true
 vim.opt.linebreak = true

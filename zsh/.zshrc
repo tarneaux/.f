@@ -68,6 +68,9 @@ setopt INC_APPEND_HISTORY
 # Just type a directory's name to cd into it
 setopt autocd
 
+# Re-set cursor after each command
+__reset-cursor() {printf '\033[5 q'}
+add-zsh-hook precmd "__reset-cursor"
 
 # ==================== #
 #   Aliases and vars   #
