@@ -240,7 +240,7 @@ require("lazy").setup({
                 }
             })
             -- We need to enable conceal for org_hide_emphasis_markers to work
-            vim.opt.conceallevel = 3
+            vim.cmd [[ au FileType org setlocal conceallevel=3 ]]
         end
     },
     -- prettier orgmode bullets
