@@ -84,6 +84,7 @@ require("lazy").setup({
         },
         init = function ()
             local cmp = require("cmp")
+            local luasnip = require("luasnip")
             cmp.setup({
                 snippet = {
                     expand = function(args)
@@ -102,13 +103,16 @@ require("lazy").setup({
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         local copilot_keys = vim.fn['copilot#Accept']()
                         if cmp.visible() then cmp.select_next_item()
+                        elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
                         elseif copilot_keys ~= "" then vim.api.nvim_feedkeys(copilot_keys, "i", true)
                         else fallback() end
                     end, {"i", "s"}),
                 },
                 sources = {
                     { name = "nvim_lsp" },
-                    { name = "orgmode"}
+                    { name = "orgmode"},
+                    { name = "luasnip" },
+                    { name = "buffer" },
                 },
             })
         end
