@@ -10,9 +10,13 @@ conky
 git
 # fish
 stow
-# ttf-ibmplex-mono-nerd # For the old font
-# upower # If you want to use the battery widget
+# For the old font
+# ttf-ibmplex-mono-nerd
+# If you want to use the battery widget
+# upower
 exa
+# A better way to navigate the file system
+broot
 ripgrep
 trash-cli
 bat
