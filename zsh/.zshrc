@@ -97,9 +97,10 @@ alias rm="/bin/rm -i"
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
 
-# One letter commands for the lazy
-
 alias l="ls"
+alias la="ls -a"
+alias ll="ls -l"
+alias lla="ls -la"
 alias c="cd"
 alias m="mkdir"
 alias mp="mkdir -p"
@@ -136,6 +137,8 @@ export QMK_HOME=~/.config/qmk/qmk_firmware
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
+# Broot: ls replacement
+source ~/.config/broot-init.zsh
 
 
 # ==================== #
