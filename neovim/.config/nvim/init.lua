@@ -271,6 +271,13 @@ require("lazy").setup({
     "tpope/vim-sleuth",
     -- Fountain (screenplay magkup language) support
     "kblin/vim-fountain",
+    -- Rust integration
+    {
+        "rust-lang/rust.vim",
+        init = function ()
+            vim.g.rustfmt_autosave = 1
+        end
+    },
 })
 
 

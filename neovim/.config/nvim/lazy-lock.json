@@ -15,6 +15,7 @@
   "orgmode": { "branch": "master", "commit": "070f7588629b956bba17d9892e6fa15bf19a2260" },
   "plenary.nvim": { "branch": "master", "commit": "253d34830709d690f013daf2853a9d21ad7accab" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
+  "rust.vim": { "branch": "master", "commit": "889b9a7515db477f4cb6808bef1769e53493c578" },
   "telescope-orgmode.nvim": { "branch": "main", "commit": "eabff061c3852a9aa94e672a7d2fa4a1ef63f9e2" },
   "telescope.nvim": { "branch": "master", "commit": "942fe5faef47b21241e970551eba407bc10d9547" },
   "trouble.nvim": { "branch": "main", "commit": "2ae7237c2917d661f458443c9a88680f8ca2d7b2" },
