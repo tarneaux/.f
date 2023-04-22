@@ -51,7 +51,7 @@ format = "[$duration]($style) "
 format = "[$hostname]($style) "
 
 [username]
-format = "~[$user]($style) "
+format = "[~$user]($style) "
 
 [container]
 format = "i'm in a box"
