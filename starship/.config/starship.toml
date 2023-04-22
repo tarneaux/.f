@@ -43,6 +43,7 @@ deleted = "✘"
 
 [git_branch]
 symbol = "שׂ "
+format = "[$symbol$branch]($style) "
 
 [cmd_duration]
 format = "[$duration]($style) "
