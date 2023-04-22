@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+
+curl cht.sh/$1 2>/dev/null | bat
