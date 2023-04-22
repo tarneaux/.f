@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/zsh
 
 # Example for $XDG_CONFIG_HOME/nsxiv/exec/key-handler
 # Called by nsxiv(1) after the external prefix key (C-x by default) is pressed.
@@ -18,15 +18,21 @@
 # If KEY has an uppercase equivalent, S-KEY is resolved into it. For instance,
 # K replaces S-k and Scedilla replaces S-scedilla, but S-Delete is sent as-is.
 
-print_to_file() {
-    while read line
-    do
-	echo "$line" | tee ./nsxiv-selected-files.txt -a
-    done
-}
-
-case "$1" in
-"C-x")      xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
-"C-p")      print_to_file
-esac
-
+# Multiple files might be passed into the handler. Loop over these
+while read file; do
+    case "$1" in
+	"C-x")
+	    # Copy the image path to the clipboard
+	    xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
+	"p")
+	    # Print the selected images to STDOUT
+	    echo "$line" ;;
+	"r")
+	    # Rotate the selected image by 90 degrees. This can last a while for large images, so run it in the background
+	    convert -rotate 90 "$file" "$file" ;;
+	"R")
+	    # Rotate the other way
+	    convert -rotate -90 "$file" "$file" ;;
+	# TODO: ability to edit RAW files
+    esac
+done
