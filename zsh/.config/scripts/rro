@@ -6,12 +6,10 @@
 
 set -e
 
-cd $HOME/repo
+cd $HOME/repo/renn.es
 choice=$(/bin/ls \
-    | grep -v stalled \
-    | grep -v renn.es \
     | sort -u \
     | fzf)
 cd - > /dev/null
 [[ -n "$choice" ]] \
-    && cd "$HOME/repo/$choice" && $SHELL
+    && cd "$HOME/repo/renn.es/$choice" && $SHELL
