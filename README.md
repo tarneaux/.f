@@ -6,7 +6,7 @@
 
 ## What's used
 - WM: `awesomewm`. ([config](awesome/.config/awesome))
-- Bar: the awesomewm bar. ([config](awesome/.config/awesome))
+- Bar: made using awesome's widgeting system `wibox`. ([config](awesome/.config/awesome))
 - Editors:
   - `neovim`. ([config](neovim/.config/nvim))
   - `emacs` for org-mode and screenplays. ([config](emacs/.emacs.d))
