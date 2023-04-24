@@ -5,7 +5,7 @@
 
 # Basic options, change these to fit your needs
 REMOTE_SERVICE_DIR="~/services" # The remote directory where the services are located
-SERVERS="issou" # The hostname/IP/ssh alias of the servers
+SERVERS="issou cocinero" # The hostname/IP/ssh alias of the servers
 
 # Advanced options. You shouldn't need to change this.
 SERVICE_FILE="$HOME/.cache/services" # The file where the list of services will be stored
@@ -17,7 +17,7 @@ dir=$(dirname $0)
 {
     services=""
     for server in $SERVERS; do
-      server_services=`ssh $server "cd $REMOTE_SERVICE_DIR && /bin/ls -d */"`
+      server_services=`ssh $server "cd $REMOTE_SERVICE_DIR && /bin/ls -d */" 2> /dev/null`
       for service in $server_services; do
         service=`echo "$service" | sed 's/\/$//'`
         services=`printf "$services\n$server:$service"`
