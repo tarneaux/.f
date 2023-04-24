@@ -43,7 +43,7 @@ bash /tmp/install.sh <username to create>
     ```bash
     cd .f
     ```
-  - install dependencies
+  - install dependencies (listed in [`packages.txt`](packages.txt))
     ```bash
     bash install-packages.sh
     ```
