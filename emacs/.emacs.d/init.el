@@ -31,6 +31,12 @@
   (make-directory "~/.local/share/emacs/undo" t))
 (setq undo-tree-history-directory-alist '(("." . "~/.local/share/emacs/undo")))
 
+(setq redisplay-dont-pause t
+  scroll-margin 1
+  scroll-step 1
+  scroll-conservatively 10000
+  scroll-preserve-screen-position 1)
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))

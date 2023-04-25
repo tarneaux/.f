@@ -50,6 +50,14 @@ Warning: this might not actually reload some stuff, like contents of use-package
   (make-directory "~/.local/share/emacs/undo" t))
 (setq undo-tree-history-directory-alist '(("." . "~/.local/share/emacs/undo")))
 #+END_SRC
+** Prevent jumping 5 lines when scrolling
+#+BEGIN_SRC emacs-lisp
+(setq redisplay-dont-pause t
+  scroll-margin 1
+  scroll-step 1
+  scroll-conservatively 10000
+  scroll-preserve-screen-position 1)
+#+END_SRC
 * Package management
 ** Install straight.el
 The package manager I use. The code comes from the [[https://github.com/radian-software/straight.el][straight.el README]].
