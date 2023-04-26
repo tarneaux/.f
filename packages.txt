@@ -10,8 +10,8 @@ conky
 git
 # fish
 stow
-# For the old font
-# ttf-ibmplex-mono-nerd
+# For the old font (needed for some awesomewm widgets)
+ttf-ibmplex-mono-nerd
 # If you want to use the battery widget
 # upower
 exa
