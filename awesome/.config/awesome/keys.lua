@@ -32,7 +32,7 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,           }, "Return", function () awful.spawn.with_shell(Terminal) end),
 
     -- Reload awesomewm. This is useful when you change the config file.
-    awful.key({ ModKey,           }, "q", awesome.restart),
+    awful.key({ ModKey,  }, "q", awesome.restart),
 
     -- Shutdown the computer
     awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end),
@@ -41,29 +41,29 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("sudo systemctl hibernate") end),
 
     -- Screenshot area / window
-    awful.key({                   }, "Print", function() awful.spawn.with_shell("maim --select | xclip -selection clipboard -target image/png") end),
+    awful.key({}, "Print", function() awful.spawn.with_shell("maim --select | xclip -selection clipboard -target image/png") end),
 
     -- change brightness. Only works on my laptop (asus something)
-    awful.key({                   }, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
-    awful.key({                   }, "XF86MonBrightnessDown", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)-500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
+    awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
+    awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)-500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
 
     -- Media keys
-    awful.key({                   }, "XF86AudioRaiseVolume", function ()
+    awful.key({}, "XF86AudioRaiseVolume", function ()
               awful.spawn.with_shell("pactl set-sink-volume 0 +2%")
               end),
-    awful.key({                   }, "XF86AudioLowerVolume", function ()
+    awful.key({}, "XF86AudioLowerVolume", function ()
               awful.spawn.with_shell("pactl set-sink-volume 0 -2%")
               end),
-    awful.key({                   }, "XF86AudioMute", function ()
+    awful.key({}, "XF86AudioMute", function ()
               awful.spawn.with_shell("pactl set-sink-mute 0 toggle")
               end),
-    awful.key({                   }, "XF86AudioNext", function ()
+    awful.key({}, "XF86AudioNext", function ()
               awful.spawn.with_shell("playerctl next")
               end),
-    awful.key({                   }, "XF86AudioPrev", function ()
+    awful.key({}, "XF86AudioPrev", function ()
               awful.spawn.with_shell("playerctl previous")
               end),
-    awful.key({                   }, "XF86AudioPlay", function ()
+    awful.key({}, "XF86AudioPlay", function ()
               awful.spawn.with_shell("playerctl play-pause")
               end),
 
@@ -80,14 +80,14 @@ local globalkeys = gears.table.join(
     ),
 
     -- Layout manipulation (still colemak keys)
-    awful.key({ ModKey, "Control" }, "i",     function () awful.client.swap.byidx(  1)        end), -- Swap with next client
-    awful.key({ ModKey, "Control" }, "e",     function () awful.client.swap.byidx( -1)        end), -- Swap with previous client
-    awful.key({ ModKey, "Control" }, "o",     function () awful.tag.incmwfact( 0.05)          end), -- Increase master width factor
-    awful.key({ ModKey, "Control" }, "n",     function () awful.tag.incmwfact(-0.05)          end), -- Decrease master width factor
+    awful.key({ ModKey, "Shift"   }, "i",     function () awful.client.swap.byidx(  1)        end), -- Swap with next client
+    awful.key({ ModKey, "Shift"   }, "e",     function () awful.client.swap.byidx( -1)        end), -- Swap with previous client
+    awful.key({ ModKey, "Shift"   }, "o",     function () awful.tag.incmwfact( 0.05)          end), -- Increase master width factor
+    awful.key({ ModKey, "Shift"   }, "n",     function () awful.tag.incmwfact(-0.05)          end), -- Decrease master width factor
     awful.key({ ModKey,           }, "n",     function () awful.tag.incnmaster( 1, nil, true) end), -- Increase the number of master clients
     awful.key({ ModKey,           }, "o",     function () awful.tag.incnmaster(-1, nil, true) end), -- Decrease the number of master clients
-    awful.key({ ModKey, "Control" }, "m",     function () awful.tag.incncol( 1, nil, true)    end), -- Increase the number of columns
-    awful.key({ ModKey, "Control" }, "/",     function () awful.tag.incncol(-1, nil, true)    end), -- Decrease the number of columns
+    awful.key({ ModKey, "Shift"   }, "m",     function () awful.tag.incncol( 1, nil, true)    end), -- Increase the number of columns
+    awful.key({ ModKey, "Shift"   }, "/",     function () awful.tag.incncol(-1, nil, true)    end), -- Decrease the number of columns
 
     -- Change layout
     awful.key({ ModKey,           }, ",", function () awful.layout.inc( 1)                end),
@@ -163,8 +163,17 @@ for i = 1, 5 do
                            tag:view_only()
                         end
                   end),
-        -- Move client to tag.
+        -- Toggle tag display. (in awesomewm you can view multiple tags at once)
         awful.key({ ModKey, "Control" }, tagkeys[i],
+                  function ()
+                      local screen = awful.screen.focused()
+                      local tag = screen.tags[i]
+                      if tag then
+                         awful.tag.viewtoggle(tag)
+                      end
+                  end),
+        -- Move client to tag.
+        awful.key({ ModKey, "Shift" }, tagkeys[i],
                   function ()
                       if client.focus then
                           local tag = client.focus.screen.tags[i]
@@ -172,6 +181,16 @@ for i = 1, 5 do
                               client.focus:move_to_tag(tag)
                           end
                      end
+                  end),
+        -- Toggle tag on focused client. (clients/windows can be tagged with multiple tags)
+        awful.key({ ModKey, "Control", "Shift" }, tagkeys[i],
+                  function ()
+                      if client.focus then
+                          local tag = client.focus.screen.tags[i]
+                          if tag then
+                              client.focus:toggle_tag(tag)
+                          end
+                      end
                   end)
     )
 end
