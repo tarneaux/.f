@@ -9,12 +9,12 @@
 ** Image viewer (nsxiv): super + x
 ** Emacs: super + g
 
-*** Additional
-**** Open project in terminal: super + shift + enter
-**** Screenshot: printscreen
-**** Bookmark tool: super + m
-***** This will cat the file ~/.config/awesome/bookmarks, let you choose a line with dmenu and type the line with xdotool.
-***** This is useful when you write a long string a lot. For me it's my github ([[https://github.com/tarneaux]]).
+** Additional
+*** Open project in terminal: super + shift + enter
+*** Screenshot: printscreen
+*** Bookmark tool: super + m
+**** This will cat the file ~/.config/awesome/bookmarks, let you choose a line with dmenu and type the line with xdotool.
+**** This is useful when you write a long string a lot. For me it's my github ([[https://github.com/tarneaux]]).
 
 * Window management
 ** Do note that these keybindings are made for colemak. If you use qwerty, you will have to change them (e.g neio -> hjkl)
