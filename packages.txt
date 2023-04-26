@@ -39,3 +39,5 @@ fortune-mod
 fortune-mod-calvin
 tmux
 fzf
+# For controlling media with keyboard shortcuts
+playerctl
