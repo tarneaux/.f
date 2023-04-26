@@ -42,7 +42,7 @@ renamed = "»"
 deleted = "✘"
 
 [git_branch]
-symbol = "שׂ "
+symbol = " "
 format = "[$symbol$branch]($style) "
 
 [cmd_duration]

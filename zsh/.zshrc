@@ -71,6 +71,8 @@ setopt autocd
 # Re-set cursor after each command
 __reset-cursor() {printf '\033[5 q'}
 add-zsh-hook precmd "__reset-cursor"
+__reload-tmux-bar() {tmux refresh-client -S > /dev/null 2>&1}
+add-zsh-hook precmd "__reload-tmux-bar"
 
 # ==================== #
 #   Aliases and vars   #
