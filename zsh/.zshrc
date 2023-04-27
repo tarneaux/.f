@@ -123,6 +123,13 @@ alias gd="git diff"
 alias gb="git branch"
 alias gco="git checkout"
 
+alias d="docker"
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias dc="docker-compose"
+alias dcu="docker-compose up -d"
+alias dcd="docker-compose down"
+
 alias ot="odt2txt --width=-1"
 
 alias vpup="sudo wg-quick up vpn"
