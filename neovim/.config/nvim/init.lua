@@ -52,6 +52,9 @@ require("lazy").setup({
     -- treesitter
     {
         "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            'windwp/nvim-ts-autotag'
+        },
         init = function ()
             require('orgmode').setup_ts_grammar()
             require'nvim-treesitter.configs'.setup {
@@ -60,6 +63,9 @@ require("lazy").setup({
                     enable = true,
                     additional_vim_regex_highlighting = {"org"},
                 },
+                autotag = {
+                    enable = true,
+                }
             }
         end
     },
