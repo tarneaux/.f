@@ -64,3 +64,5 @@ awful.spawn.with_shell("mpd")
 -- Unison sync script: syncs files with my server.
 awful.spawn.with_shell("pgrep unison-sync || ~/.config/scripts/unison-sync")
 
+-- Element: Matrix client
+awful.spawn.with_shell("element-desktop --hidden")
