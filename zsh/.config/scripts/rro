@@ -1,15 +1,15 @@
 #! /bin/bash
 
-# This script searches through all git repositories in $HOME/repo
+# This script searches through all git repositories in $HOME/git
 # and cd's into the selected one.
 # It ignores repositories that are in the "stalled" directory.
 
 set -e
 
-cd $HOME/repo/renn.es
+cd $HOME/git/renn.es
 choice=$(/bin/ls \
     | sort -u \
     | fzf)
 cd - > /dev/null
 [[ -n "$choice" ]] \
-    && cd "$HOME/repo/renn.es/$choice" && $SHELL
+    && cd "$HOME/git/renn.es/$choice" && $SHELL

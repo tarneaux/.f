@@ -3,10 +3,10 @@
 # This script searches through stalled git repositories.
 set -e
 
-cd $HOME/repo/stalled
+cd $HOME/git/stalled
 choice=$(/bin/ls \
     | sort -u \
     | fzf)
 cd - > /dev/null
 [[ -n "$choice" ]] \
-    && cd "$HOME/repo/stalled/$choice" && $SHELL
+    && cd "$HOME/git/stalled/$choice" && $SHELL
