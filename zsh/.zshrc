@@ -78,6 +78,18 @@ add-zsh-hook precmd "__reload-tmux-bar"
 #   Aliases and vars   #
 # ==================== #
 
+# Folder shortcuts with cd ~bonjour
+# Config dirs
+hash -d nvim="$HOME/.config/nvim"
+hash -d zsh="$HOME/.config/zsh"
+hash -d tmux="$HOME/.config/tmux"
+
+# Repos
+hash -d g="$HOME/git"
+hash -d gr="$HOME/git/renn.es"
+hash -d grweb="$HOME/git/renn.es/web"
+hash -d grblog="$HOME/git/renn.es/web/content/~tarneo/blog"
+
 # Add custom scripts to path
 # Some of these are one-letter aliases
 export PATH="$HOME/.config/scripts:$PATH"
