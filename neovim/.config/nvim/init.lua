@@ -223,6 +223,8 @@ require("lazy").setup({
         -- Actually call require("nvim-autopairs").setup()
         opts = {}
     },
+    -- Automatically add, change, and remove pairs of quotes, brackets, etc.
+    "tpope/vim-surround",
     -- orgmode
     {
         "nvim-orgmode/orgmode",
