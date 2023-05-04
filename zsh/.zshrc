@@ -134,6 +134,8 @@ alias gl="git log --decorate --oneline --graph"
 alias gd="git diff"
 alias gb="git branch"
 alias gco="git checkout"
+alias gr="git restore"
+alias grs="git restore --staged"
 
 alias d="docker"
 alias dps="docker ps"
