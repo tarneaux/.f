@@ -87,8 +87,11 @@ hash -d tmux="$HOME/.config/tmux"
 # Repos
 hash -d g="$HOME/git"
 hash -d gr="$HOME/git/renn.es"
-hash -d grweb="$HOME/git/renn.es/web"
-hash -d grblog="$HOME/git/renn.es/web/content/~tarneo/blog"
+
+# Websites
+hash -d gw="$HOME/git/web/"
+hash -d gwt="$HOME/git/web/tarneo.fr/"
+hash -d gwr="$HOME/git/web/renn.es/"
 
 # Add custom scripts to path
 # Some of these are one-letter aliases
