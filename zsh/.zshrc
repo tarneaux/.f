@@ -141,11 +141,11 @@ alias gr="git restore"
 alias grs="git restore --staged"
 
 alias d="docker"
-alias dps="docker ps"
-alias dpsa="docker ps -a"
-alias dc="docker-compose"
-alias dcu="docker-compose up -d"
-alias dcd="docker-compose down"
+alias dp="docker ps"
+alias dpa="docker ps -a"
+alias dc="docker compose"
+alias dcu="docker compose up -d"
+alias dcd="docker compose down"
 
 alias ot="odt2txt --width=-1"
 
