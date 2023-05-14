@@ -41,3 +41,4 @@ tmux
 fzf
 # For controlling media with keyboard shortcuts
 playerctl
+shellcheck
