@@ -6,7 +6,7 @@
 
 set -e
 
-cd $HOME/git
+cd "$HOME/git"
 choice=$(/bin/ls \
     | grep -v stalled \
     | grep -v renn.es \

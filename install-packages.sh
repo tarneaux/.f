@@ -1,8 +1,8 @@
 #! /bin/bash
 
-packages=`cat packages.txt | grep -v ^# | grep -v ^$`
+packages=$(grep -v ^# packages.txt | grep -v ^$)
 
 for package in $packages; do
     echo "Installing $package"
-    yay -S --needed $package --noconfirm
+    yay -S --needed "$package" --noconfirm
 done

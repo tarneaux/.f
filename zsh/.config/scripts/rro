@@ -6,7 +6,7 @@
 
 set -e
 
-cd $HOME/git/renn.es
+cd "$HOME/git/renn.es"
 choice=$(/bin/ls \
     | sort -u \
     | fzf)

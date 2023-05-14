@@ -3,7 +3,7 @@
 # This script searches through stalled git repositories.
 set -e
 
-cd $HOME/git/stalled
+cd "$HOME/git/stalled"
 choice=$(/bin/ls \
     | sort -u \
     | fzf)

@@ -8,10 +8,6 @@ REMOTE_HOST="cocinero-max" # the remote host to sync with. This MUST be an SSH a
 REMOTE_DIR="sync"          # the remote directory
 LOCAL_DIR="$HOME/.sync"    # the local directory, preferably an absolute path.
 
-# colors, you should not need to change these
-YELLOW='\033[1;33m'
-ENDCOLOR='\033[0m'
-
 # Verify the remote host is defined in ~/.ssh/config
 grep -q "^Host ${REMOTE_HOST}$" ~/.ssh/config || {
     echo "The remote host '${REMOTE_HOST}' is not defined in ~/.ssh/config."
@@ -30,6 +26,10 @@ while getopts 'ih' opt; do
           echo "  -h: this help"
           exit 0
           ;;
+      *)
+          echo "Usage: $0 [-i] [-h]"
+          exit 1
+          ;;
   esac
 done
 
@@ -42,17 +42,16 @@ which notify-send &>/dev/null || {
 
 if [[ -n "$interactive" ]]; then
     # interactive mode: sync once with user input and exit
-    printf "${YELLOW}Reminder: when faced with a conflict, use '<' and '>' to select which way to force the sync, "
-    printf "or just press enter to skip the file and solve the conflict manually later.${ENDCOLOR}\n"
+    echo -e "\e[33mReminder: when faced with a conflict, use '<' and '>' to select which way to force the sync,"\
+        "or just press enter to skip the file and solve the conflict manually later.\e[0m"
     exec unison -auto -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
 fi
 
 counter=0 # count how many times we've failed to sync
 
 while true; do
-    unison -auto -batch -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
     # check if unison ran into an error
-    [[ $? -eq 0 ]] || {
+    [[ $(unison -auto -batch -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}") -eq 0 ]] || {
         counter=$((counter+1))
         # if we've failed 10 times in a row, exit
         [[ $counter -ge 10 ]] && {
