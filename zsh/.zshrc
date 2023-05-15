@@ -160,7 +160,7 @@ export PAGER=bat
 
 export QMK_HOME=~/.config/qmk/qmk_firmware
 
-export PATH="$HOME/.local/bin:$HOME/.local/cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 # Broot: ls replacement
 source ~/.config/broot-init.zsh
@@ -169,7 +169,6 @@ source ~/.config/broot-init.zsh
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 
 # ==================== #
