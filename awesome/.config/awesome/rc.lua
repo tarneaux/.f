@@ -14,6 +14,8 @@ Terminal = "alacritty"
 TerminalCmd = Terminal .. " -e "
 Editor = "nvim"
 
+Server = "cocinero"
+
 
 -- Error handling: this isn't useful here, but is if the config is used as fallback.
 dofile(awesome_conf_dir .. "error_handling.lua")
