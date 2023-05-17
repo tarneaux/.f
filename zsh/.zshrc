@@ -35,6 +35,8 @@ zinit light zsh-users/zsh-completions
 #    Miscellaneous     #
 # ==================== #
 
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+
 # Starship prompt
 eval "$(starship init zsh)"
 
@@ -159,8 +161,6 @@ export EDITOR=nvim
 export PAGER=bat
 
 export QMK_HOME=~/.config/qmk/qmk_firmware
-
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 # Broot: ls replacement
 source ~/.config/broot-init.zsh
