@@ -8,6 +8,7 @@ local vpn = require("bar/widgets/vpn")
 local mpd = require("bar/widgets/mpd")
 local spacer = require("bar/widgets/spacer")
 local layout = require("bar/widgets/layout")
+local serverload = require("bar/widgets/serverload")
 
 
 local bar = function(s)
@@ -29,9 +30,18 @@ local bar = function(s)
                 nil,
                 {
                     layout = wibox.layout.align.horizontal,
-                    mpd,
-                    spacer,
-                    vpn
+                    -- We split this into 2 because we can't have more than 3 widgets in a single align
+                    {
+                        layout = wibox.layout.align.horizontal,
+                        mpd,
+                        spacer,
+                    },
+                    {
+                        layout = wibox.layout.align.horizontal,
+                        serverload,
+                        spacer,
+                        vpn,
+                    }
                 }
             },
             widget = wibox.container.margin,
