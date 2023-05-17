@@ -156,7 +156,8 @@ alias vpdown="sudo wg-quick down vpn"
 
 alias cop="github-copilot-cli what-the-shell"
 
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'bat -l man -p'"
+alias man="batman"
 export EDITOR=nvim
 export PAGER=bat
 
