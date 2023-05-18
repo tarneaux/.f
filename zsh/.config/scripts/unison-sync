@@ -35,7 +35,7 @@ done
 
 
 # Verify notify-send is installed.
-which notify-send &>/dev/null || {
+which notify-send &> /dev/null || {
     echo "notify-send is not installed. This script needs it to work."
     exit 1
 }
@@ -51,15 +51,16 @@ counter=0 # count how many times we've failed to sync
 
 while true; do
     # check if unison ran into an error
-    [[ $(unison -auto -batch -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}") -eq 0 ]] || {
+    if ! unison -auto -batch -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"; then
         counter=$((counter+1))
+        echo "Unison failed for the ${counter}th time in a row."
         # if we've failed 10 times in a row, exit
         [[ $counter -ge 10 ]] && {
             notify-send -t 0 "Unison ran into a conflict or another error" "File sync is stopped, please use '$0 -i' to resolve conflicts manually."
             exit 1
         }
-    } && {
+    else
         counter=0
-    }
+    fi
     sleep 10
 done
