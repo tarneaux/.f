@@ -36,6 +36,7 @@ zinit light zsh-users/zsh-completions
 # ==================== #
 
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+
 # Disable vi mode.
 bindkey -e
 
