@@ -4,9 +4,9 @@
 # It notifies you when a conflict occurs and allows you to resolve it manually by running the script again with the -i option.
 
 # Change the following variables to suit your needs:
-REMOTE_HOST="cocinero-max" # the remote host to sync with. This MUST be an SSH alias as defined in your ~/.ssh/config file.
-REMOTE_DIR="sync"          # the remote directory
-LOCAL_DIR="$HOME/.sync"    # the local directory, preferably an absolute path.
+REMOTE_HOST="cocinero-tarneo" # the remote host to sync with. This MUST be an SSH alias as defined in your ~/.ssh/config file.
+REMOTE_DIR="sync"             # the remote directory
+LOCAL_DIR="$HOME/.sync"       # the local directory, preferably an absolute path.
 
 # Verify the remote host is defined in ~/.ssh/config
 grep -q "^Host ${REMOTE_HOST}$" ~/.ssh/config || {
