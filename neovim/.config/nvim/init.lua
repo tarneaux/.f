@@ -140,7 +140,7 @@ require("lazy").setup({
         'folke/trouble.nvim',
         init = function ()
             require("which-key").register({
-                ["<space>t"] = { ":TroubleToggle<cr>", "Open/close Trouble" },
+                ["<space>ft"] = { ":TroubleToggle<cr>", "Open/close Trouble" },
             })
         end
     },
@@ -173,12 +173,17 @@ require("lazy").setup({
             -- Telescope orgmode integration: search headings and refile
             telescope.load_extension("orgmode")
             require("which-key").register({
-                ["<space>f"] = {
-                    name = "Find",
-                    f = {"<cmd>Telescope find_files<cr>", "Find files"},
-                    g = {"<cmd>Telescope live_grep<cr>", "Find in files"},
-                    b = {"<cmd>Telescope buffers<cr>", "Find buffers"},
-                    h = {"<cmd>Telescope help_tags<cr>", "Find help"},
+                ["<space>t"] = {
+                    name = "Go to",
+                    f = {"<cmd>Telescope find_files<cr>", "Files in project"},
+                    g = {"<cmd>Telescope live_grep<cr>", "Text (grep)"},
+                    b = {"<cmd>Telescope buffers<cr>", "Open buffers"},
+                    h = {"<cmd>Telescope help_tags<cr>", "Vim help pages"},
+                    m = {"<cmd>Telescope man_pages<cr>", "Manpages"},
+                    s = {"<cmd>Telescope treesitter<cr>", "Treesitter symbols"},
+                    r = {"<cmd>Telescope lsp_references<cr>", "References (under cursor)"},
+                    d = {"<cmd>Telescope lsp_definitions<cr>", "Jump to definition (under cursor)"},
+                    c = {"<cmd>Telescope lsp_code_actions<cr>", "Code actions (under cursor)"},
                 }
             })
         end
@@ -210,7 +215,8 @@ require("lazy").setup({
                     u = { "<cmd>Git restore --staged " .. vim.fn.expand('%:p') .. "<cr>", "Unstage current file" },
                     p = { "<cmd>Git push<cr>", "Push" },
                     s = { "<cmd>Git status<cr>", "Status" },
-                    d = { "<cmd>Git diff<cr>", "Diff" },
+                    -- d = { "<cmd>Git diff<cr>", "Diff" },
+                    d = { "<cmd>Telescope git_status<cr>", "Diff" }, -- I think the telescope version is a bit more usable
                     r = { "<cmd>Git restore ".. vim.fn.expand('%:p') .."<cr>", "Restore current file" },
                     R = { "<cmd>Git restore --patch ".. vim.fn.expand('%:p') .."<cr>", "Restore current file selectively" },
                 }
