@@ -263,7 +263,7 @@ function _git_info() {
 
 
 PROMPT=''
-PROMPT+='%F{yellow}%n@%m ' # Display the username followed by @ and hostname in yellow
+# PROMPT+='%F{yellow}%n@%m ' # Display the username followed by @ and hostname in yellow
 PROMPT+='%F{blue}%~' # Display the current working directory in blue
 PROMPT+='%F{red}$(_git_info)%f ' # Display the vcs info in red
 PROMPT+='%(?.%F{green}λ .%F{red}λ )' # Display a green prompt if the last command succeeded, or red if it failed
