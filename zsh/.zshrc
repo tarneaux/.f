@@ -199,9 +199,6 @@ function _git_symbols() {
 	# Parse branch information
 	local ahead_count behind_count
 
-	# STAGED
-	[[ $(git diff --name-only --cached) ]] && output_symbols+="$staged"
-
 	# AHEAD, BEHIND, DIVERGED
 	if echo $git_status_v | grep -q "^# branch.ab " ; then
 		# One line of the git status output looks like this:
@@ -222,14 +219,16 @@ function _git_symbols() {
 		[[ $ahead_count == 0 && $behind_count == 0 ]] && output_symbols+="$up_to_date"
 	fi
 
-
 	# STASHED
 	echo $git_status_v | grep -q "^# stash " && output_symbols+="$stashed"
+
+	# STAGED
+	[[ $(git diff --name-only --cached) ]] && output_symbols+="$staged"
 
 	# For the rest of the symbols, we use the v1 format of git status because it's easier to parse.
 	local git_status
 
-	symbols="$(git status --porcelain=v1 | cut -c1-2 | sort | uniq | sed 's/ //g')"
+	symbols="$(git status --porcelain=v1 | cut -c1-2 | sed 's/ //g')"
 
 	while IFS= read -r symbol; do
 		case $symbol in
@@ -239,6 +238,9 @@ function _git_symbols() {
 			D) output_symbols+="$deleted";;
 		esac
 	done <<< "$symbols"
+
+	# Remove duplicate symbols
+	output_symbols="$(echo -n "$output_symbols" | tr -s "$untracked$modified$moved$deleted")"
 
 	[[ -n $output_symbols ]] && echo -n " $output_symbols"
 }
