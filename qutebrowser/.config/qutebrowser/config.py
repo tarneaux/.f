@@ -1,3 +1,5 @@
+config.load_autoconfig()
+
 c.hints.chars = "arstneio"
 
 c.url.searchengines = {
@@ -12,4 +14,9 @@ config.bind("<Ctrl+p>", "hint links spawn mpv --ytdl-format=bestvideo+bestaudio/
 # Set default zoom level to 80%
 c.zoom.default = "80%"
 
-config.load_autoconfig()
+# Because I use colemak I need to bind Shift+arrows to the actions of HJKL
+config.bind("<Shift+Left>", "back")
+config.bind("<Shift+Right>", "forward")
+
+config.bind("<Shift+Up>", "tab-prev")
+config.bind("<Shift+Down>", "tab-next")
