@@ -69,3 +69,7 @@ awful.spawn.with_shell("pgrep unison-sync || ~/.config/scripts/unison-sync")
 
 -- Element: Matrix client
 awful.spawn.with_shell("element-desktop --hidden")
+
+
+-- Enable VPN
+awful.spawn.with_shell("wg-quick up vpn")
