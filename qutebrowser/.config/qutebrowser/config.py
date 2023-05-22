@@ -20,3 +20,9 @@ config.bind("<Shift+Right>", "forward")
 
 config.bind("<Shift+Up>", "tab-prev")
 config.bind("<Shift+Down>", "tab-next")
+
+# Save session on quit
+# (Little cheatsheet here: `:w` saves the session, and then you can restore it with `:session-load`.
+#  Very handy for when you want to close the browser but come back to it later.)
+c.auto_save.session = True
+
