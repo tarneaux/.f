@@ -21,3 +21,6 @@ emacs/.emacs.d/auto-save-list
 emacs/.emacs.d/.lsp-session-v1
 emacs/.emacs.d/.cache
 
+qutebrowser/.config/qutebrowser/quickmarks
+qutebrowser/.config/qutebrowser/bookmarks
+
