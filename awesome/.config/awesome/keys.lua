@@ -19,7 +19,7 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,           }, "y", function() awful.spawn.with_shell("bash ~/.config/dmscripts/main.sh") end),
     -- Qutebrowser (web browser). You can change this to match your browser (don't use chrome, opera, vivaldi, brave, firefox, etc.)
     -- nice alternatives include GNU icecat and librewolf.
-    awful.key({ ModKey,           }, "b", function() awful.spawn.with_shell("qubebrowser") end),
+    awful.key({ ModKey,           }, "b", function() awful.spawn.with_shell("qutebrowser") end),
     -- Emacs: I use emacsclient to open emacs. You can change this to match your editor, or just remove it.
     awful.key({ ModKey,           }, "g", function() awful.spawn.with_shell("emacs") end),
     -- Zathura: PDF viewer. Archlinux package: zathura.
