@@ -23,7 +23,7 @@ myLayoutHook = spacingRaw False (Border myGapWidth myGapWidth myGapWidth myGapWi
     Tall 1 (3/100) (1/2) ||| Full
 
 myStartupHook = do
-    spawnOnce "feh --bg-fill ~/wallpaper.png"
+    spawnOnce "feh --bg-fill ~/.config/xmonad/walls/forest_house.png"
     spawn "xmodmap ~/.Xmodmap"
     spawn "xset r rate 300 50"
     spawn "xsetroot -cursor_name left_ptr"
@@ -49,12 +49,12 @@ myKeys =
     -- Change the master window size
     , ("M-S-n", sendMessage Shrink)
     , ("M-S-o", sendMessage Expand)
-    -- Swap the focused window and the master window
-    , ("M-h", windows W.swapMaster)
     -- Toggle floating
     , ("M-f", withFocused $ windows . W.sink)
     -- Move focus to the master window
-    , ("M-m", windows W.focusMaster)
+    , ("M-h", windows W.focusMaster)
+    -- Swap the focused window and the master window
+    , ("M-S-h", windows W.swapMaster)
     -- Super + a,r,s,t,d to move to workspaces 1,2,3,4,5
     , ("M-a", windows $ W.greedyView "1")
     , ("M-r", windows $ W.greedyView "2")
@@ -69,6 +69,8 @@ myKeys =
     , ("M-S-d", windows $ W.shift "5")
     -- Change layout
     , ("M-,", sendMessage NextLayout)
+    -- DMscripts
+    , ("M-m", spawn "bash ~/.config/dmscripts/main.sh")
     ]
 
 main :: IO ()
