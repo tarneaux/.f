@@ -27,6 +27,7 @@ myStartupHook = do
     spawn "xmodmap ~/.Xmodmap"
     spawn "xset r rate 300 50"
     spawn "xsetroot -cursor_name left_ptr"
+    spawn "wg-quick up vpn"
 
 myKeys = 
     [ ("M-S-q", io exitSuccess)
@@ -68,8 +69,6 @@ myKeys =
     , ("M-S-d", windows $ W.shift "5")
     -- Change layout
     , ("M-,", sendMessage NextLayout)
-    -- Set layout to full and back
-    , ("M-.", sendMessage $ Toggle "Full")
     ]
 
 main :: IO ()
