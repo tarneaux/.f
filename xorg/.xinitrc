@@ -10,4 +10,5 @@ xsetroot -solid darkgrey
 dbus-update-activation-environment DISPLAY XAUTHORITY
 
 
-exec awesome
+/* exec awesome */
+exec xmonad
