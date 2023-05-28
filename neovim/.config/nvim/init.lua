@@ -223,6 +223,12 @@ require("lazy").setup({
             })
         end
     },
+    -- Gitgutter
+    {
+        "lewis6991/gitsigns.nvim",
+        opts = {
+        }
+    },
     -- Auto close brackets that aren't annoying (= closing already closed brackets)
     {
         "windwp/nvim-autopairs",
