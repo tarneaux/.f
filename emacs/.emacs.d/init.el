@@ -175,3 +175,8 @@
 (use-package which-key
   :config
   (which-key-mode))
+
+; Olivetti mode for writing
+(use-package olivetti
+  :config
+  (setq olivetti-body-width 80))
