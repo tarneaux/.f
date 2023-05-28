@@ -237,7 +237,7 @@ require("lazy").setup({
         opts = {
             org_agenda_files = {"~/org/**"},
             org_default_notes_file = "~/org/refile.org",
-            org_todo_keywords = {"TODO", "NEXT", "LATER", "DONE", "NEVER"},
+            org_todo_keywords = {"TODO", "NEXT", "LATER", "DONE", "NEVER", "TOREAD", "TOWRITE"},
             org_hide_emphasis_markers = true,
             -- Org ellipsis with a chevron
             org_ellipsis = " ",
