@@ -248,7 +248,8 @@ Here we prioritize lsp over copilot, because copilot sometimes gets in the way s
   :config
   (global-tree-sitter-mode)
   (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
-(use-package tree-sitter-langs)
+(use-package tree-sitter-langs
+  :after tree-sitter)
 #+END_SRC
 * Treemacs
 #+BEGIN_SRC emacs-lisp
