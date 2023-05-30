@@ -3,10 +3,10 @@ config.load_autoconfig()
 c.hints.chars = "arstneio"
 
 c.url.searchengines = {
-    "DEFAULT": "https://searx.be/search?q={}",
+    "DEFAULT": "https://searx.renn.es/search?q={}",
 }
 
-c.url.default_page = "https://searx.be"
+c.url.default_page = "https://searx.renn.es"
 
 # Play youtube videos with mpv
 config.bind("<Ctrl+p>", "hint links spawn mpv --ytdl-format=bestvideo+bestaudio/best {hint-url}")
