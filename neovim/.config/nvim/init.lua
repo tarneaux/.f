@@ -135,12 +135,22 @@ require("lazy").setup({
             vim.cmd [[ let g:copilot_filetypes = {'yaml': v:true, 'markdown': v:true}]]
         end
     },
+    -- inc-rename: Rename variables more easily
+    {
+        "smjonas/inc-rename.nvim",
+        opts = {},
+        init = function ()
+            require("which-key").register({
+                ["<space>r"] = { ":IncRename ", "Rename variable" },
+            })
+        end
+    },
     -- trouble: show errors with :Trouble
     {
         'folke/trouble.nvim',
         init = function ()
             require("which-key").register({
-                ["<space>ft"] = { ":TroubleToggle<cr>", "Open/close Trouble" },
+                ["<space>T"] = { ":TroubleToggle<cr>", "Open/close Trouble" },
             })
         end
     },
