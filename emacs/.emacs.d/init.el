@@ -88,7 +88,7 @@
    :config
    (setq org-starttup-indented t
          org-hide-leading-stars t
-         org-ellipsis " "
+         org-ellipsis " "
          org-src-fontify-natively t
          org-src-tab-acts-natively t
          org-src-preserve-indentation t
@@ -175,8 +175,3 @@
 (use-package which-key
   :config
   (which-key-mode))
-
-; Olivetti mode for writing
-(use-package olivetti
-  :config
-  (setq olivetti-body-width 80))

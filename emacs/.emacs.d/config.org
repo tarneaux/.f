@@ -140,7 +140,7 @@ I use the powerline modeline.
    :config
    (setq org-starttup-indented t
          org-hide-leading-stars t
-         org-ellipsis " "
+         org-ellipsis " "
          org-src-fontify-natively t
          org-src-tab-acts-natively t
          org-src-preserve-indentation t
