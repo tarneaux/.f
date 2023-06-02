@@ -7,6 +7,7 @@ c.url.searchengines = {
 }
 
 c.url.default_page = "https://searx.be"
+c.url.start_pages = "https://searx.be"
 
 # Play youtube videos with mpv
 config.bind("<Ctrl+p>", "hint links spawn mpv --ytdl-format=bestvideo+bestaudio/best {hint-url}")
