@@ -6,6 +6,7 @@
 
 local awful = require("awful")
 local gears = require("gears")
+local naughty = require("naughty")
 require("awful.hotkeys_popup.keys")
 
 ModKey = "Mod4"
@@ -40,9 +41,6 @@ local globalkeys = gears.table.join(
 
     -- Hibernate the computer: you need some configuration for this to work. See the archwiki, page on hibernation.
     awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("sudo systemctl hibernate") end),
-
-    -- Screenshot area / window
-    awful.key({}, "Print", function() awful.spawn.with_shell("maim --select | xclip -selection clipboard -target image/png") end),
 
     -- change brightness. Only works on my laptop (asus something)
     awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
@@ -146,7 +144,13 @@ ClientKeys = gears.table.join(
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
-        end)
+        end),
+    -- Take screenshot
+    awful.key({}, "Print", function (c)
+        local filename = os.getenv("HOME") .. "/Downloads/Screenshot_" .. os.date("%Y-%m-%d_%H:%M:%S") .. ".png"
+        awful.screenshot{auto_save_delay = 3, client = c, file_path = filename}
+        naughty.notify({text = "Screenshot saved to " .. filename})
+    end)
 )
 
 -- Bind all key numbers to tags.
