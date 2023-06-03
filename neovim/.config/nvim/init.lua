@@ -132,7 +132,7 @@ require("lazy").setup({
             vim.g.copilot_no_tab_map = 1
             vim.g.copilot_assume_mapped = 1
             vim.g.copilot_tab_fallback = ""
-            vim.cmd [[ let g:copilot_filetypes = {'yaml': v:true, 'markdown': v:true}]]
+            vim.cmd [[ let g:copilot_filetypes = {'yaml': v:true, 'markdown': v:false}]]
         end
     },
     -- inc-rename: Rename variables more easily
