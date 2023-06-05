@@ -123,7 +123,10 @@ local globalkeys = gears.table.join(
     -- Bookmarks with dmenu (lets you choose a line from ~/.config/awesome/bookmarks and types it for you using xdotool)
     awful.key({ ModKey }, "m", function ()
         awful.spawn.with_shell("grep -v '^#' ~/.config/awesome/bookmarks | grep -v -e '^$' | dmenu -p 'Select bookmark:' -i -l 10 | xargs -r xdotool type")
-    end)
+    end),
+
+    -- Switch focus to next screen
+    awful.key({ ModKey }, "h", function () awful.screen.focus_relative(1) end)
 )
 
 -- Keys for clients (windows)
@@ -150,7 +153,9 @@ ClientKeys = gears.table.join(
         local filename = os.getenv("HOME") .. "/Downloads/Screenshot_" .. os.date("%Y-%m-%d_%H:%M:%S") .. ".png"
         awful.screenshot{auto_save_delay = 3, client = c, file_path = filename}
         naughty.notify({text = "Screenshot saved to " .. filename})
-    end)
+    end),
+    -- Move client to next screen
+    awful.key({ ModKey, "Shift"   }, "h",      function (c) c:move_to_screen()               end)
 )
 
 -- Bind all key numbers to tags.
