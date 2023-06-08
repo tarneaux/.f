@@ -11,7 +11,9 @@ mpd:set_text(icon)
 local function update_mpd()
     awful.spawn.easy_async_with_shell("mpc current", function(stdout)
         if stdout ~= "" then
-            mpd:set_text(icon .. stdout)
+            -- Remove everything before last dash
+            stdout = stdout:match("^.+ %- (.+)$")
+            mpd:set_text(icon .. " " .. stdout)
         else
             mpd:set_text(icon .. "not playing")
         end
