@@ -156,7 +156,7 @@ alias cop="github-copilot-cli what-the-shell"
 export MANPAGER="sh -c 'bat -l man -p'"
 alias man="batman"
 export EDITOR=nvim
-export PAGER=bat
+export PAGER="bat -p"
 
 export QMK_HOME=~/.config/qmk/qmk_firmware
 
