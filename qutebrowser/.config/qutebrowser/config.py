@@ -27,3 +27,5 @@ config.bind("<Shift+Down>", "tab-next")
 #  Very handy for when you want to close the browser but come back to it later.)
 c.auto_save.session = True
 
+# Copy current url to clipboard in orgmode format
+config.bind("yo", "yank inline [[{url}][{title}]]")
