@@ -56,7 +56,7 @@ _comp_options+=(globdots)		# Include hidden files.
 # Infinite history
 HISTSIZE=999999999
 SAVEHIST=999999999
-HISTFILE=~/.local/zsh_history
+HISTFILE=~/.local/share/zsh_history
 
 # Ignore duplicate commands in history. Goes hand in hand with the zsh-users history plugins as it makes it easier
 # to search through history without duplicates.
