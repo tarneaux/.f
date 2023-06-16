@@ -350,3 +350,6 @@ vim.opt.linebreak = true
 
 -- Bind S to replace every occurence (normal mode)
 vim.cmd [[map S :%s//g<Left><Left>]]
+
+-- Enable spellcheck in markdown and orgmode
+vim.cmd [[ au FileType markdown,org setlocal spell ]]
