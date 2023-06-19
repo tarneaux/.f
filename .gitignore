@@ -28,3 +28,6 @@ qutebrowser/.config/qutebrowser/autoconfig.yml
 
 # Ignore aerc accounts config (contains credentials)
 aerc/.config/aerc/accounts.conf
+
+# fontconfig backup file. Apparently it was made by cavemen who don't know source control exists (just kidding)
+xorg/.config/fontconfig/fonts.conf.back
