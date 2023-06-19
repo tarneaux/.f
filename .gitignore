@@ -25,3 +25,6 @@ qutebrowser/.config/qutebrowser/quickmarks
 qutebrowser/.config/qutebrowser/bookmarks
 qutebrowser/.config/qutebrowser/qsettings
 qutebrowser/.config/qutebrowser/autoconfig.yml
+
+# Ignore aerc accounts config (contains credentials)
+aerc/.config/aerc/accounts.conf

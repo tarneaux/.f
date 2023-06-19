@@ -44,3 +44,6 @@ fzf
 # For controlling media with keyboard shortcuts
 playerctl
 shellcheck
+# Aerc: email client. optional dependency: w3m for viewing html emails
+aerc
+w3m
