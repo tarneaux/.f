@@ -49,6 +49,8 @@ zinit light zsh-users/zsh-completions
 
 export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH"
 
+export QT_QPA_PLATFORMTHEME="qt6ct"
+
 # Disable vi mode.
 bindkey -e
 
