@@ -1,13 +1,25 @@
+# I don't want those files in my home directory (these variables are also used throughout the zsh config you're reading)
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# For cargo...
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+
 # ==================== #
 #    Plugin manager    #
 # ==================== #
 
 # Plugin manager: zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+ZINIT_HOME="${XDG_DATA_HOME}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME" > /dev/null 2>&1
 source "${ZINIT_HOME}/zinit.zsh"
-
 
 # ==================== #
 #    Plugins list      #
@@ -35,7 +47,7 @@ zinit light zsh-users/zsh-completions
 #    Miscellaneous     #
 # ==================== #
 
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH"
 
 # Disable vi mode.
 bindkey -e
@@ -49,14 +61,14 @@ bindkey  "^[[3~"  delete-char
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 _comp_options+=(globdots)		# Include hidden files.
 
 # History options
 # Infinite history
 HISTSIZE=999999999
 SAVEHIST=999999999
-HISTFILE=~/.local/share/zsh_history
+HISTFILE="$XDG_DATA_HOME/zsh_history"
 
 # Ignore duplicate commands in history. Goes hand in hand with the zsh-users history plugins as it makes it easier
 # to search through history without duplicates.
@@ -162,11 +174,6 @@ export QMK_HOME=~/.config/qmk/qmk_firmware
 
 # Broot: ls replacement
 source ~/.config/broot-init.zsh
-
-# I don't want those files in my home directory
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
 
 # ==================== #
 #        Prompt        #
