@@ -355,3 +355,7 @@ vim.cmd [[map S :%s//g<Left><Left>]]
 
 -- Enable spellcheck in markdown and orgmode
 vim.cmd [[ au FileType markdown,org setlocal spell ]]
+-- Add french to spellcheck and keep english
+-- For this we need to add the classic vim RTP (for neovim to find the spell files)
+vim.opt.runtimepath:append("/usr/share/vim/vimfiles/")
+vim.cmd [[ au FileType markdown,org setlocal spelllang+=fr ]]

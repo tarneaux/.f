@@ -8,6 +8,7 @@ awesome-git
 dmenu
 alacritty
 neovim
+vim-spell-fr
 conky
 git
 # fish
