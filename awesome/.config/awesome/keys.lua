@@ -164,7 +164,8 @@ ClientKeys = gears.table.join(
     awful.key({}, "Print", function (c)
         local filename = os.getenv("HOME") .. "/Downloads/Screenshot_" .. os.date("%Y-%m-%d_%H:%M:%S") .. ".png"
         awful.screenshot{auto_save_delay = 3, client = c, file_path = filename}
-        naughty.notify({text = "Screenshot saved to " .. filename})
+        awful.spawn.with_shell("xclip -selection clipboard -t image/png " .. filename)
+        naughty.notify({text = "Screenshot saved to " .. filename .. "and copied to clipboard"})
     end),
     -- Move client to next screen
     awful.key({ ModKey, "Shift"   }, "h",      function (c) c:move_to_screen()               end)
