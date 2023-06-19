@@ -1,0 +1,3 @@
+* Qutebrowser
+** Open devtools: ~wi~
+** Search through tabs: ~T~
