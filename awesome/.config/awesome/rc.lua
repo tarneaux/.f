@@ -73,7 +73,3 @@ awful.spawn.with_shell("element-desktop --hidden")
 
 -- Enable VPN
 awful.spawn.with_shell("wg-quick up vpn")
-
-
--- Set up monitors
-awful.spawn.with_shell("xrandr --output VGA-1 --mode 1366x768 --pos 519x1080 --rotate inverted --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off --output DP-2 --mode 2560x1080 --primary --pos 0x0 --rotate normal")
