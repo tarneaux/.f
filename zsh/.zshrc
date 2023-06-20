@@ -181,8 +181,6 @@ source ~/.config/broot-init.zsh
 #        Prompt        #
 # ==================== #
 
-# Autoload zsh add-zsh-hook and vcs_info functions (-U autoload w/o substition, -z use zsh style)
-autoload -Uz add-zsh-hook vcs_info
 # Enable substitution in the prompt.
 setopt prompt_subst
 
