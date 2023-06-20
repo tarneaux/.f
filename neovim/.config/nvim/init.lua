@@ -307,6 +307,16 @@ require("lazy").setup({
     "tpope/vim-sleuth",
     -- Fountain (screenplay magkup language) support
     "kblin/vim-fountain",
+    -- True zen: distraction-free writing
+    {
+        "Pocco81/TrueZen.nvim",
+        opts = {},
+        init = function ()
+            require("which-key").register({
+                ["<leader>z"] = { "<cmd>TZAtaraxis<cr>", "Zen mode" },
+            })
+        end
+    },
     -- Rust integration
     {
         "rust-lang/rust.vim",
