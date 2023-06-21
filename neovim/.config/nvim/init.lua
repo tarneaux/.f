@@ -58,7 +58,7 @@ require("lazy").setup({
         init = function ()
             require('orgmode').setup_ts_grammar()
             require'nvim-treesitter.configs'.setup {
-                ensure_installed = {"c", "lua", "rust", "python", "javascript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell"},
+                ensure_installed = {"c", "lua", "rust", "python", "javascript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "kotlin"},
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = {"org"},
