@@ -120,7 +120,6 @@ alias mv='mv -i'
 alias ls="exa --icons --group-directories-first"
 alias ll="exa --icons -l --group-directories-first"
 alias tree='exa --tree --icons --group-directories-first'
-alias find="echo 'Use fd instead of find' && /bin/find"
 
 alias rm="/bin/rm -i"
 
