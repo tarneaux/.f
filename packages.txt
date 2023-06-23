@@ -48,3 +48,5 @@ shellcheck
 # Aerc: email client. optional dependency: w3m for viewing html emails
 aerc
 w3m
+# Adwaita X cursors
+xcursor-themes
