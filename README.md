@@ -59,7 +59,7 @@
   ```bash
   git clone https://github.com/tarneaux/dmscripts ~/.config/dmscripts
   ```
-- Awesomewm also needs the package `lain` to be installed with luarocks:
+- Awesomewm also needs the `lain` package to be installed with luarocks:
   ```bash
   sudo luarocks install lain
   ```
