@@ -3,8 +3,6 @@ local beautiful = require("beautiful")
 local gears = require("gears")
 local bar = require("bar.bar")
 
-
-
 local function set_wallpaper(s)
     -- Wallpaper
     if beautiful.wallpaper then
