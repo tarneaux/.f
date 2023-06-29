@@ -44,6 +44,7 @@ if [[ -n "$interactive" ]]; then
     # interactive mode: sync once with user input and exit
     echo -e "\e[33mReminder: when faced with a conflict, use '<' and '>' to select which way to force the sync,"\
         "or just press enter to skip the file and solve the conflict manually later.\e[0m"
+    echo unison -auto -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
     exec unison -auto -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
 fi
 
