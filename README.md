@@ -1,7 +1,11 @@
 # .f
 
 ## Screenshot
-![screenshot](https://user-images.githubusercontent.com/62650051/229812179-9b6f8e52-110c-45ba-9de2-9f7c92e3811f.png)
+![Screenshot 1](https://github.com/tarneaux/.f/assets/62650051/c366c415-835c-4196-aab2-966fb2922334)
+![Screenshot 2](https://github.com/tarneaux/.f/assets/62650051/0c9e6ac6-a562-432a-aee0-089f7f22302b)
+![Screenshot 3](https://github.com/tarneaux/.f/assets/62650051/894f7485-0e6f-4478-a365-b1d8e076d589)
+
+
 
 
 ## What's used
