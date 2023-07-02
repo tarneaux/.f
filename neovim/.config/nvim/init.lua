@@ -130,7 +130,16 @@ require("lazy").setup({
         end
     },
     -- Luasnip (snippets)
-    "L3MON4D3/LuaSnip",
+    {
+        "L3MON4D3/LuaSnip",
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+            "saadparwaiz1/cmp_luasnip",
+        },
+        init = function ()
+            require("luasnip/loaders/from_vscode").load()
+        end
+    },
     -- Github copilot (AI code completion)
     {
         "github/copilot.vim",
