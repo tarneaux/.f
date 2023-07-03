@@ -13,6 +13,8 @@ local lain = require("lain")
 
 local org_quake = lain.util.quake({ app = "alacritty --class Quake", argname = "--title %s -e nvim org/fast.org", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "Quake", settings = function(c) c.sticky = true end })
 
+local weechat_quake = lain.util.quake({ app = "alacritty --class Quake", argname = "--title %s -e ssh tarneo@cocinero -t \"tmux a -t weechat\"", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "Quake", settings = function(c) c.sticky = true end })
+
 ModKey = "Mod4"
 
 local previous_layout = nil
@@ -31,6 +33,8 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,           }, "z", function() awful.spawn.with_shell("zathura") end),
     -- Open org quake terminal (see its definition in screens.lua)
     awful.key({ ModKey,           }, "j", function() org_quake:toggle() end),
+    -- Open weechat quake terminal
+    awful.key({ ModKey,           }, "k", function() weechat_quake:toggle() end),
     -- ncmpcpp: terminal music player/mpd frontend. Archlinux package: ncmpcpp.
     awful.key({ ModKey,           }, "slash", function() awful.spawn.with_shell(TerminalCmd .. " ncmpcpp") end),
 
