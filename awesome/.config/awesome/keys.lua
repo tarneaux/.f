@@ -31,7 +31,7 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,           }, "g", function() awful.spawn.with_shell("emacs") end),
     -- Zathura: PDF viewer. Archlinux package: zathura.
     awful.key({ ModKey,           }, "z", function() awful.spawn.with_shell("zathura") end),
-    -- Open org quake terminal (see its definition in screens.lua)
+    -- Open org quake terminal
     awful.key({ ModKey,           }, "j", function() org_quake:toggle() end),
     -- Open weechat quake terminal
     awful.key({ ModKey,           }, "k", function() weechat_quake:toggle() end),
