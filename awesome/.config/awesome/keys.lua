@@ -41,6 +41,9 @@ local globalkeys = gears.table.join(
     -- Open terminal (I use alacritty)
     awful.key({ ModKey,           }, "Return", function () awful.spawn.with_shell(Terminal) end),
 
+    -- Open tmux on server
+    awful.key({ ModKey, "Shift" }, "Return", function () awful.spawn.with_shell(TerminalCmd .. " ssh risitas@cocinero -t \"tmux a -t services\"") end),
+
     -- Reload awesomewm. This is useful when you change the config file.
     awful.key({ ModKey,  }, "q", awesome.restart),
 
