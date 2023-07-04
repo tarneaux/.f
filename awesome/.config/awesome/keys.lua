@@ -11,9 +11,9 @@ require("awful.hotkeys_popup.keys")
 
 local lain = require("lain")
 
-local org_quake = lain.util.quake({ app = "alacritty --class Quake", argname = "--title %s -e nvim org/fast.org", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "Quake", settings = function(c) c.sticky = true end })
+local org_quake = lain.util.quake({ app = "alacritty --class OrgQuake", argname = "--title %s -e nvim org/fast.org", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "OrgQuake", settings = function(c) c.sticky = true end })
 
-local weechat_quake = lain.util.quake({ app = "alacritty --class Quake", argname = "--title %s -e ssh tarneo@cocinero -t \"tmux a -t weechat\"", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "Quake", settings = function(c) c.sticky = true end })
+local weechat_quake = lain.util.quake({ app = "alacritty --class WeechatQuake", argname = "--title %s -e ssh tarneo@cocinero -t \"tmux a -t weechat\"", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "WeechatQuake", settings = function(c) c.sticky = true end })
 
 ModKey = "Mod4"
 
