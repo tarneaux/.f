@@ -378,3 +378,6 @@ vim.cmd [[ au FileType markdown,org setlocal spell ]]
 -- For this we need to add the classic vim RTP (for neovim to find the spell files)
 vim.opt.runtimepath:append("/usr/share/vim/vimfiles/")
 vim.cmd [[ au FileType markdown,org setlocal spelllang+=fr ]]
+
+-- When editing a commit message, set the textwidth to 79, spellcheck, wrap and colorcolumn
+vim.cmd [[ au FileType gitcommit setlocal textwidth=79 spell wrap colorcolumn=80 ]]
