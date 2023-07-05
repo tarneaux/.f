@@ -57,36 +57,24 @@ local globalkeys = gears.table.join(
     awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
     awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)-500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
 
-    -- Media keys
-    awful.key({}, "XF86AudioRaiseVolume", function ()
-              awful.spawn.with_shell("pactl set-sink-volume 0 +2%")
-              end),
-    awful.key({}, "XF86AudioLowerVolume", function ()
-              awful.spawn.with_shell("pactl set-sink-volume 0 -2%")
-              end),
-    awful.key({}, "XF86AudioMute", function ()
-              awful.spawn.with_shell("pactl set-sink-mute 0 toggle")
-              end),
-    -- awful.key({}, "XF86AudioNext", function ()
-    --           awful.spawn.with_shell("playerctl next")
-    --           end),
-    -- awful.key({}, "XF86AudioPrev", function ()
-    --           awful.spawn.with_shell("playerctl previous")
-    --           end),
-    -- awful.key({}, "XF86AudioPlay", function ()
-    --           awful.spawn.with_shell("playerctl play-pause")
-    --           end),
+    ----------------
+    -- Media keys --
+    ----------------
 
-    -- MPD control
-    awful.key({}, "XF86AudioNext", function ()
-        awful.spawn.with_shell("mpc next")
-    end),
-    awful.key({}, "XF86AudioPrev", function ()
-        awful.spawn.with_shell("mpc prev")
-    end),
-    awful.key({}, "XF86AudioPlay", function ()
-        awful.spawn.with_shell("mpc toggle")
-    end),
+    -- Volume control
+    awful.key({}, "XF86AudioRaiseVolume", function ()   awful.spawn.with_shell("pactl set-sink-volume 0 +2%")   end),
+    awful.key({}, "XF86AudioLowerVolume", function ()   awful.spawn.with_shell("pactl set-sink-volume 0 -2%")   end),
+    awful.key({}, "XF86AudioMute", function ()          awful.spawn.with_shell("pactl set-sink-mute 0 toggle")  end),
+
+    -- Playerctl control (incompatible with mpd below)
+    awful.key({}, "XF86AudioNext", function ()          awful.spawn.with_shell("playerctl next")                end),
+    awful.key({}, "XF86AudioPrev", function ()          awful.spawn.with_shell("playerctl previous")            end),
+    awful.key({}, "XF86AudioPlay", function ()          awful.spawn.with_shell("playerctl play-pause")          end),
+
+    -- MPD control (incompatible with playerctl above)
+    -- awful.key({}, "XF86AudioNext", function ()          awful.spawn.with_shell("mpc next")                      end),
+    -- awful.key({}, "XF86AudioPrev", function ()          awful.spawn.with_shell("mpc prev")                      end),
+    -- awful.key({}, "XF86AudioPlay", function ()          awful.spawn.with_shell("mpc toggle")                    end),
 
 
     -- Focus (colemak hjkl=neio)
