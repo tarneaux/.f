@@ -23,6 +23,8 @@ broot
 ripgrep
 trash-cli
 bat
+# bat-extras provides things like batman for manpages
+bat-extras
 ttf-dejavu
 mpc
 mpd
@@ -50,3 +52,4 @@ aerc
 w3m
 # Adwaita X cursors
 xcursor-themes
+zathura
