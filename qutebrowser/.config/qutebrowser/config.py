@@ -30,18 +30,3 @@ c.auto_save.session = True
 # Copy current url to clipboard in orgmode format
 config.bind("yo", "yank inline [[{url}][{title}]]")
 
-
-from PyQt5.QtCore import QUrl
-from qutebrowser.api import interceptor
-
-def intercept(info: interceptor.Request):
-    if info.request_url.host() == 'www.youtube.com':
-        new_url = QUrl(info.request_url)
-        new_url.setHost('iv.renn.es')
-        try:
-            info.redirect(new_url)
-        except interceptor.interceptors.RedirectException:
-            pass
-
-interceptor.register(intercept)
-
