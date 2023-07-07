@@ -152,6 +152,8 @@ ClientKeys = gears.table.join(
     awful.key({ ModKey,           }, "w",      function (c) c:kill()                         end),
     -- Toggle floating
     awful.key({ ModKey            }, "c",  awful.client.floating.toggle                     ),
+    -- Toggle maximized
+    awful.key({ ModKey, "Shift"   }, "f",  function (c) c.maximized = not c.maximized end),
     -- Minimize client
     awful.key({ ModKey,           }, "l",
         function (c)
