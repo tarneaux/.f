@@ -166,6 +166,9 @@ alias vpdown="sudo wg-quick down vpn"
 
 alias cop="github-copilot-cli what-the-shell"
 
+alias randpass="openssl rand -hex 32"
+alias randpassbase64="openssl rand -base64 32"
+
 export MANPAGER="sh -c 'bat -l man -p'"
 alias man="batman"
 export EDITOR=nvim
