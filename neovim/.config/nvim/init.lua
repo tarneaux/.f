@@ -114,9 +114,9 @@ require("lazy").setup({
                     }),
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         local copilot_keys = vim.fn['copilot#Accept']()
-                        if cmp.visible() then cmp.select_next_item()
+                        if copilot_keys ~= "" then vim.api.nvim_feedkeys(copilot_keys, "i", true)
+                        elseif cmp.visible() then cmp.select_next_item()
                         elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
-                        elseif copilot_keys ~= "" then vim.api.nvim_feedkeys(copilot_keys, "i", true)
                         else fallback() end
                     end, {"i", "s"}),
                 },
