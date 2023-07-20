@@ -54,8 +54,8 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("sudo systemctl hibernate") end),
 
     -- change brightness. Only works on my laptop (asus something)
-    awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)+500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
-    awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell('math "$(cat /sys/class/backlight/intel_backlight/brightness)-500" | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
+    awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('echo $(($(cat /sys/class/backlight/intel_backlight/brightness)+500)) | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
+    awful.key({}, "XF86MonBrightnessDown", function() awful.spawn.with_shell('echo $(($(cat /sys/class/backlight/intel_backlight/brightness)-500)) | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
 
     ----------------
     -- Media keys --
