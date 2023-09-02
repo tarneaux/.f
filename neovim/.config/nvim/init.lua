@@ -33,7 +33,7 @@ vim.opt.termguicolors = true
 require("lazy").setup({
     -- Gruvbox colorscheme
     {
-        "morhetz/gruvbox",
+        "ellisonleao/gruvbox.nvim",
         init = function()
             vim.cmd [[colorscheme gruvbox]]
         end
