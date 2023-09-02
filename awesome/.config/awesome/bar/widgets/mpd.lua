@@ -13,7 +13,7 @@ local function update_mpd()
         if stdout ~= "" then
             -- Remove everything before last dash
             stdout = stdout:match("^.+ %- (.+)$")
-            mpd:set_text(icon .. " " .. stdout)
+            mpd:set_text(icon .. stdout)
         else
             mpd:set_text(icon .. "not playing")
         end
