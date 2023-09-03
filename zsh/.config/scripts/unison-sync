@@ -4,15 +4,9 @@
 # It notifies you when a conflict occurs and allows you to resolve it manually by running the script again with the -i option.
 
 # Change the following variables to suit your needs:
-REMOTE_HOST="cocinero-tarneo" # the remote host to sync with. This MUST be an SSH alias as defined in your ~/.ssh/config file.
+REMOTE_HOST="tarneo@cocinero" # the remote host to sync with.
 REMOTE_DIR="sync"             # the remote directory
 LOCAL_DIR="$HOME/.sync"       # the local directory, preferably an absolute path.
-
-# Verify the remote host is defined in ~/.ssh/config
-grep -q "^Host ${REMOTE_HOST}$" ~/.ssh/config || {
-    echo "The remote host '${REMOTE_HOST}' is not defined in ~/.ssh/config."
-    exit 1
-}
 
 # parse arguments
 while getopts 'ih' opt; do
@@ -33,6 +27,11 @@ while getopts 'ih' opt; do
   esac
 done
 
+# Check that we can connect to the remote host.
+ssh -q "${REMOTE_HOST}" exit || {
+    echo "Could not connect to ${REMOTE_HOST}."
+    exit 1
+}
 
 # Verify notify-send is installed.
 which notify-send &> /dev/null || {
@@ -44,24 +43,34 @@ if [[ -n "$interactive" ]]; then
     # interactive mode: sync once with user input and exit
     echo -e "\e[33mReminder: when faced with a conflict, use '<' and '>' to select which way to force the sync,"\
         "or just press enter to skip the file and solve the conflict manually later.\e[0m"
-    echo unison -auto -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
-    exec unison -auto -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"
+    cmd="unison -auto -times ${LOCAL_DIR} ssh://${REMOTE_HOST}/${REMOTE_DIR}"
+    echo -e "\e[33mI'll be using the following command: \e[1m${cmd}\e[0m"
+    exec $cmd
+else
+    run_unison() {
+        # watch+3600 -> sync on every change and do a full scan every hour (just in case).
+        # -color false -> disable color output, since it could mess up matching the output.
+        # 2>&1 -> redirect stderr to stdout so we can read it. Without this, we wouldn't be able to detect conflicts.
+        unison -repeat watch+3600 -color false -auto -times "${LOCAL_DIR}" ssh://${REMOTE_HOST}/${REMOTE_DIR} 2>&1
+    }
+
+    # Start the unison command in the background.
+    coproc run_unison
+
+    # Get the PID of the unison process.
+    echo -e "\e[33mBackground Unison process started. PID: \e[1m${COPROC_PID}\e[0m"
+    echo -e "\e[33mNow outputting Unison log.\e[0m"
+
+    # Whenever a new line is printed by the unison process, print it to the terminal.
+    # The following things could indicate a conflict or other problem:
+    #  - "  skipped: path/to/file"
+    #  - "  failed: path/to/file"
+    while read -r line; do
+        echo "$line"
+        if [[ "$line" == "skipped: "* ]]; then
+            notify-send -u critical "Unison skipped a file" "Log:\n$line\n\nYou should probably run 'unison-sync -i' to resolve the conflict manually.'"
+        elif [[ "$line" == "failed: "* ]]; then
+            notify-send -u critical "Unison sync" "File sync failed. Log:\n$line\n\nYou should probably run 'unison-sync -i' to resolve the conflict manually.'"
+        fi
+    done <&"${COPROC[0]}"
 fi
-
-counter=0 # count how many times we've failed to sync
-
-while true; do
-    # check if unison ran into an error
-    if ! unison -auto -batch -times "${LOCAL_DIR}" "ssh://${REMOTE_HOST}/${REMOTE_DIR}"; then
-        counter=$((counter+1))
-        echo "Unison failed for the ${counter}th time in a row."
-        # if we've failed 10 times in a row, exit
-        [[ $counter -ge 10 ]] && {
-            notify-send -t 0 "Unison ran into a conflict or another error" "File sync is stopped, please use '$0 -i' to resolve conflicts manually."
-            exit 1
-        }
-    else
-        counter=0
-    fi
-    sleep 10
-done
