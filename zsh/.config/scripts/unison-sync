@@ -47,6 +47,11 @@ if [[ -n "$interactive" ]]; then
     echo -e "\e[33mI'll be using the following command: \e[1m${cmd}\e[0m"
     exec $cmd
 else
+    LOGFILE="${XDG_STATE_HOME:-$HOME/.local/state}/unison-sync/log"
+
+    mkdir -p "$(dirname "$LOGFILE")"
+    echo "Starting unison-sync" > "$LOGFILE"
+
     run_unison() {
         # watch+3600 -> sync on every change and do a full scan every hour (just in case).
         # -color false -> disable color output, since it could mess up matching the output.
@@ -67,6 +72,7 @@ else
     #  - "  failed: path/to/file"
     while read -r line; do
         echo "$line"
+        echo "$line" >> "$LOGFILE"
         if [[ "$line" == "skipped: "* ]]; then
             notify-send -u critical "Unison skipped a file" "Log:\n$line\n\nYou should probably run 'unison-sync -i' to resolve the conflict manually.'"
         elif [[ "$line" == "failed: "* ]]; then
