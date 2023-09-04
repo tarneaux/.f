@@ -10,6 +10,7 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export GOPATH="$XDG_DATA_HOME"/go
 
 # ==================== #
 #    Plugin manager    #
@@ -47,7 +48,7 @@ zinit light zsh-users/zsh-completions
 #    Miscellaneous     #
 # ==================== #
 
-export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH:$GOPATH/bin"
 
 export QT_QPA_PLATFORMTHEME="qt6ct"
 
