@@ -58,7 +58,7 @@ require("lazy").setup({
         init = function ()
             require('orgmode').setup_ts_grammar()
             require'nvim-treesitter.configs'.setup {
-                ensure_installed = {"c", "lua", "rust", "python", "javascript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "kotlin"},
+                ensure_installed = {"c", "lua", "rust", "python", "javascript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "kotlin", "arduino"},
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = {"org"},
@@ -86,6 +86,11 @@ require("lazy").setup({
                     capabilities = require("cmp_nvim_lsp").default_capabilities(),
                 }
             end
+            -- arduino_language_server specific setup
+            lspconfig.arduino_language_server.setup{
+                cmd = { "arduino-language-server", "--fqbn", "esp32:esp32:XIAO_ESP32C3" },
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            }
         end
     },
     -- cmp (autocomplete)
