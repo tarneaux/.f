@@ -15,7 +15,7 @@ TerminalCmd = Terminal .. " -e "
 Editor = "nvim"
 
 -- The ssh connection name of a server. Could be user@ip, or a name from ~/.ssh/config, or anything else that works with ssh(1).
-Server = "cocinero"
+Server = "tarneo@cocinero"
 
 
 -- Error handling: this isn't useful here, but is if the config is used as fallback.
