@@ -376,12 +376,17 @@ vim.opt.linebreak = true
 -- Bind S to replace every occurence (normal mode)
 vim.cmd [[map S :%s//g<Left><Left>]]
 
--- Enable spellcheck in markdown and orgmode
-vim.cmd [[ au FileType markdown,org setlocal spell ]]
 -- Add french to spellcheck and keep english
 -- For this we need to add the classic vim RTP (for neovim to find the spell files)
 vim.opt.runtimepath:append("/usr/share/vim/vimfiles/")
 vim.cmd [[ au FileType markdown,org setlocal spelllang+=fr ]]
 
--- When editing a commit message, set the textwidth to 79, spellcheck, wrap and colorcolumn
-vim.cmd [[ au FileType gitcommit setlocal textwidth=79 spell wrap colorcolumn=80 ]]
+-- When editing a git commit message, org or markdown file, enable spellcheck
+vim.cmd [[ au FileType gitcommit,markdown,org setlocal spell ]]
+
+-- Add a line at 80 characters when we are writing code
+vim.opt.colorcolumn = "80"
+vim.opt.textwidth = 80
+
+-- Disable textwidth and colorcolumn in org and md
+vim.cmd [[ au FileType org,markdown setlocal textwidth=0 colorcolumn=0 ]]
