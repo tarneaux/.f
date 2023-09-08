@@ -44,11 +44,8 @@ dofile(awesome_conf_dir .. "signals.lua")
 -- Conky: system monitor
 -- awful.spawn.with_shell("killall conky; conky")
 
--- Xmodmap: remap keys. I use this for my keyboard layout.
-awful.spawn.with_shell("xmodmap ~/.Xmodmap")
-
--- Xset: set keyboard repeat rate. I like it fast.
-awful.spawn.with_shell("xset r rate 300 50")
+-- Keyboard manager: automatically set layouts for the different keyboards I use
+awful.spawn.with_shell("~/.config/awesome/kb_manager.sh")
 
 -- mpd: music player daemon
 awful.spawn.with_shell("mpd")
