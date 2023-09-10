@@ -77,6 +77,7 @@ local function check_laptop_and_update()
         function(output)
             if output:match("(should be ignored)") then
                 -- No battery found!
+                combo_widget.visible = false
                 return
             end
             update_icon_and_percentage_widgets(output)
@@ -84,7 +85,6 @@ local function check_laptop_and_update()
         end
     )
 end
-
 
 gears.timer {
     timeout = 1,    -- It's good to update the charging status often for quick 
