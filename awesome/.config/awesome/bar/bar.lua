@@ -9,6 +9,7 @@ local mpd = require("bar/widgets/mpd")
 local spacer = require("bar/widgets/spacer")
 local layout = require("bar/widgets/layout")
 local serverload = require("bar/widgets/serverload")
+local battery = require("bar/widgets/battery")
 
 
 local bar = function(s)
@@ -35,7 +36,9 @@ local bar = function(s)
                         layout = wibox.layout.align.horizontal,
                         mpd,
                         spacer,
+                        battery,
                     },
+                    spacer,
                     {
                         layout = wibox.layout.align.horizontal,
                         serverload,
