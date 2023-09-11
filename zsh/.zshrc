@@ -180,9 +180,6 @@ export PAGER="bat -p"
 
 export QMK_HOME=~/.config/qmk/qmk_firmware
 
-# Broot: ls replacement
-source ~/.config/broot-init.zsh
-
 # Little scripts with curl
 wttr() { curl -s "wttr.in/$1" }
 picopinout() { curl -s https://gabmus.org/pico_pinout | bat -p }
