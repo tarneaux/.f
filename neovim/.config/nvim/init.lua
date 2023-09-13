@@ -101,13 +101,12 @@ require("lazy").setup({
         },
         init = function ()
             local cmp = require("cmp")
-            local luasnip = require("luasnip")
+            local has_words_before = function()
+              if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+              local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+              return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
+            end
             cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
-                },
                 mapping = {
                     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -118,41 +117,45 @@ require("lazy").setup({
                         select = true,
                     }),
                     ["<Tab>"] = cmp.mapping(function(fallback)
-                        local copilot_keys = vim.fn['copilot#Accept']()
-                        if cmp.visible() then cmp.select_next_item()
-                        elseif copilot_keys ~= "" then vim.api.nvim_feedkeys(copilot_keys, "i", true)
-                        else fallback() end
+                        if cmp.visible() and has_words_before() then
+                            cmp.select_next_item()
+                        elseif require("copilot.suggestion").is_visible() then
+                            require("copilot.suggestion").accept()
+                        else
+                            fallback()
+                        end
+                    end, {"i", "s"}),
+                    ["<C-space>"] = cmp.mapping(function(fallback)
+                        if require("copilot.suggestion").is_visible() then
+                            require("copilot.suggestion").accept_word()
+                        else
+                            fallback()
+                        end
                     end, {"i", "s"}),
                 },
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "orgmode"},
-                    { name = "luasnip" },
+                    { name = "copilot" },
                     { name = "buffer" },
                 },
             })
         end
     },
-    -- Luasnip (snippets)
-    {
-        "L3MON4D3/LuaSnip",
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-            "saadparwaiz1/cmp_luasnip",
-        },
-        init = function ()
-            require("luasnip/loaders/from_vscode").load()
-        end
-    },
     -- Github copilot (AI code completion)
     {
-        "github/copilot.vim",
-        init = function ()
-            vim.g.copilot_no_tab_map = 1
-            vim.g.copilot_assume_mapped = 1
-            vim.g.copilot_tab_fallback = ""
-            vim.cmd [[ let g:copilot_filetypes = {'yaml': v:true, 'markdown': v:false, 'org': v:false}]]
-        end
+        "zbirenbaum/copilot.lua",
+        opts = {
+            suggestion = {
+                enabled = true,
+                auto_trigger = true
+            },
+            panel = { enabled = false },
+        },
+    },
+    {
+        "zbirenbaum/copilot-cmp",
+        opts = {},
     },
     -- inc-rename: Rename variables more easily
     {
