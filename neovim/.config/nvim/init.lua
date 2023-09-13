@@ -316,8 +316,6 @@ require("lazy").setup({
     },
     -- Easily comment/decomment code
     "tpope/vim-commentary",
-    -- Automatically detect tab/space indentation
-    "tpope/vim-sleuth",
     -- Fountain (screenplay magkup language) support
     "kblin/vim-fountain",
     -- True zen: distraction-free writing
@@ -362,6 +360,9 @@ vim.opt.undodir = vim.fn.stdpath("cache") .. "/undo"
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
+
+-- Use two spaces for indentation when editing HTML, TS, JS, CSS, SCSS.
+vim.cmd [[ au FileType html,typescript,javascript,css,scss,typescriptreact setlocal shiftwidth=2 tabstop=2 softtabstop=2 ]]
 
 -- Enable mouse support just in case I turn into a normie (magic!)
 vim.opt.mouse = "a"
