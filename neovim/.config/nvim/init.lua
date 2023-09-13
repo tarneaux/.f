@@ -58,7 +58,7 @@ require("lazy").setup({
         init = function ()
             require('orgmode').setup_ts_grammar()
             require'nvim-treesitter.configs'.setup {
-                ensure_installed = {"c", "lua", "rust", "python", "javascript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "kotlin", "arduino"},
+                ensure_installed = {"c", "lua", "rust", "python", "javascript", "typescript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "kotlin", "arduino"},
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = {"org"},
@@ -80,7 +80,7 @@ require("lazy").setup({
         "neovim/nvim-lspconfig",
         init = function ()
             local lspconfig = require("lspconfig")
-            local servers = {"clangd", "rust_analyzer", "pyright", "tsserver", "bashls", "html", "cssls", "jsonls", "astro", "rust_analyzer", "lua_ls", "hls"}
+            local servers = {"clangd", "rust_analyzer", "pyright", "bashls", "html", "cssls", "jsonls", "astro", "rust_analyzer", "lua_ls", "hls", "denols", "tailwindcss"}
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup{
                     capabilities = require("cmp_nvim_lsp").default_capabilities(),
