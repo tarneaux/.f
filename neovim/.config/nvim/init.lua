@@ -80,7 +80,7 @@ require("lazy").setup({
         "neovim/nvim-lspconfig",
         init = function ()
             local lspconfig = require("lspconfig")
-            local servers = {"clangd", "rust_analyzer", "pyright", "bashls", "html", "cssls", "jsonls", "astro", "rust_analyzer", "lua_ls", "hls", "denols", "tailwindcss"}
+            local servers = {"clangd", "rust_analyzer", "pyright", "bashls", "html", "jsonls", "astro", "rust_analyzer", "lua_ls", "hls", "eslint"}
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup{
                     capabilities = require("cmp_nvim_lsp").default_capabilities(),
