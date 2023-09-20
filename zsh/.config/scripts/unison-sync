@@ -27,15 +27,21 @@ while getopts 'ih' opt; do
   esac
 done
 
-# Check that we can connect to the remote host.
-ssh -q "${REMOTE_HOST}" exit || {
-    echo "Could not connect to ${REMOTE_HOST}."
-    exit 1
-}
-
 # Verify notify-send is installed.
 which notify-send &> /dev/null || {
     echo "notify-send is not installed. This script needs it to work."
+    exit 1
+}
+
+# Wait until we are connected to the internet.
+while ! ping -c 1 -W 1 8.8.8.8
+do
+	sleep 1
+done
+
+# Check that we can connect to the remote host.
+ssh -q "${REMOTE_HOST}" exit || {
+    echo "Could not connect to ${REMOTE_HOST}."
     exit 1
 }
 
