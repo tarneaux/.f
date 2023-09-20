@@ -320,7 +320,13 @@ require("lazy").setup({
     -- Easily comment/decomment code
     "tpope/vim-commentary",
     -- Fountain (screenplay magkup language) support
-    "kblin/vim-fountain",
+    {
+		"kblin/vim-fountain",
+		init = function ()
+			-- Disable textwidth and colorcolumn in fountain
+			vim.cmd [[ au FileType fountain setlocal textwidth=0 colorcolumn=0 ]]
+		end
+	},
     -- True zen: distraction-free writing
     {
         "Pocco81/TrueZen.nvim",
