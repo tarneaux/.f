@@ -53,36 +53,41 @@ if [[ -n "$interactive" ]]; then
     echo -e "\e[33mI'll be using the following command: \e[1m${cmd}\e[0m"
     exec $cmd
 else
-    LOGFILE="${XDG_STATE_HOME:-$HOME/.local/state}/unison-sync/log"
+	while true; do
+		LOGFILE="${XDG_STATE_HOME:-$HOME/.local/state}/unison-sync/log"
 
-    mkdir -p "$(dirname "$LOGFILE")"
-    echo "Starting unison-sync" > "$LOGFILE"
+		mkdir -p "$(dirname "$LOGFILE")"
+		echo "Starting unison-sync" > "$LOGFILE"
 
-    run_unison() {
-        # watch+3600 -> sync on every change and do a full scan every hour (just in case).
-        # -color false -> disable color output, since it could mess up matching the output.
-        # 2>&1 -> redirect stderr to stdout so we can read it. Without this, we wouldn't be able to detect conflicts.
-        unison -repeat watch+3600 -color false -auto -times "${LOCAL_DIR}" ssh://${REMOTE_HOST}/${REMOTE_DIR} 2>&1
-    }
+		run_unison() {
+			# watch+3600 -> sync on every change and do a full scan every hour (just in case).
+			# -color false -> disable color output, since it could mess up matching the output.
+			# 2>&1 -> redirect stderr to stdout so we can read it. Without this, we wouldn't be able to detect conflicts.
+			unison -repeat watch+3600 -color false -auto -times "${LOCAL_DIR}" ssh://${REMOTE_HOST}/${REMOTE_DIR} 2>&1
+		}
 
-    # Start the unison command in the background.
-    coproc run_unison
+		# Start the unison command in the background.
+		coproc run_unison
 
-    # Get the PID of the unison process.
-    echo -e "\e[33mBackground Unison process started. PID: \e[1m${COPROC_PID}\e[0m"
-    echo -e "\e[33mNow outputting Unison log.\e[0m"
+		# Get the PID of the unison process.
+		echo -e "\e[33mBackground Unison process started. PID: \e[1m${COPROC_PID}\e[0m"
+		echo -e "\e[33mNow outputting Unison log.\e[0m"
 
-    # Whenever a new line is printed by the unison process, print it to the terminal.
-    # The following things could indicate a conflict or other problem:
-    #  - "  skipped: path/to/file"
-    #  - "  failed: path/to/file"
-    while read -r line; do
-        echo "$line"
-        echo "$line" >> "$LOGFILE"
-        if [[ "$line" == "skipped: "* ]]; then
-            notify-send -u critical "Unison skipped a file" "Log:\n$line\n\nYou should probably run 'unison-sync -i' to resolve the conflict manually.'"
-        elif [[ "$line" == "failed: "* ]]; then
-            notify-send -u critical "Unison sync" "File sync failed. Log:\n$line\n\nYou should probably run 'unison-sync -i' to resolve the conflict manually.'"
-        fi
-    done <&"${COPROC[0]}"
+		# Whenever a new line is printed by the unison process, print it to the terminal.
+		# The following things could indicate a conflict or other problem:
+		#  - "  skipped: path/to/file"
+		#  - "  failed: path/to/file"
+		while read -r line; do
+			echo "$line"
+			echo "$line" >> "$LOGFILE"
+			if [[ "$line" == "skipped: "* ]]; then
+				notify-send -u critical "Unison skipped a file" "Log:\n$line\n\nYou should probably run 'unison-sync -i' to resolve the conflict manually.'"
+			elif [[ "$line" == "failed: "* ]]; then
+				notify-send -u critical "Unison sync" "File sync failed. Log:\n$line\n\nYou should probably run 'unison-sync -i' to resolve the conflict manually.'"
+			fi
+		done <&"${COPROC[0]}"
+
+		echo -e "\e[33mUnison process exited. Sleeping for 5 seconds before restarting.\e[0m"
+		sleep 5
+	done
 fi
