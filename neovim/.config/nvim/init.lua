@@ -398,5 +398,5 @@ vim.cmd [[ au FileType gitcommit,markdown,org setlocal spell ]]
 vim.opt.colorcolumn = "80"
 vim.opt.textwidth = 80
 
--- Disable textwidth and colorcolumn in org and md
-vim.cmd [[ au FileType org,markdown setlocal textwidth=0 colorcolumn=0 ]]
+-- Disable textwidth and colorcolumn in orgmode documents
+vim.cmd [[ au FileType org setlocal textwidth=0 colorcolumn=0 ]]
