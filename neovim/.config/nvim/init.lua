@@ -58,7 +58,7 @@ require("lazy").setup({
         init = function ()
             require('orgmode').setup_ts_grammar()
             require'nvim-treesitter.configs'.setup {
-                ensure_installed = {"c", "lua", "rust", "python", "javascript", "typescript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "kotlin", "arduino"},
+                ensure_installed = {"c", "lua", "rust", "python", "javascript", "typescript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "kotlin", "arduino", "latex"},
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = {"org"},
@@ -91,6 +91,12 @@ require("lazy").setup({
                 cmd = { "arduino-language-server", "--fqbn", "esp32:esp32:XIAO_ESP32C3" },
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
             }
+			-- texlab specific setup
+			lspconfig.texlab.setup{
+				cmd = { "texlab" },
+				filetypes = { "tex", "bib", "markdown" },
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			}
         end
     },
     -- cmp (autocomplete)
