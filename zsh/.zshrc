@@ -12,6 +12,7 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export GOPATH="$XDG_DATA_HOME"/go
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 
 # ==================== #
 #    Plugin manager    #
