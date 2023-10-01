@@ -39,8 +39,8 @@ local function update_icon_and_percentage_widgets(upower_output)
 
     -- Round to the nearest 20 to get the icon index
     -- The +0.5 is to round to the nearest integer instead of the floor
-    local level = math.floor(percentage/20 + 0.5)
-    local icon = level_icons[level + 1]
+    local level = math.floor(percentage/25 + 0.5)
+    local icon = level_icons[level+1]
 
     -- is_red is for alternating the color of the percentage widget
     -- (blinking red/white)
@@ -56,7 +56,7 @@ local function update_icon_and_percentage_widgets(upower_output)
             notification_shown = math.ceil(percentage/5) * 5
         end
     else
-        percentage_widget.markup = percentage .. "%"
+        percentage_widget.markup = percentage .. "% "
         icon_widget.markup = icon
         notification_shown = 100 -- Reset
     end
