@@ -228,6 +228,23 @@ htmux() {
 	tmux attach-session -d -t "$session_name"
 }
 
+ntmux() {
+	local session_name="$(__dir_to_tmux_session_name)"
+
+	# Verify we are in a Hugo project
+	[[ -f package.json ]] || { echo "Not a NodeJS project" && return 1; }
+
+	# Try to attach to an existing session
+	tmux attach-session -t "$session_name" && return 0
+
+	# If no session exists, create one
+	tmux new-session -d -s "$session_name" "nvim ."
+	tmux split-window -h
+	tmux new-window "npm run dev"
+	tmux select-window -t 0
+	tmux attach-session -d -t "$session_name"
+}
+
 # ==================== #
 #        Prompt        #
 # ==================== #
