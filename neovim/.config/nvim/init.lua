@@ -157,7 +157,23 @@ require("lazy").setup({
                 auto_trigger = true
             },
             panel = { enabled = false },
+			filetypes = {
+				["*"] = true,
+				["markdown"] = false,
+				["org"] = false,
+			}
         },
+		init = function()
+			local copilot = require("copilot")
+			require("which-key").register({
+				["<space>c"] = {
+					function()
+						vim.cmd [[ Copilot toggle ]]
+					end,
+					"Copilot",
+				}
+			})
+		end
     },
     {
         "zbirenbaum/copilot-cmp",
