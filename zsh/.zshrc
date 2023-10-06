@@ -14,6 +14,8 @@ export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export GOPATH="$XDG_DATA_HOME"/go
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 
+export KUBECONFIG="$XDG_CONFIG_HOME"/kube/kubeconfig
+
 # ==================== #
 #    Plugin manager    #
 # ==================== #
