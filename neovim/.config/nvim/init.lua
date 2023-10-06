@@ -91,12 +91,12 @@ require("lazy").setup({
                 cmd = { "arduino-language-server", "--fqbn", "esp32:esp32:XIAO_ESP32C3" },
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
             }
-			-- texlab specific setup
-			lspconfig.texlab.setup{
-				cmd = { "texlab" },
-				filetypes = { "tex", "bib", "markdown" },
-				capabilities = require("cmp_nvim_lsp").default_capabilities(),
-			}
+            -- texlab specific setup
+            lspconfig.texlab.setup{
+                cmd = { "texlab" },
+                filetypes = { "tex", "bib", "markdown" },
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            }
         end
     },
     -- cmp (autocomplete)
@@ -343,12 +343,12 @@ require("lazy").setup({
     "tpope/vim-commentary",
     -- Fountain (screenplay magkup language) support
     {
-		"kblin/vim-fountain",
-		init = function ()
-			-- Disable textwidth and colorcolumn in fountain
-			vim.cmd [[ au FileType fountain setlocal textwidth=0 colorcolumn=0 ]]
-		end
-	},
+        "kblin/vim-fountain",
+        init = function ()
+            -- Disable textwidth and colorcolumn in fountain
+            vim.cmd [[ au FileType fountain setlocal textwidth=0 colorcolumn=0 ]]
+        end
+    },
     -- True zen: distraction-free writing
     {
         "Pocco81/TrueZen.nvim",
