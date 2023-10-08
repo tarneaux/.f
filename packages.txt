@@ -1,4 +1,5 @@
-# This file lists all packages that will be installed by the installer script (install.sh).
+# This file lists all packages that will be installed by the installer script
+# (install-packages.sh).
 # You can add comments by starting a line with a #.
 # Empty lines will be ignored.
 
@@ -13,8 +14,6 @@ conky
 git
 # fish
 stow
-# For the old font (needed for some awesomewm widgets)
-nerd-fonts-sf-mono-ligatures
 # If you want to use the battery widget
 # upower
 exa
@@ -53,3 +52,4 @@ w3m
 # Adwaita X cursors
 xcursor-themes
 zathura
+ascii-image-converter-git
