@@ -41,32 +41,13 @@ dofile(awesome_conf_dir .. "signals.lua")
 
 -- Autostart applications
 
--- Conky: system monitor
--- awful.spawn.with_shell("killall conky; conky")
+awful.spawn.with_shell("mpd")
+-- awful.spawn.with_shell("element-desktop --hidden")
+awful.spawn.with_shell("signal-desktop --start-in-tray")
+awful.spawn.with_shell("wg-quick up vpn")
 
 -- Keyboard manager: automatically set layouts for the different keyboards I use
 awful.spawn.with_shell("~/.config/awesome/kb_manager.sh")
 
--- mpd: music player daemon
-awful.spawn.with_shell("mpd")
-
--- Picom: compositor. Allows transparency and other eyecandy.
--- awful.spawn.with_shell("picom")
-
--- Nextcloud: sync files with your nextcloud server
--- awful.spawn.with_shell("nextcloud --background")
-
--- Emacs: I use emacs as my secondary editor (for screenplays)
--- Orgmode is also configured in neovim, so I only rarely use emacs.
--- Running it in the backgroud allows it to start faster when I need it.
--- awful.spawn.with_shell("emacs --daemon")
-
 -- Unison sync script: syncs files with my server.
 awful.spawn.with_shell("pgrep unison || ~/.config/scripts/unison-sync")
-
--- Element: Matrix client
-awful.spawn.with_shell("element-desktop --hidden")
-
-
--- Enable VPN
-awful.spawn.with_shell("wg-quick up vpn")
