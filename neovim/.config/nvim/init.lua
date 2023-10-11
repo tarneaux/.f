@@ -423,3 +423,6 @@ vim.opt.textwidth = 80
 
 -- Disable textwidth and colorcolumn in orgmode documents
 vim.cmd [[ au FileType org setlocal textwidth=0 colorcolumn=0 ]]
+
+-- python formatter
+vim.cmd [[ au FileType python nnoremap <leader>f :!black %<cr> ]]
