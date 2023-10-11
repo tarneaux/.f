@@ -177,10 +177,18 @@ alias randpassbase64="openssl rand -base64 32"
 
 alias rennes="ssh -t cocinero \"./start-tmux\""
 
-export MANPAGER="sh -c 'bat -l man -p'"
-alias man="batman"
-export EDITOR=nvim
 export PAGER="bat -p"
+export BAT_PAGER="less -RF --jump-target=.5"
+
+__myman() {
+    man $@ | bat -l man -p
+}
+
+alias man="__myman"
+
+compdef _man __myman
+
+export EDITOR=nvim
 
 export QMK_HOME=~/.config/qmk/qmk_firmware
 
