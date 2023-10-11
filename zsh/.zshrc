@@ -179,14 +179,7 @@ alias rennes="ssh -t cocinero \"./start-tmux\""
 
 export PAGER="bat -p"
 export BAT_PAGER="less -RF --jump-target=.5"
-
-__myman() {
-    man $@ | bat -l man -p
-}
-
-alias man="__myman"
-
-compdef _man __myman
+export MANPAGER="$BAT_PAGER"
 
 export EDITOR=nvim
 
