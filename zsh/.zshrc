@@ -52,7 +52,14 @@ zinit light zsh-users/zsh-completions
 #    Miscellaneous     #
 # ==================== #
 
-export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$PATH:$GOPATH/bin"
+__pathadd() {
+    export PATH="$1:$PATH"
+}
+
+__pathadd "$HOME/.local/bin"
+__pathadd "$CARGO_HOME/bin"
+__pathadd "$GOPATH/bin"
+__pathadd "$XDG_CONFIG_HOME"/scripts
 
 export QT_QPA_PLATFORMTHEME="qt6ct"
 
@@ -110,10 +117,6 @@ hash -d gr="$HOME/git/renn.es"
 hash -d gw="$HOME/git/web/"
 hash -d gwt="$HOME/git/web/tarneo.fr/"
 hash -d gwr="$HOME/git/web/renn.es/"
-
-# Add custom scripts to path
-# Some of these are one-letter aliases
-export PATH="$HOME/.config/scripts:$PATH"
 
 alias e="emacsclient -a 'emacs --no-window-system'"
 alias vim="nvim"
