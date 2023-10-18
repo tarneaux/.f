@@ -1,3 +1,7 @@
+# ==================== #
+#   Environment vars   #
+# ==================== #
+
 # I don't want those files in my home directory (these variables are also used throughout the zsh config you're reading)
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -13,8 +17,35 @@ export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export GOPATH="$XDG_DATA_HOME"/go
 export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
-
+export QMK_HOME=~/.config/qmk
 export KUBECONFIG="$XDG_CONFIG_HOME"/kube/kubeconfig
+
+# Other environment variables
+export QT_QPA_PLATFORMTHEME="qt6ct"
+
+# PAGER, EDITOR, etc.
+export PAGER="bat -p"
+export EDITOR=nvim
+
+# Add the --jump-target=.5 option to the default pager command for bat.
+# This allows seeing all around the match when searching with /, instead of
+# putting it at the top of the screen.
+export BAT_PAGER="less -RF --jump-target=.5"
+
+# using bat as a manpager is buggy, so we use less instead
+export MANPAGER="$BAT_PAGER"
+
+
+# PATH helper function
+__pathadd() {
+    export PATH="$1:$PATH"
+}
+
+__pathadd "$HOME/.local/bin"
+__pathadd "$CARGO_HOME/bin"
+__pathadd "$GOPATH/bin"
+__pathadd "$XDG_CONFIG_HOME"/scripts
+
 
 # ==================== #
 #    Plugin manager    #
@@ -51,17 +82,6 @@ zinit light zsh-users/zsh-completions
 # ==================== #
 #    Miscellaneous     #
 # ==================== #
-
-__pathadd() {
-    export PATH="$1:$PATH"
-}
-
-__pathadd "$HOME/.local/bin"
-__pathadd "$CARGO_HOME/bin"
-__pathadd "$GOPATH/bin"
-__pathadd "$XDG_CONFIG_HOME"/scripts
-
-export QT_QPA_PLATFORMTHEME="qt6ct"
 
 # Disable vi mode.
 bindkey -e
@@ -177,21 +197,13 @@ alias cop="github-copilot-cli what-the-shell"
 alias randpass="openssl rand -hex 32"
 alias randpassbase64="openssl rand -base64 32"
 
-
 alias rennes="ssh -t cocinero \"./start-tmux\""
-
-export PAGER="bat -p"
-export BAT_PAGER="less -RF --jump-target=.5"
-export MANPAGER="$BAT_PAGER"
-
-export EDITOR=nvim
-
-export QMK_HOME=~/.config/qmk/qmk_firmware
 
 # Little scripts with curl
 wttr() { curl -s "wttr.in/$1" }
 picopinout() { curl -s https://gabmus.org/pico_pinout | bat -p }
 
+# Tmux sessions
 __dir_to_tmux_session_name() {
 	local dir="${PWD##*/}"
 	# Remove all non-alphanumeric characters and replace them with underscores
