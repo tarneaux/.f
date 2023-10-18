@@ -14,7 +14,7 @@ xmodmap ~/.Xmodmap
 
 kb_id=$(xinput -list | grep "$INTERNAL_KEYBOARD" | grep -o "id=[0-9]*" | grep -o "[0-9]*")
 
-setxkbmap fr -device $kb_id
+setxkbmap fr -device "$kb_id" || echo "Failed to set keyboard layout for laptop"
 
 # Set repeat rate for both keyboards. This controls how fast a key is repeated
 # when it is held down. It's very useful to be able to repeat a key much faster,
