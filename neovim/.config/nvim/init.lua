@@ -366,6 +366,15 @@ require("lazy").setup({
             vim.g.rustfmt_autosave = 1
         end
     },
+    {
+        "ggandor/leap.nvim",
+        dependencies = {
+            "tpope/vim-repeat"
+        },
+        init = function ()
+            require('leap').add_default_mappings()
+        end
+    }
 })
 
 
