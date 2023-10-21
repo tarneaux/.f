@@ -210,6 +210,7 @@ require("lazy").setup({
                 ["<space>"] = {
                     w = { ":w<cr>", "Save" },
                     q = { ":q<cr>", "Quit" },
+                    s = { ":%s//g<Left><Left>", "Find and replace" },
                 }
             })
         end
@@ -414,9 +415,6 @@ vim.opt.clipboard = "unnamedplus"
 -- Word wrap
 vim.opt.wrap = true
 vim.opt.linebreak = true
-
--- Bind S to replace every occurence (normal mode)
-vim.cmd [[map S :%s//g<Left><Left>]]
 
 -- Add french to spellcheck and keep english
 -- For this we need to add the classic vim RTP (for neovim to find the spell files)
