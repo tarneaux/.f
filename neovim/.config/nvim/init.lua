@@ -210,7 +210,6 @@ require("lazy").setup({
                 ["<leader>"] = {
                     w = { ":w<cr>", "Save" },
                     q = { ":q<cr>", "Quit" },
-                    s = { ":%s//g<Left><Left>", "Find and replace" },
                 }
             })
         end
@@ -435,3 +434,6 @@ vim.cmd [[ au FileType org setlocal textwidth=0 colorcolumn=0 ]]
 
 -- python formatter
 vim.cmd [[ au FileType python nnoremap <leader>f :!black %<cr> ]]
+
+-- <leader>s to search and replace
+vim.keymap.set("n", "<leader>s", ":%s//g<Left><Left>")
