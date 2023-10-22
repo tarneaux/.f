@@ -74,7 +74,8 @@ theme.titlebar_fg_normal = theme.color14
 -- theme.wallpaper = "~/.config/awesome/theme/walls/railway.jpg"
 -- theme.wallpaper = "~/.config/awesome/theme/walls/calvin.png"
 -- theme.wallpaper = "~/.config/awesome/theme/walls/mountain-night-3.jpg"
-theme.wallpaper = "~/.config/awesome/theme/walls/mtn.jpg"
+-- theme.wallpaper = "~/.config/awesome/theme/walls/mtn.jpg"
+theme.wallpaper = "~/.config/awesome/theme/walls/leaves.jpg"
 -- theme.wallpaper_color = "#1d2021"
 -- theme.wallpaper_folder = "~/.config/awesome/theme/walls/"
 
