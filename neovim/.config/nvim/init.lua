@@ -437,3 +437,6 @@ vim.cmd [[ au FileType python nnoremap <leader>f :!black %<cr> ]]
 
 -- <leader>s to search and replace
 vim.keymap.set("n", "<leader>s", ":%s//g<Left><Left>")
+
+-- <leader>p to paste in visual & select modes without changing the register
+vim.keymap.set("x", "<leader>p", '"_dP')
