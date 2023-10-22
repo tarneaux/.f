@@ -166,7 +166,7 @@ require("lazy").setup({
 		init = function()
 			local copilot = require("copilot")
 			require("which-key").register({
-				["<space>c"] = {
+				["<leader>c"] = {
 					function()
 						vim.cmd [[ Copilot toggle ]]
 					end,
@@ -185,7 +185,7 @@ require("lazy").setup({
         opts = {},
         init = function ()
             require("which-key").register({
-                ["<space>r"] = { ":IncRename ", "Rename variable" },
+                ["<leader>r"] = { ":IncRename ", "Rename variable" },
             })
         end
     },
@@ -194,7 +194,7 @@ require("lazy").setup({
         'folke/trouble.nvim',
         init = function ()
             require("which-key").register({
-                ["<space>T"] = { ":TroubleToggle<cr>", "Open/close Trouble" },
+                ["<leader>T"] = { ":TroubleToggle<cr>", "Open/close Trouble" },
             })
         end
     },
@@ -207,7 +207,7 @@ require("lazy").setup({
             local wk = require('which-key')
             wk.setup{}
             wk.register({
-                ["<space>"] = {
+                ["<leader>"] = {
                     w = { ":w<cr>", "Save" },
                     q = { ":q<cr>", "Quit" },
                     s = { ":%s//g<Left><Left>", "Find and replace" },
@@ -228,7 +228,7 @@ require("lazy").setup({
             -- Telescope orgmode integration: search headings and refile
             telescope.load_extension("orgmode")
             require("which-key").register({
-                ["<space>t"] = {
+                ["<leader>t"] = {
                     name = "Go to",
                     f = {"<cmd>Telescope find_files<cr>", "Files in project"},
                     g = {"<cmd>Telescope live_grep<cr>", "Text (grep)"},
@@ -250,7 +250,7 @@ require("lazy").setup({
             vim.g.loaded_netrw = 1
             vim.g.loaded_netrwPlugin = 1
             require("which-key").register({
-                ["<space>e"] = { ":NvimTreeToggle<cr>", "Open/close NvimTree" },
+                ["<leader>e"] = { ":NvimTreeToggle<cr>", "Open/close NvimTree" },
             })
         end,
         opts = {}
@@ -262,7 +262,7 @@ require("lazy").setup({
         "tpope/vim-fugitive",
         init = function ()
             require("which-key").register({
-                ["<space>g"] = {
+                ["<leader>g"] = {
                     name = "Git",
                     c = { "<cmd>Git commit<cr>", "Commit" },
                     a = { "<cmd>Git add " .. vim.fn.expand('%:p') .. "<cr>", "Stage current file" },
