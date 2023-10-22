@@ -279,10 +279,6 @@ PROMPT+='%F{red}$(__git_info)%f ' # Display the vcs info in red
 PROMPT+='%(?.%F{green}λ .%F{red}λ )' # Display a green prompt if the last command succeeded, or red if it failed
 PROMPT+='%f' # Reset the text color
 
-
-
-
-
 # ==================== #
 #     Keybindings      #
 # ==================== #
