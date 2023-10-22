@@ -30,3 +30,4 @@ c.auto_save.session = True
 # Copy current url to clipboard in orgmode format
 config.bind("yo", "yank inline [[{url}][{title}]]")
 
+config.source("gruvbox.py")
