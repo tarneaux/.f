@@ -43,7 +43,7 @@ dofile(awesome_conf_dir .. "signals.lua")
 
 awful.spawn.with_shell("mpd")
 -- awful.spawn.with_shell("element-desktop --hidden")
-awful.spawn.with_shell("signal-desktop --start-in-tray")
+awful.spawn.with_shell("pgrep signal-desktop || signal-desktop --start-in-tray")
 awful.spawn.with_shell("wg-quick up vpn")
 
 -- Keyboard manager: automatically set layouts for the different keyboards I use
