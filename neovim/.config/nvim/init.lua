@@ -416,6 +416,8 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
+vim.opt.scrolloff = 2
+
 -- Add french to spellcheck and keep english
 -- For this we need to add the classic vim RTP (for neovim to find the spell files)
 vim.opt.runtimepath:append("/usr/share/vim/vimfiles/")
