@@ -54,3 +54,4 @@ xcursor-themes
 zathura
 ascii-image-converter-git
 qutebrowser
+pdfjs
