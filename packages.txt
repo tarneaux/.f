@@ -53,3 +53,4 @@ w3m
 xcursor-themes
 zathura
 ascii-image-converter-git
+qutebrowser
