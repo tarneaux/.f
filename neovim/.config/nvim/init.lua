@@ -444,3 +444,7 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 -- Shift+Up/Down to move lines
 vim.keymap.set("n", "<S-Up>", "<cmd>m .-2<cr>==")
 vim.keymap.set("n", "<S-Down>", "<cmd>m .+1<cr>==")
+
+-- Shift+Up/Down to move selected lines in visual mode
+vim.keymap.set("x", "<S-Up>", ":move'<-2<CR>gv=gv")
+vim.keymap.set("x", "<S-Down>", ":move'>+1<CR>gv=gv")
