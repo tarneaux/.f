@@ -440,3 +440,7 @@ vim.keymap.set("n", "<leader>s", ":%s//g<Left><Left>")
 
 -- <leader>p to paste in visual & select modes without changing the register
 vim.keymap.set("x", "<leader>p", '"_dP')
+
+-- Shift+Up/Down to move lines
+vim.keymap.set("n", "<S-Up>", "<cmd>m .-2<cr>==")
+vim.keymap.set("n", "<S-Down>", "<cmd>m .+1<cr>==")
