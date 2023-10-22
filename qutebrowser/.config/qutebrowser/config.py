@@ -33,4 +33,8 @@ c.auto_save.session = True
 # Copy current url to clipboard in orgmode format
 config.bind("yo", "yank inline [[{url}][{title}]]")
 
+# Youtube -> Invidious
+IV_INSTANCE = "https://iv.renn.es"
+config.bind(",i", "open " + IV_INSTANCE + "/watch?{url:query}")
+
 config.source("gruvbox.py")
