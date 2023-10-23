@@ -12,11 +12,9 @@ local function set_wallpaper(s)
             wallpaper = wallpaper(s)
         end
         gears.wallpaper.maximized(wallpaper, s, false)
-    end
-    if beautiful.wallpaper_color then
+    elseif beautiful.wallpaper_color then
         gears.wallpaper.set(beautiful.wallpaper_color)
-    end
-    if beautiful.wallpaper_folder then
+    elseif beautiful.wallpaper_folder then
         local f = io.popen("sh -c \"find ".. beautiful.wallpaper_folder .. " -name '*.png' | shuf -n 1 | xargs echo -n\"")
         if f == nil then
             return
