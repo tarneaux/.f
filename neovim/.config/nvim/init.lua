@@ -344,10 +344,6 @@ require("lazy").setup({
     -- Fountain (screenplay magkup language) support
     {
         "kblin/vim-fountain",
-        init = function ()
-            -- Disable textwidth and colorcolumn in fountain
-            vim.cmd [[ au FileType fountain setlocal textwidth=0 colorcolumn=0 ]]
-        end
     },
     -- True zen: distraction-free writing
     {
@@ -411,10 +407,6 @@ vim.opt.mouse = "a"
 -- Enable system clipboard support
 vim.opt.clipboard = "unnamedplus"
 
--- Word wrap
-vim.opt.wrap = true
-vim.opt.linebreak = true
-
 vim.opt.scrolloff = 2
 
 -- Add french to spellcheck and keep english
@@ -424,13 +416,6 @@ vim.cmd [[ au FileType markdown,org setlocal spelllang+=fr ]]
 
 -- When editing a git commit message, org or markdown file, enable spellcheck
 vim.cmd [[ au FileType gitcommit,markdown,org setlocal spell ]]
-
--- Add a line at 80 characters when we are writing code
-vim.opt.colorcolumn = "80"
-vim.opt.textwidth = 80
-
--- Disable textwidth and colorcolumn in orgmode documents
-vim.cmd [[ au FileType org setlocal textwidth=0 colorcolumn=0 ]]
 
 -- python formatter
 vim.cmd [[ au FileType python nnoremap <leader>f :!black %<cr> ]]
