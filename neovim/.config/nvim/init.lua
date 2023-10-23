@@ -407,6 +407,10 @@ vim.opt.mouse = "a"
 -- Enable system clipboard support
 vim.opt.clipboard = "unnamedplus"
 
+-- Word wrap
+vim.opt.wrap = true
+vim.opt.linebreak = true
+
 vim.opt.scrolloff = 2
 
 -- Add french to spellcheck and keep english
