@@ -197,6 +197,8 @@ alias cop="github-copilot-cli what-the-shell"
 alias randpass="openssl rand -hex 32"
 alias randpassbase64="openssl rand -base64 32"
 
+alias ta="tmux attach -t"
+
 alias rennes="ssh -t cocinero \"./start-tmux\""
 
 # Little scripts with curl
