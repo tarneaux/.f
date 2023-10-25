@@ -373,6 +373,8 @@ require("lazy").setup({
             require('leap').add_default_mappings()
         end
     },
+    -- Editorconfig: parse .editorconfig files
+    "editorconfig/editorconfig-vim",
 })
 
 
