@@ -53,7 +53,8 @@ require("lazy").setup({
     {
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
-            'windwp/nvim-ts-autotag'
+            'windwp/nvim-ts-autotag',
+            'nvim-treesitter/nvim-treesitter-textobjects',
         },
         init = function ()
             require('orgmode').setup_ts_grammar()
@@ -65,7 +66,19 @@ require("lazy").setup({
                 },
                 autotag = {
                     enable = true,
-                }
+                },
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,
+                        keymaps = {
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["ac"] = "@class.outer",
+                            ["ic"] = "@class.inner",
+                        },
+                    },
+                },
             }
             -- Enable folding
             vim.opt.foldmethod = "expr"
