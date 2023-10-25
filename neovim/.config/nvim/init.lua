@@ -363,6 +363,7 @@ require("lazy").setup({
             vim.g.rustfmt_autosave = 1
         end
     },
+    -- Leap.nvim: jump to any word in the buffer
     {
         "ggandor/leap.nvim",
         dependencies = {
@@ -371,7 +372,7 @@ require("lazy").setup({
         init = function ()
             require('leap').add_default_mappings()
         end
-    }
+    },
 })
 
 
