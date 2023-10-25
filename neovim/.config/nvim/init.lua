@@ -242,18 +242,6 @@ require("lazy").setup({
             })
         end
     },
-    -- NvimTree: file explorer
-    {
-        "nvim-tree/nvim-tree.lua",
-        init = function ()
-            vim.g.loaded_netrw = 1
-            vim.g.loaded_netrwPlugin = 1
-            require("which-key").register({
-                ["<leader>e"] = { ":NvimTreeToggle<cr>", "Open/close NvimTree" },
-            })
-        end,
-        opts = {}
-    },
     -- change project root to git root
     "airblade/vim-rooter",
     -- Git helper
