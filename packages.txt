@@ -39,6 +39,7 @@ yt-dlp
 mpv
 ranger
 zsh
+atuin
 fortune-mod
 fortune-mod-calvin
 tmux
