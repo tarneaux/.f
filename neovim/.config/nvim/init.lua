@@ -62,7 +62,7 @@ require("lazy").setup({
                 ensure_installed = {"c", "lua", "rust", "python", "javascript", "typescript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "kotlin", "arduino", "latex", "svelte"},
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = {"org"},
+                    additional_vim_regex_highlighting = {"org", "python"},
                 },
                 autotag = {
                     enable = true,
