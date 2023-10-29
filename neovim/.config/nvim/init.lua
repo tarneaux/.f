@@ -443,3 +443,6 @@ vim.keymap.set("n", "<S-Down>", "<cmd>m .+1<cr>==")
 -- Shift+Up/Down to move selected lines in visual mode
 vim.keymap.set("x", "<S-Up>", ":move'<-2<CR>gv=gv")
 vim.keymap.set("x", "<S-Down>", ":move'>+1<CR>gv=gv")
+
+-- Set text width for git commit messages
+vim.cmd [[ au FileType gitcommit setlocal textwidth=72 colorcolumn=72 ]]
