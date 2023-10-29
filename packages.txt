@@ -25,6 +25,7 @@ bat
 # bat-extras provides things like batman for manpages
 bat-extras
 ttf-dejavu
+ttf-ibmplex-mono-nerd
 mpc
 mpd
 starship

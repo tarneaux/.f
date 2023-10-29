@@ -2,7 +2,7 @@ local wibox = require("wibox")
 local awful = require("awful")
 local gears = require("gears")
 
-local icon = " "
+local icon = "󰝚 "
 
 local mpd = wibox.widget.textbox()
 mpd:set_text(icon)

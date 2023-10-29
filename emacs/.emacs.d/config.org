@@ -85,7 +85,7 @@ After this snippet, ~use-package~ is available and all packages are installed wi
 * Appearance
 ** Set font
 #+BEGIN_SRC emacs-lisp
-(set-face-attribute 'default nil :font "Fantasque Sans Mono-9")
+(set-face-attribute 'default nil :font "BlexMono Nerd Font")
 #+END_SRC
 ** Disable some UI elements
 #+BEGIN_SRC emacs-lisp

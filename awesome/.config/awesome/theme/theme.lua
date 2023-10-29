@@ -28,7 +28,7 @@ theme.cursor = "#bdae93"
 
 
 theme.bg_accent = theme.color0
-theme.fg_accent = theme.color15
+theme.fg_accent = theme.color11
 theme.fg_inactive = theme.color14
 
 -- ADD THE GAAAAP
@@ -38,7 +38,7 @@ theme.gap_single_client = true
 theme.bar_bg = theme.background
 theme.bar_fg = theme.foreground
 
-theme.font          = "Fantasque Sans Mono 9"
+theme.font          = "BlexMono Nerd Font 8"
 
 theme.bg_normal     = theme.background
 theme.bg_focus      = theme.background
@@ -62,8 +62,8 @@ theme.notification_max_width = 500
 theme.notification_max_height = 100
 theme.notification_icon_size = 100
 
-theme.taglist_fg_focus = theme.fg_accent
-theme.taglist_fg_occupied = theme.fg_accent
+theme.taglist_fg_focus = theme.foreground
+theme.taglist_fg_occupied = theme.foreground
 theme.taglist_fg_empty = theme.fg_inactive
 theme.taglist_bg_focus = theme.bg_accent
 

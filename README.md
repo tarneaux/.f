@@ -14,7 +14,7 @@
 - Editors:
   - `neovim`. ([config](neovim/.config/nvim))
   - `emacs` for org-mode and screenplays. ([config](emacs/.emacs.d))
-- Font: Altough these days I use `Fantasque Sans Mono`, the screenshot above has the `BlexMono Nerd Font`.
+- Font: `BlexMono Nerd Font`.
 - Colorscheme: `gruvbox`.
 - Shell: `zsh` ([config](zsh/)). I once used `fish` ([config](fish/.config/fish/))
 - Prompt: customized `starship`. ([config](starship/.config/starship.toml))
@@ -55,9 +55,6 @@
   `stow awesome/`
 
   `stow */`
-
-- If you want to use any of my configs that run in an X window (terminal, emacs, awesomewm), you will need the font I use: [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans/releases).
-  To install it, just copy everything from the `TTF` directory in the archive to `/usr/share/fonts/TTF/`.
 
 - If you want to have my dmscripts (awesomewm shortcut super+y), run:
   ```bash
