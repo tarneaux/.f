@@ -223,6 +223,7 @@ require("lazy").setup({
                 ["<leader>"] = {
                     w = { ":w<cr>", "Save" },
                     q = { ":q<cr>", "Quit" },
+                    e = { ":Explore<cr>", "Netrw" },
                 }
             })
         end
