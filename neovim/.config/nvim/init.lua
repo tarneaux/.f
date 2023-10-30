@@ -429,9 +429,9 @@ vim.cmd [[ au FileType gitcommit,markdown,org setlocal spell ]]
 vim.cmd [[ au FileType python nnoremap <leader>f :!black %<cr> ]]
 
 -- <leader>s to search and replace
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]], {desc = "Search and replace"})
 -- Case insensitive
-vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Search and replace (case insensitive)"})
 
 -- <leader>p to paste in visual & select modes without changing the register
 vim.keymap.set("x", "<leader>p", '"_dP')
