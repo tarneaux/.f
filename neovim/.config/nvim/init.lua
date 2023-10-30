@@ -224,6 +224,23 @@ require("lazy").setup({
                     w = { ":w<cr>", "Save" },
                     q = { ":q<cr>", "Quit" },
                     e = { ":Explore<cr>", "Netrw" },
+                    O = {
+                        name = "Options",
+                        t = {
+                            function ()
+                                local width = vim.ui.input({ prompt = 'Set tab width to: '}, function (input)
+                                    if not input then
+                                        return
+                                    end
+                                    input = tonumber(input)
+                                    vim.opt.shiftwidth = input
+                                    vim.opt.tabstop = input
+                                    vim.opt.softtabstop = input
+                                end)
+                            end,
+                            "Set tab width for current buffer"
+                        }
+                    },
                 }
             })
         end
