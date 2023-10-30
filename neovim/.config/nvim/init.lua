@@ -438,13 +438,38 @@ vim.opt.scrolloff = 2
 -- Add french to spellcheck and keep english
 -- For this we need to add the classic vim RTP (for neovim to find the spell files)
 vim.opt.runtimepath:append("/usr/share/vim/vimfiles/")
-vim.cmd [[ au FileType markdown,org setlocal spelllang+=fr ]]
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown,org",
+    callback = function ()
+        vim.opt.spelllang:append("fr")
+    end
+})
 
 -- When editing a git commit message, org or markdown file, enable spellcheck
-vim.cmd [[ au FileType gitcommit,markdown,org setlocal spell ]]
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "gitcommit,markdown,org",
+    callback = function ()
+        vim.opt.spell = true
+    end
+})
+
+-- When editing a git commit message, set the textwidth and colorcolumn to the recommended values
+vim.api.nvim_create_autocmd("Filetype", {
+    pattern = "gitcommit",
+    callback = function ()
+        vim.opt.textwidth = 72
+        vim.opt.colorcolumn = "72"
+    end
+})
 
 -- python formatter
-vim.cmd [[ au FileType python nnoremap <leader>f :!black %<cr> ]]
+vim.api.nvim_create_autocmd("Filetype", {
+    pattern = "python",
+    callback = function ()
+        vim.keymap.set("n", "<leader>f", ":!black %<cr>", {desc = "Format python file"})
+    end
+})
 
 -- <leader>s to search and replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]], {desc = "Search and replace"})
@@ -462,5 +487,3 @@ vim.keymap.set("n", "<S-Down>", "<cmd>m .+1<cr>==")
 vim.keymap.set("x", "<S-Up>", ":move'<-2<CR>gv=gv")
 vim.keymap.set("x", "<S-Down>", ":move'>+1<CR>gv=gv")
 
--- Set text width for git commit messages
-vim.cmd [[ au FileType gitcommit setlocal textwidth=72 colorcolumn=72 ]]
