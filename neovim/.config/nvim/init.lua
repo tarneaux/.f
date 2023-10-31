@@ -353,7 +353,7 @@ require("lazy").setup({
             -- Enable table mode in orgmode
             vim.cmd [[ au FileType org silent TableModeEnable ]]
             -- Same for markdown
-            vim.cmd [[ au FileType markdown TableModeEnable ]]
+            vim.cmd [[ au FileType markdown silent TableModeEnable ]]
             -- According to my tests there is no problem with other filetypes, even when 
             -- opening a non-org file after an org file.
         end
