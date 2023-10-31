@@ -180,9 +180,7 @@ require("lazy").setup({
 			local copilot = require("copilot")
 			require("which-key").register({
 				["<leader>c"] = {
-					function()
-						vim.cmd [[ Copilot toggle ]]
-					end,
+				    ":Copilot toggle<cr>",
 					"Copilot",
 				}
 			})
