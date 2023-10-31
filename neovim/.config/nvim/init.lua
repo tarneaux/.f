@@ -188,10 +188,6 @@ require("lazy").setup({
 			})
 		end
     },
-    {
-        "zbirenbaum/copilot-cmp",
-        opts = {},
-    },
     -- inc-rename: Rename variables more easily
     {
         "smjonas/inc-rename.nvim",
