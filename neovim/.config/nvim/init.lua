@@ -169,10 +169,9 @@ require("lazy").setup({
 			}
         },
 		init = function()
-			local copilot = require("copilot")
 			require("which-key").register({
 				["<leader>c"] = {
-				    ":Copilot toggle<cr>",
+				    ":silent Copilot! toggle<cr>",
 					"Copilot",
 				}
 			})
