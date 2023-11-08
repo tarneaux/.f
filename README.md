@@ -14,7 +14,7 @@
 - Editors:
   - `neovim`. ([config](neovim/.config/nvim))
   - `emacs` for org-mode and screenplays. ([config](emacs/.emacs.d))
-- Font: `BlexMono Nerd Font`.
+- Font: `FiraCode Nerd Font`.
 - Colorscheme: `gruvbox`.
 - Shell: `zsh` ([config](zsh/)). I once used `fish` ([config](fish/.config/fish/))
 - Prompt: customized `starship`. ([config](starship/.config/starship.toml))

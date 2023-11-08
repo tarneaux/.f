@@ -26,6 +26,7 @@ bat
 bat-extras
 ttf-dejavu
 ttf-ibmplex-mono-nerd
+ttf-firacode-nerd
 mpc
 mpd
 starship
