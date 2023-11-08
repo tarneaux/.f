@@ -144,18 +144,10 @@ require("lazy").setup({
                             fallback()
                         end
                     end, {"i", "s"}),
-                    ["<C-space>"] = cmp.mapping(function(fallback)
-                        if require("copilot.suggestion").is_visible() then
-                            require("copilot.suggestion").accept_word()
-                        else
-                            fallback()
-                        end
-                    end, {"i", "s"}),
                 },
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "orgmode"},
-                    { name = "copilot" },
                     { name = "buffer" },
                 },
             })
