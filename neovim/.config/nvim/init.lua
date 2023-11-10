@@ -110,6 +110,23 @@ require("lazy").setup({
                 filetypes = { "tex", "bib", "markdown" },
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
             }
+            require("which-key").register({
+                ["<leader>l"] = {
+                    name = "LSP actions",
+                    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code action" },
+                    d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go to definition" },
+                    D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
+                    i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Go to implementation" },
+                    r = { "<cmd>lua vim.lsp.buf.references()<cr>", "Go to references" },
+                    R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+                    h = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover" },
+                    H = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature help" },
+                    s = { "<cmd>lua vim.lsp.buf.document_symbol()<cr>", "Document symbols" },
+                    S = { "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", "Workspace symbols" },
+                    t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Go to type definition" },
+                    x = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", "Show line diagnostics" },
+                }
+            })
         end
     },
     -- cmp (autocomplete)
@@ -201,16 +218,6 @@ require("lazy").setup({
 				}
 			})
 		end
-    },
-    -- inc-rename: Rename variables more easily
-    {
-        "smjonas/inc-rename.nvim",
-        opts = {},
-        init = function ()
-            require("which-key").register({
-                ["<leader>r"] = { ":IncRename ", "Rename variable" },
-            })
-        end
     },
     -- trouble: show errors with :Trouble
     {
