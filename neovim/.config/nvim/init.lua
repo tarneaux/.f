@@ -117,6 +117,7 @@ require("lazy").setup({
         "hrsh7th/nvim-cmp",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
+            "saadparwaiz1/cmp_luasnip",
         },
         init = function ()
             local cmp = require("cmp")
@@ -126,6 +127,11 @@ require("lazy").setup({
               return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
             end
             cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end,
+                },
                 mapping = {
                     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -136,8 +142,11 @@ require("lazy").setup({
                         select = true,
                     }),
                     ["<Tab>"] = cmp.mapping(function(fallback)
+                        local luasnip = require("luasnip")
                         if cmp.visible() and has_words_before() then
                             cmp.select_next_item()
+                        elseif luasnip.expand_or_jumpable() then
+                            luasnip.expand_or_jump()
                         elseif require("copilot.suggestion").is_visible() then
                             require("copilot.suggestion").accept()
                         else
@@ -147,10 +156,26 @@ require("lazy").setup({
                 },
                 sources = {
                     { name = "nvim_lsp" },
-                    { name = "orgmode"},
+                    { name = "orgmode" },
                     { name = "buffer" },
+                    { name = "luasnip" }
                 },
             })
+        end
+    },
+    -- Luasnip: snippets
+    {
+        "L3MON4D3/LuaSnip",
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+        },
+        init = function ()
+            -- local luasnip = require("luasnip")
+            -- luasnip.config.set_config({
+            --     history = true,
+            --     updateevents = "TextChanged,TextChangedI",
+            -- })
+            require("luasnip/loaders/from_vscode").load()
         end
     },
     -- Github copilot (AI code completion)
