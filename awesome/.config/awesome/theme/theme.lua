@@ -38,7 +38,7 @@ theme.gap_single_client = true
 theme.bar_bg = theme.background
 theme.bar_fg = theme.foreground
 
-theme.font          = "FiraCode Nerd Font 7"
+theme.font          = "BlexMono Nerd Font 8"
 
 theme.bg_normal     = theme.background
 theme.bg_focus      = theme.background
