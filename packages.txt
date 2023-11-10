@@ -57,3 +57,4 @@ zathura
 ascii-image-converter-git
 qutebrowser
 pdfjs
+inotify-tools
