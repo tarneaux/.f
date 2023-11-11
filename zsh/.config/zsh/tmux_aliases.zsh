@@ -15,7 +15,7 @@ rtmux() {
 	# Try to attach to an existing session
 	tmux attach-session -t "$session_name" && return 0
 
-	# If no session exists, create one
+	# If no session exists, create one & open it
 	tmux new-session -d -s "$session_name" "nvim src/"
 	tmux split-window -h "bacon"
 	tmux split-window -v
@@ -32,7 +32,16 @@ htmux() {
 	# Try to attach to an existing session
 	tmux attach-session -t "$session_name" && return 0
 
-	# If no session exists, create one
+    # Open web browser when server is ready
+    {
+        while true; do
+            curl -s http://localhost:1313 > /dev/null && break
+            sleep 0.5
+        done
+        xdg-open http://localhost:1313 > /dev/null 2>&1
+    } &!
+
+    # If no session exists, create one & open it
 	tmux new-session -d -s "$session_name" "nvim content/"
 	tmux split-window -h
 	tmux new-window "hugo server -D --disableFastRender"
@@ -49,7 +58,7 @@ ntmux() {
 	# Try to attach to an existing session
 	tmux attach-session -t "$session_name" && return 0
 
-	# If no session exists, create one
+	# If no session exists, create one & open it
 	tmux new-session -d -s "$session_name" "nvim ."
 	tmux split-window -h
 	tmux new-window "npm run dev"
