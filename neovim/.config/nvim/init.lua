@@ -410,6 +410,15 @@ require("lazy").setup({
     },
     -- Editorconfig: parse .editorconfig files
     "editorconfig/editorconfig-vim",
+    -- DiffView: see git diffs
+    {
+        "sindrets/diffview.nvim",
+        init = function ()
+            require("which-key").register({
+                ["<leader>d"] = { "<cmd>DiffviewOpen<cr>", "Open diffview" },
+            })
+        end
+    },
 })
 
 
