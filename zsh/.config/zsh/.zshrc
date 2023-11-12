@@ -164,6 +164,7 @@ alias t="trash"
 alias b="bat"
 alias f="fd"
 alias g="git"
+alias lg="lazygit"
 
 alias ga="git add"
 alias gap="git add -p"
