@@ -180,6 +180,7 @@ alias gb="git branch"
 alias gco="git checkout"
 alias gr="git restore"
 alias grs="git restore --staged"
+alias gsp="git stash && git pull && git stash pop"
 
 alias d="docker"
 alias dp="docker ps -a --format 'table {{.Names}}\t{{.Status}}'"
