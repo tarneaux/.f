@@ -23,12 +23,12 @@ manage() {
     xset r rate 300 50
 
     # Disable internal keyboard when external keyboard is plugged in
-    if `xinput --list | grep -q TRIBOARD`; then
-        enable=0
-    else
-        enable=1
-    fi
-    xinput --set-prop "$INTERNAL_KEYBOARD" 'Device Enabled' $enable
+    # if `xinput --list | grep -q TRIBOARD`; then
+    #     enable=0
+    # else
+    #     enable=1
+    # fi
+    # xinput --set-prop "$INTERNAL_KEYBOARD" 'Device Enabled' $enable
 }
 
 manage
