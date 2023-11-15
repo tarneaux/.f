@@ -32,9 +32,3 @@ manage() {
 }
 
 manage
-
-while true; do
-    # Wait for keyboard to be plugged in or unplugged
-    inotifywait -e create,delete /dev/input/
-    manage
-done
