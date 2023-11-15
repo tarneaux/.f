@@ -16,7 +16,7 @@ config.bind("<Ctrl+p>", "hint links spawn mpv --ytdl-format=bestvideo+bestaudio/
 c.zoom.default = "80%"
 
 # Open pdfs in browser
-c.content.pdfjs = True
+c.content.pdfjs = False
 
 # Because I use colemak I need to bind Shift+arrows to the actions of HJKL
 config.bind("<Shift+Left>", "back")
