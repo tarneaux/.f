@@ -161,6 +161,7 @@ alias lla="ls -la"
 alias m="mkdir"
 alias mp="mkdir -p"
 alias t="trash"
+alias tre="trash-restore" # tr is another command
 alias b="bat"
 alias f="fd"
 alias g="git"
