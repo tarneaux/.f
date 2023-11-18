@@ -48,10 +48,10 @@ local globalkeys = gears.table.join(
     awful.key({ ModKey,  }, "q", awesome.restart),
 
     -- Shutdown the computer
-    awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end),
+    -- awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end),
 
     -- Hibernate the computer: you need some configuration for this to work. See the archwiki, page on hibernation.
-    awful.key({ ModKey, "Control" }, "h", function() awful.spawn.with_shell("sudo systemctl hibernate") end),
+    awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo systemctl hibernate") end),
 
     -- change brightness. Only works on my laptop (asus something)
     awful.key({}, "XF86MonBrightnessUp", function() awful.spawn.with_shell('echo $(($(cat /sys/class/backlight/intel_backlight/brightness)+500)) | sudo tee /sys/class/backlight/intel_backlight/brightness') end),
@@ -134,10 +134,10 @@ local globalkeys = gears.table.join(
     -- Bookmarks with dmenu (lets you choose a line from ~/.config/awesome/bookmarks and types it for you using xdotool)
     awful.key({ ModKey }, "m", function ()
         awful.spawn.with_shell("grep -v '^#' ~/.config/awesome/bookmarks | grep -v -e '^$' | dmenu -p 'Select bookmark:' -i -l 10 | xargs -r xdotool type")
-    end),
+    end)
 
     -- Switch focus to next screen
-    awful.key({ ModKey }, "h", function () awful.screen.focus_relative(1) end)
+    -- awful.key({ ModKey }, "h", function () awful.screen.focus_relative(1) end)
 )
 
 -- Keys for clients (windows)
@@ -167,16 +167,16 @@ ClientKeys = gears.table.join(
         awful.screenshot{auto_save_delay = 3, client = c, file_path = filename}
         awful.spawn.with_shell("xclip -selection clipboard -t image/png " .. filename)
         naughty.notify({text = "Screenshot saved to " .. filename .. " and copied to clipboard"})
-    end),
+    end)
     -- Move client to next screen
-    awful.key({ ModKey, "Shift"   }, "h",      function (c) c:move_to_screen()               end)
+    -- awful.key({ ModKey, "Shift"   }, "h",      function (c) c:move_to_screen()               end)
 )
 
 -- Bind all key numbers to tags.
 -- Colemak's "arstd" = qwerty's "asdfg"
-local tagkeys = { "a", "r", "s", "t", "d"}
+local tagkeys = { "a", "r", "s", "t", "d", "h"}
 -- Here change the number 5 to the number of buttons you set just above.
-for i = 1, 5 do
+for i = 1, 6 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         awful.key({ ModKey }, tagkeys[i],
