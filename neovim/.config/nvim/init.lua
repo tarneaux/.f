@@ -513,3 +513,10 @@ vim.keymap.set("n", "<S-Down>", "<cmd>m .+1<cr>==")
 vim.keymap.set("x", "<S-Up>", ":move'<-2<CR>gv=gv")
 vim.keymap.set("x", "<S-Down>", ":move'>+1<CR>gv=gv")
 
+-- Add signature at bottom of email files
+vim.api.nvim_create_autocmd("Filetype", {
+    pattern = "mail",
+    callback = function ()
+        vim.keymap.set("n", ",s", function () vim.cmd [[ :r ~/.config/aerc/signature.txt ]] end, { buffer = true })
+    end
+})

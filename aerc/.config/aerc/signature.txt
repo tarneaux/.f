@@ -1,0 +1,17 @@
+
+---
+
+Tarneo
+
+High school student, computer programmer, Free Software advocate and
+sysadmin at https://renn.es/
+
+Personal blog: https://tarneo.fr/
+E-mail: tarneo@tarneo.fr
+GitHub: tarneaux
+Matrix: @tarneo:matrix.renn.es
+Mastodon: @tarneo@toot.renn.es
+
+PGP:
+https://tarneo.fr/tarneo.key
+7C56 89A0 383A 1228 2DCE 83D2 BA92 4E53 D0EB 3FCC
