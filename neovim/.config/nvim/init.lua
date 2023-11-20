@@ -162,8 +162,8 @@ require("lazy").setup({
                         local luasnip = require("luasnip")
                         if cmp.visible() and has_words_before() then
                             cmp.select_next_item()
-                        elseif luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
+                        -- elseif luasnip.expand_or_jumpable() then
+                        --     luasnip.expand_or_jump()
                         elseif require("copilot.suggestion").is_visible() then
                             require("copilot.suggestion").accept()
                         else
