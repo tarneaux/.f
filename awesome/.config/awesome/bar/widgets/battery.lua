@@ -56,7 +56,7 @@ local function update_icon_and_percentage_widgets(upower_output)
             notification_shown = math.ceil(percentage/5) * 5
         end
     else
-        percentage_widget.markup = percentage .. "% "
+        percentage_widget.markup = percentage .. "%"
         icon_widget.markup = icon
         notification_shown = 100 -- Reset
     end
