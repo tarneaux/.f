@@ -6,8 +6,6 @@
 # awesome-git is needed only if you want to use the new native screenshot library.
 # awesome
 awesome-git
-dmenu
-alacritty
 neovim
 vim-spell-fr
 conky
