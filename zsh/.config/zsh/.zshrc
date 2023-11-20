@@ -271,3 +271,5 @@ if [[ "$TERM" != emacs ]]; then
 [[ "$terminfo[khome]" == "^[O"* ]] && bindkey -M emacs "${terminfo[khome]/O/[}" beginning-of-line
 [[ "$terminfo[kend]" == "^[O"* ]] && bindkey -M emacs "${terminfo[kend]/O/[}" end-of-line
 fi
+
+bindkey "^[[4~" end-of-line
