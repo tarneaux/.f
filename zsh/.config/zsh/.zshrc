@@ -119,6 +119,8 @@ add-zsh-hook precmd "__reset-cursor"
 __reload-tmux-bar() {tmux refresh-client -S > /dev/null 2>&1}
 add-zsh-hook precmd "__reload-tmux-bar"
 
+eval "$(zoxide init zsh)"
+
 # ==================== #
 #   Aliases and vars   #
 # ==================== #
