@@ -11,12 +11,7 @@ done
 # Uninstall dmenu from arch repo
 sudo pacman -R dmenu
 
-# Install dmenu and st builds
-cd /tmp
-git clone https://github.com/tarneaux/st
-cd st
-make && sudo make install
-
+# Install dmenu build
 cd /tmp
 git clone https://github.com/tarneaux/dmenu
 cd dmenu

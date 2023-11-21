@@ -10,7 +10,7 @@ require("awful.autofocus")
 local awesome_conf_dir = gears.filesystem.get_configuration_dir()
 
 -- Global variables
-Terminal = "st"
+Terminal = "alacritty"
 TerminalCmd = Terminal .. " -e "
 Editor = "nvim"
 
