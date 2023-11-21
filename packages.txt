@@ -3,55 +3,52 @@
 # You can add comments by starting a line with a #.
 # Empty lines will be ignored.
 
-# awesome-git is needed only if you want to use the new native screenshot library.
-# awesome
-awesome-git
-neovim
-vim-spell-fr
-conky
+############################
+# Programs I use every day #
+############################
+
+aerc
+bat # cat on steroids
+exa # ls on steroids
+fd # find on steroids
+fzf
 git
-# fish
-stow
-# If you want to use the battery widget
-# upower
-exa
-# A better way to navigate the file system
-broot
-ripgrep
-trash-cli
-bat
-# bat-extras provides things like batman for manpages
-bat-extras
-ttf-dejavu
+inotify-tools
+maim
 mpc
 mpd
-starship
-noto-fonts-emoji
-maim
-xclip
-wmctrl
-xdotool
-fd
-ytfzf
-yt-dlp
 mpv
-ranger
-zsh
-fortune-mod
-fortune-mod-calvin
-tmux
-fzf
-# For controlling media with keyboard shortcuts
-playerctl
-shellcheck
-# Aerc: email client. optional dependency: w3m for viewing html emails
-aerc
-w3m
-# Adwaita X cursors
-xcursor-themes
-zathura
-ascii-image-converter-git
+neovim
 qutebrowser
+ripgrep # grep on steroids
+tmux
+trash-cli
+w3m
+xclip
+zathura
+zsh
+
+
+##############################
+# Dependencies for the above #
+##############################
+
 pdfjs
-inotify-tools
+shellcheck # For bash LSP in neovim
+vim-spell-fr # French spell checking for neovim
 zoxide
+
+
+###############################
+# Core tools for the dotfiles #
+# + window manager            #
+###############################
+
+# upower # for battery widget
+awesome-git
+playerctl
+stow
+xcursor-themes # adwaita X cursors
+
+noto-fonts-emoji
+ttf-dejavu
