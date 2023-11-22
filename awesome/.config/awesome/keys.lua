@@ -47,6 +47,9 @@ local globalkeys = gears.table.join(
     -- Reload awesomewm. This is useful when you change the config file.
     awful.key({ ModKey,  }, "q", awesome.restart),
 
+    -- Open BWmenu (Bitwarden dmenu script)
+    awful.key({ ModKey            }, "m", function() awful.spawn.with_shell("~/.config/scripts/bwmenu") end),
+
     -- Shutdown the computer
     -- awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end),
 

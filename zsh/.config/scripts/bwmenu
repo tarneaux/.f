@@ -1,0 +1,38 @@
+#!/bin/sh -e
+# dmenu-bw.sh - dmenu interface for Bitwarden
+
+while true; do
+    # Ask for password
+    password=$(dmenu -p "Bitwarden password:" -P <&-)
+
+    # If password is empty, reprompt without masking
+    if [ -z "$password" ]; then
+        password=$(dmenu -p "Bitwarden password:" <&-)
+    fi
+
+    # Get session token
+    session=$(bw unlock "$password" --raw) && break
+done
+
+# Get items
+items=$(bw list items --session "$session" --pretty)
+
+# Get item names
+names=$(echo "$items" | jq -r '.[].name')
+
+# Select item
+selected=$(echo "$names" | dmenu -p "Bitwarden:")
+
+# Get item ID
+id=$(echo "$items" | jq -r ".[] | select(.name == \"$selected\") | .id")
+
+# Get item password
+password=$(bw get password "$id" --session "$session" --raw)
+
+# Copy password to clipboard
+printf "%s" "$password" | xclip -selection clipboard
+
+# Get item username / email
+username=$(bw get username "$id" --session "$session" --raw)
+
+notify-send "Bitwarden" "Copied password for $selected to clipboard.\n\nUsername: $username"
