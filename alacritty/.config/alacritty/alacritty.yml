@@ -89,3 +89,8 @@ cursor:
 
 mouse:
   hide_when_typing: true
+
+key_bindings:
+  # See https://stackoverflow.com/questions/16359878/how-to-map-shift-enter
+  - { key: Return,   mods: Shift,   chars: "\x1b[13;2u" }
+  - { key: Return,   mods: Control, chars: "\x1b[13;5u" }
