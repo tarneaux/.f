@@ -53,3 +53,5 @@ xcursor-themes # adwaita X cursors
 
 noto-fonts-emoji
 ttf-dejavu
+
+jq # for parsing json in scripts
