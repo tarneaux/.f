@@ -22,7 +22,7 @@ Warning: this might not actually reload some stuff, like contents of use-package
 #+BEGIN_SRC emacs-lisp
 (setq default-directory "~/")
 #+END_SRC
-** Dectlutter working directory
+** Declutter working directory
 #+BEGIN_SRC emacs-lisp
 ;; Prevent emacs from creating lockfiles because they are just annoying
 (setq create-lockfiles nil)
