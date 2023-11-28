@@ -54,7 +54,7 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
-(set-face-attribute 'default nil :font "BlexMono Nerd Font")
+(set-face-attribute 'default nil :font "Fantasque Sans Mono-9")
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
