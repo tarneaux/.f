@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source ~/.zshrc # Load environment variables
+source ~/.config/zsh/.zshrc # Load environment variables
 
 xset -b
 
