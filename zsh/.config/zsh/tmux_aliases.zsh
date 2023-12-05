@@ -27,7 +27,7 @@ htmux() {
 	local session_name="$(__dir_to_tmux_session_name)"
 
 	# Verify we are in a Hugo project
-	[[ -f config.toml ]] || [[ -f config.yaml ]] || { echo "Not a Hugo project" && return 1; }
+	[[ -f config.toml ]] || [[ -f config.yaml ]] || [[ -f hugo.yaml ]] || [[ -f hugo.toml ]] || { echo "Not a Hugo project" && return 1; }
 
 	# Try to attach to an existing session
 	tmux attach-session -t "$session_name" && return 0
