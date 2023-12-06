@@ -1,0 +1,170 @@
+#!/bin/zsh
+
+# This is a River config file. One of its special features is that it is made to be used with the Colemak keyboard layout.
+# It also doesn't use the Alt key.
+
+###############
+# Basic binds #
+###############
+
+# Apps
+riverctl map normal Super Return spawn alacritty 
+riverctl map normal Super B spawn qutebrowser
+riverctl map normal Super P spawn dmenu_run
+
+# Super+Q to close the focused view
+riverctl map normal Super W close
+
+# Super+Control+Q to hibernate
+riverctl map normal Super+Control Q spawn sudo systemctl hibernate
+
+# Super+Q to re-run configuration file (AKA reload config)
+riverctl map normal Super Q spawn ~/.config/river/init
+
+#############
+# Autostart #
+#############
+
+pgrep -f swaybg || swaybg -i .config/awesome/theme/walls/leaves.jpg -m fill &
+
+###########################
+# Window management binds #
+###########################
+
+# Super+{I,E} to focus views
+riverctl map normal Super I focus-view next
+riverctl map normal Super E focus-view previous
+
+# Super+Shift+{I,E} to swap views
+riverctl map normal Super+Shift E swap previous
+riverctl map normal Super+Shift I swap next
+
+# Super+{H,J,K,L} to bump view to top of stack
+riverctl map normal Super+Shift Return zoom
+
+# Super+{N,O} to change the main ratio
+riverctl map normal Super N send-layout-cmd rivertile "main-ratio -0.025"
+riverctl map normal Super O send-layout-cmd rivertile "main-ratio +0.025"
+
+# Super+Shift+{N,O} to change the main count
+riverctl map normal Super+Shift N send-layout-cmd rivertile "main-count +1"
+riverctl map normal Super+Shift O send-layout-cmd rivertile "main-count -1"
+
+# Keys for tags:
+#  tagkeys: {A,R,S,T,D,H}
+#  tags:    {1,2,4,8,16,32} (tags are binary representations of where the view is)
+tag_keys=("A" "R" "S" "T" "D" "H")
+for i in $(seq 1 6)
+do
+    tags=$((1 << ($i - 1)))
+    key=${tag_keys[$i]}
+
+    riverctl map normal Super $key spawn "riverctl set-focused-tags $tags && river-get-tags >> /tmp/river-tags"
+    riverctl map normal Super+Shift $key spawn "riverctl set-view-tags $tags && river-get-tags >> /tmp/river-tags"
+    riverctl map normal Super+Control $key spawn "riverctl toggle-focused-tags $tags && river-get-tags >> /tmp/river-tags"
+    riverctl map normal Super+Shift+Control $key "riverctl toggle-view-tags $tags && river-get-tags >> /tmp/river-tags"
+done
+
+# Super+0 to focus all tags
+# Super+Shift+0 to tag focused view with all tags
+all_tags=$(((1 << 32) - 1))
+riverctl map normal Super 0 set-focused-tags $all_tags
+riverctl map normal Super+Shift 0 set-view-tags $all_tags
+
+# Super+Control+{N,E,I,O} to change layout orientation
+riverctl map normal Super+Control N send-layout-cmd rivertile "main-location left"
+riverctl map normal Super+Control E send-layout-cmd rivertile "main-location top"
+riverctl map normal Super+Control I send-layout-cmd rivertile "main-location bottom"
+riverctl map normal Super+Control O send-layout-cmd rivertile "main-location right"
+
+
+# Super+Control+Shift+{N,E,I,O} to resize views
+# riverctl map normal Super+Control+Shift N resize horizontal -100
+# riverctl map normal Super+Control+Shift E resize vertical -100
+# riverctl map normal Super+Control+Shift I resize vertical 100
+# riverctl map normal Super+Control+Shift O resize horizontal 100
+
+# Super+Alt+{N,E,I,O} to move views
+# riverctl map normal Super+Alt N move left 100
+# riverctl map normal Super+Alt E move up 100
+# riverctl map normal Super+Alt I move down 100
+# riverctl map normal Super+Alt O move right 100
+
+# Super+Alt+Control+{H,J,K,L} to snap views to screen edges
+# riverctl map normal Super+Alt+Control H snap left
+# riverctl map normal Super+Alt+Control J snap down
+# riverctl map normal Super+Alt+Control K snap up
+# riverctl map normal Super+Alt+Control L snap right
+
+
+# Super + Left Mouse Button to move views
+riverctl map-pointer normal Super BTN_LEFT move-view
+
+# Super + Right Mouse Button to resize views
+riverctl map-pointer normal Super BTN_RIGHT resize-view
+
+# Super + Middle Mouse Button to toggle float
+riverctl map-pointer normal Super BTN_MIDDLE toggle-float
+
+
+# Super+Space to toggle float
+riverctl map normal Super Space toggle-float
+
+# Super+F to toggle fullscreen
+riverctl map normal Super F toggle-fullscreen
+
+# # Declare a passthrough mode. This mode has only a single mapping to return to
+# # normal mode. This makes it useful for testing a nested wayland compositor
+# riverctl declare-mode passthrough
+
+# # Super+F11 to enter passthrough mode
+# riverctl map normal Super F11 enter-mode passthrough
+
+# # Super+F11 to return to normal mode
+# riverctl map passthrough Super F11 enter-mode normal
+
+# Various media key mapping examples for both normal and locked mode which do
+# not have a modifier
+for mode in normal locked
+do
+    # Eject the optical drive (well if you still have one that is)
+    riverctl map $mode None XF86Eject spawn 'eject -T'
+
+    # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
+    riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
+    riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
+    riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
+
+    # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
+    riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
+    riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
+    riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
+    riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
+
+    # Control screen backlight brightness with light (https://github.com/haikarainen/light)
+    riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 5'
+    riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
+done
+
+# Set background and border color
+riverctl background-color 0x002b36
+riverctl border-color-focused 0x928374
+riverctl border-color-unfocused 0x32302f
+
+# Set keyboard repeat rate
+riverctl set-repeat 50 300
+
+# Make new views appear at the bottom of the stack instead of the top.
+riverctl attach-mode bottom
+
+# Make all views with an app-id that starts with "float" and title "foo" start floating.
+riverctl rule-add -app-id 'float*' -title 'foo' float
+
+# Make all views with app-id "bar" and any title use client-side decorations
+riverctl rule-add -app-id "bar" csd
+
+
+# Set the default layout generator to be rivertile and start it.
+# River will send the process group of the init executable SIGTERM on exit.
+riverctl default-layout rivertile
+rivertile -view-padding 5 -outer-padding 5 &
