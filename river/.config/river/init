@@ -26,6 +26,9 @@ riverctl map normal Super Q spawn ~/.config/river/init
 #############
 
 pgrep -f swaybg || swaybg -i .config/awesome/theme/walls/leaves.jpg -m fill &
+pgrep signal-desktop || signal-desktop --start-in-tray
+wg-quick up vpn
+pgrep unison || ~/.config/scripts/unison-sync
 
 ###########################
 # Window management binds #

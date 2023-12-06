@@ -7,6 +7,7 @@
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
     {music != "" ? "󰝚 ${music} " : ""}
+    unison
     (metric :label " "
             :value volume
             :onchange "pamixer --set-volume {}")
@@ -70,8 +71,11 @@
 (defpoll time :interval "10s"
   "date '+%A %d %b %H:%M'")
 
-(defpoll vpn :interval "10s"
+(defpoll vpn :interval "5s"
   "sudo wg show | grep -q vpn && echo ' ' || echo '󰿆 '")
+
+(defpoll unison :interval "5s"
+  "pgrep -x unison | wc -l | grep -q 1 && echo '  UP ' || echo '  DOWN '")
 
 (defwindow bar
   :monitor 0
