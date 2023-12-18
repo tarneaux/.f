@@ -520,3 +520,5 @@ vim.api.nvim_create_autocmd("Filetype", {
         vim.keymap.set("n", ",s", function () vim.cmd [[ :r ~/.config/aerc/signature.txt ]] end, { buffer = true })
     end
 })
+
+vim.g.pyindent_open_paren = "shiftwidth()"
