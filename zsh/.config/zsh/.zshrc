@@ -132,8 +132,8 @@ hash -d zsh="$HOME/.config/zsh"
 hash -d tmux="$HOME/.config/tmux"
 
 # Repos
+hash -d gw="$HOME/git/web"
 hash -d g="$HOME/git"
-hash -d gr="$HOME/git/renn.es"
 
 # Websites
 hash -d gw="$HOME/git/web/"
