@@ -38,6 +38,7 @@ shellcheck # For bash LSP in neovim
 vim-spell-fr # French spell checking for neovim
 zoxide
 zathura-pdf-mupdf
+brightnessctl
 
 
 ###############################
