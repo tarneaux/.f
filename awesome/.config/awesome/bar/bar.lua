@@ -14,7 +14,7 @@ local unison = require("bar/widgets/unison")
 local bar = function(s)
     local wb = awful.wibar {
         position = "top",
-        height = 18,
+        height = beautiful.bar_height,
         screen = s,
         bg = beautiful.background
     }

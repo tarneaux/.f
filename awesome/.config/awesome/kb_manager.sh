@@ -11,8 +11,6 @@ manage() {
     xmodmap ~/.Xmodmap
 
     # Set keyboard layout for laptop
-
-
     kb_id=$(xinput -list | grep "$INTERNAL_KEYBOARD" | grep -o "id=[0-9]*" | grep -o "[0-9]*")
 
     setxkbmap fr -device "$kb_id" || echo "Failed to set keyboard layout for laptop"
@@ -23,12 +21,15 @@ manage() {
     xset r rate 300 50
 
     # Disable internal keyboard when external keyboard is plugged in
-    # if `xinput --list | grep -q TRIBOARD`; then
-    #     enable=0
-    # else
-    #     enable=1
-    # fi
-    # xinput --set-prop "$INTERNAL_KEYBOARD" 'Device Enabled' $enable
+    if xinput --list | grep -q TRIBOARD; then
+        enable=0
+    else
+        enable=1
+    fi
+    xinput --set-prop "$INTERNAL_KEYBOARD" 'Device Enabled' $enable
 }
 
-manage
+while true; do
+    manage
+    inotifywait -e create,delete /dev/input
+done

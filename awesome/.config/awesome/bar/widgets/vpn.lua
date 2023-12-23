@@ -6,13 +6,11 @@ local widget = wibox.widget.textbox()
 
 
 local function daemon ()
-    awful.spawn.easy_async('sudo wg show', function(stdout)
-        if stdout == '' then
-            widget:set_text("󰿆 ")
-            return false
-        else
+    awful.spawn.easy_async('sh -c \'ip a | grep -q "scope global vpn"\'', function(stdout, stderr, reason, exit_code)
+        if exit_code == 0 then
             widget:set_text("󰌾 ")
-            return true
+        else
+            widget:set_text("󰿆 ")
         end
     end)
 end

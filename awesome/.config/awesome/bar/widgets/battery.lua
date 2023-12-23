@@ -73,7 +73,7 @@ end
 
 local function check_laptop_and_update()
     awful.spawn.easy_async_with_shell(
-        "upower -i /org/freedesktop/UPower/devices/battery_BAT0",
+        "upower -i /org/freedesktop/UPower/devices/battery_BAT1",
         function(output)
             if output:match("(should be ignored)") then
                 -- No battery found!

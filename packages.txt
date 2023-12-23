@@ -51,6 +51,7 @@ awesome-git
 playerctl
 stow
 xcursor-themes # adwaita X cursors
+xorg-xinput
 
 noto-fonts-emoji
 ttf-dejavu
