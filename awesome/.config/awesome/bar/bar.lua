@@ -9,6 +9,7 @@ local spacer = require("bar/widgets/spacer")
 local layout = require("bar/widgets/layout")
 local battery = require("bar/widgets/battery")
 local unison = require("bar/widgets/unison")
+local togglekeyboard = require("bar/widgets/togglekeyboard")
 
 
 local bar = function(s)
@@ -37,7 +38,12 @@ local bar = function(s)
 						unison,
 						spacer,
 					},
-                    vpn,
+                    {
+                        layout = wibox.layout.align.horizontal,
+                        togglekeyboard,
+                        spacer,
+                        vpn,
+                    }
                 }
             },
             widget = wibox.container.margin,

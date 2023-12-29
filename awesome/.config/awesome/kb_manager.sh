@@ -19,17 +19,6 @@ manage() {
     # when it is held down. It's very useful to be able to repeat a key much faster,
     # and without holding it down for a long time before it starts repeating.
     xset r rate 300 50
-
-    # Disable internal keyboard when external keyboard is plugged in
-    if xinput --list | grep -q TRIBOARD; then
-        enable=0
-    else
-        enable=1
-    fi
-    xinput --set-prop "$INTERNAL_KEYBOARD" 'Device Enabled' $enable
 }
 
-while true; do
-    manage
-    inotifywait -e create,delete /dev/input
-done
+manage

@@ -44,7 +44,7 @@ awful.spawn.with_shell("pgrep signal-desktop || signal-desktop --start-in-tray")
 -- awful.spawn.with_shell("wg-quick up vpn")
 
 -- Keyboard manager: automatically set layouts for the different keyboards I use
-awful.spawn.with_shell("pgrep -f \"bash $HOME/.config/awesome/kb_manager.sh\" || ~/.config/awesome/kb_manager.sh")
+awful.spawn.with_shell("~/.config/awesome/kb_manager.sh")
 
 -- Unison sync script: syncs files with my server.
 awful.spawn.with_shell("pgrep unison || ~/.config/scripts/unison-sync")
