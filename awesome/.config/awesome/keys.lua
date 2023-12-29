@@ -50,6 +50,9 @@ local globalkeys = gears.table.join(
     -- Open BWmenu (Bitwarden dmenu script)
     awful.key({ ModKey            }, "m", function() awful.spawn.with_shell("~/.config/scripts/bwmenu") end),
 
+    -- Open qobuz (music streaming service) when pressing XF86AudioMedia (F12 key on framework laptop)
+    awful.key({ }, "XF86AudioMedia", function() awful.spawn.with_shell("xdg-open https://play.qobuz.com") end),
+
     -- Shutdown the computer
     -- awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end),
 
