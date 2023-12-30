@@ -39,4 +39,7 @@ config.bind("yo", "yank inline [[{url}][{title}]]")
 IV_INSTANCE = "https://iv.renn.es"
 config.bind(",i", "open " + IV_INSTANCE + "/watch?{url:query}")
 
+# Dark mode handled by website
+c.colors.webpage.preferred_color_scheme = "dark"
+
 config.source("gruvbox.py")
