@@ -84,8 +84,7 @@ function theme.wallpaper(s)
     if s.geometry.width == 2560 and s.geometry.height == 1080 then
         return  awesome_conf_dir .. "theme/walls/leaves.jpg" -- Somehow tilde doesn't work here
     else
-        -- return awesome_conf_dir .. "theme/walls/astronaut.jpg"
-        return awesome_conf_dir .. "theme/walls/flower.jpg"
+        return awesome_conf_dir .. "theme/walls/foggy-forest-3.jpg"
     end
 end
 -- theme.wallpaper_color = "#1d2021"
