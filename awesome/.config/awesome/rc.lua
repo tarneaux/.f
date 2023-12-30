@@ -48,3 +48,9 @@ awful.spawn.with_shell("~/.config/awesome/kb_manager.sh")
 
 -- Unison sync script: syncs files with my server.
 awful.spawn.with_shell("pgrep unison || ~/.config/scripts/unison-sync")
+
+-- Screen lock
+awful.spawn.with_shell("xset s 300")
+-- xss-lock will handle being called multiple times
+-- (by exiting if it's already running)
+awful.spawn.with_shell("xss-lock ~/.config/scripts/lock")

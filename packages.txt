@@ -39,6 +39,9 @@ vim-spell-fr # French spell checking for neovim
 zoxide
 zathura-pdf-mupdf
 brightnessctl
+xss-lock
+i3lock
+imagemagick
 
 
 ###############################
