@@ -32,7 +32,7 @@ theme.fg_accent = theme.color11
 theme.fg_inactive = theme.color14
 
 -- ADD THE GAAAAP
-theme.useless_gap = 5
+theme.useless_gap = 10
 theme.gap_single_client = true
 
 theme.bar_bg = theme.background
