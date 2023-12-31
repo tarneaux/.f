@@ -149,6 +149,10 @@ require("lazy").setup({
                         require("luasnip").lsp_expand(args.body)
                     end,
                 },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
                 mapping = {
                     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -522,3 +526,11 @@ vim.api.nvim_create_autocmd("Filetype", {
 })
 
 vim.g.pyindent_open_paren = "shiftwidth()"
+
+-- Enable colorcolumn in all programming files
+vim.api.nvim_create_autocmd("Filetype", {
+    pattern = "python,html,css,scss,typescript,javascript,rust,sh",
+    callback = function ()
+        vim.opt.colorcolumn = "80"
+    end
+})
