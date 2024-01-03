@@ -78,15 +78,15 @@ theme.titlebar_fg_normal = theme.color14
 -- theme.wallpaper = "~/.config/awesome/theme/walls/calvin.png"
 -- theme.wallpaper = "~/.config/awesome/theme/walls/mountain-night-3.jpg"
 -- theme.wallpaper = "~/.config/awesome/theme/walls/mtn.jpg"
--- theme.wallpaper = "~/.config/awesome/theme/walls/leaves.jpg"
-function theme.wallpaper(s)
-    local awesome_conf_dir = gears.filesystem.get_configuration_dir()
-    if s.geometry.width == 2560 and s.geometry.height == 1080 then
-        return  awesome_conf_dir .. "theme/walls/leaves.jpg" -- Somehow tilde doesn't work here
-    else
-        return awesome_conf_dir .. "theme/walls/foggy-forest-3.jpg"
-    end
-end
+theme.wallpaper = "~/.config/awesome/theme/walls/foggy-forest-3.jpg"
+-- function theme.wallpaper(s)
+--     local awesome_conf_dir = gears.filesystem.get_configuration_dir()
+--     if s.geometry.width == 2560 and s.geometry.height == 1080 then
+--         return  awesome_conf_dir .. "theme/walls/leaves.jpg" -- Somehow tilde doesn't work here
+--     else
+--         return awesome_conf_dir .. "theme/walls/foggy-forest-3.jpg"
+--     end
+-- end
 -- theme.wallpaper_color = "#1d2021"
 -- theme.wallpaper_folder = "~/.config/awesome/theme/walls/"
 
