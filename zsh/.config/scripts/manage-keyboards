@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# This script manages keyboard layouts and keyboard options.
+
+INTERNAL_KEYBOARD="AT Translated Set 2 keyboard"
+EXTERNAL_KEYBOARD="TRIBOARD Keyboard"
+
+set_layout() {
+    # $1: keyboard name
+    # $2: layout name
+    kb_id=$(xinput -list | grep "$1" | grep -o "id=[0-9]*" | grep -o "[0-9]*")
+    # Make sure we got exactly one keyboard id
+    if [ -z "$kb_id" ]; then
+        echo "Failed to find keyboard $1, skipping"
+        return
+    elif [ "$(echo "$kb_id" | wc -l)" -gt 1 ]; then
+        echo "Found multiple keyboards with name $1, setting layout for all of them"
+        kb_ids=$(echo "$kb_id" | tr '\n' ' ')
+        for id in $kb_ids; do
+            echo "Setting keyboard layout for $1 to $2 (id: $id)"
+            setxkbmap "$2" -device "$id" || echo "Failed to set keyboard layout for $1. This may be alright if the keyboard also a virtual core pointer."
+        done
+    else
+        echo "Setting keyboard layout for $1 to $2 (id: $kb_id)"
+        setxkbmap "$2" -device "$kb_id" || echo "Failed to set keyboard layout for $1"
+    fi
+}
+
+manage() {
+    set_layout "$INTERNAL_KEYBOARD" fr
+    set_layout "$EXTERNAL_KEYBOARD" us
+
+    # Set characters to input when pressing F13-F24 keys for use on triboard
+    # (useful for french characters like é, è, à, ç, ù)
+    # It's important that we do this after setting the keyboard layout, as
+    # setting the layout resets the keycodes.
+    xmodmap ~/.Xmodmap
+
+    xset r rate 300 50
+}
+
+manage

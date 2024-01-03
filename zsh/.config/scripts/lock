@@ -28,6 +28,11 @@ WALLPAPER_RAW=$(convert $WALLPAPER_PATH \
     -resize "${SCREEN_SIZE}^" -extent "$SCREEN_SIZE" -gravity west \
     RGB:-)
 
+# *Just* before locking, make sure the keyboard layouts and screens are set
+# correcly
+~/.config/scripts/manage-keyboards &
+~/.config/scripts/manage-outputs &
+
 # The --nofork option prevents i3lock from running in the background and so
 # possibly immediately re-disabling the keyboard below
 echo "$WALLPAPER_RAW" \

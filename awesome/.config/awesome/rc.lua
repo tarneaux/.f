@@ -44,7 +44,12 @@ awful.spawn.with_shell("pgrep signal-desktop || signal-desktop --start-in-tray")
 -- awful.spawn.with_shell("wg-quick up vpn")
 
 -- Keyboard manager: automatically set layouts for the different keyboards I use
-awful.spawn.with_shell("~/.config/awesome/kb_manager.sh")
+awful.spawn.with_shell("~/.config/scripts/manage-keyboards")
+
+-- Output manager: automatically set outputs for the different monitors I use
+-- This may restart awesomewm automatically, but should do it only when changing outputs.
+-- (i.e. not start a recursive loop)
+awful.spawn.with_shell("~/.config/scripts/manage-outputs")
 
 -- Unison sync script: syncs files with my server.
 awful.spawn.with_shell("pgrep unison || ~/.config/scripts/unison-sync")
