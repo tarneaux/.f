@@ -38,7 +38,7 @@ theme.gap_single_client = true
 theme.bar_bg = theme.background
 theme.bar_fg = theme.foreground
 
-theme.font          = "BlexMono Nerd Font 14"
+theme.font          = "Fantasque Sans Mono 14"
 theme.bar_height    = 30
 
 theme.bg_normal     = theme.background

@@ -71,7 +71,7 @@ qutebrowser_zoom() {
     echo "c.zoom.default = \"${1}%\"" 
 }
 awesome_font_size() {
-    echo "theme.font          = \"BlexMono Nerd Font ${1}\"" 
+    echo "theme.font          = \"Fantasque Sans Mono ${1}\"" 
 }
 awesome_bar_height() {
     echo "theme.bar_height    = ${1}" 
