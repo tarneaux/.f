@@ -10,6 +10,7 @@ local layout = require("bar/widgets/layout")
 local battery = require("bar/widgets/battery")
 local unison = require("bar/widgets/unison")
 local togglekeyboard = require("bar/widgets/togglekeyboard")
+local playing = require("bar/widgets/playing")
 
 
 local bar = function(s)
@@ -31,7 +32,12 @@ local bar = function(s)
                 nil,
                 {
                     layout = wibox.layout.align.horizontal,
-                    battery,
+                    {
+                        layout = wibox.layout.align.horizontal,
+                        playing,
+                        spacer,
+                        battery,
+                    },
 					{
 						layout = wibox.layout.align.horizontal,
                         spacer,
