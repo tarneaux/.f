@@ -8,7 +8,11 @@ local function daemon ()
     awful.spawn.easy_async_with_shell(
         'playerctl metadata --format "{{ artist }} - {{ title}}"',
         function(stdout)
-            widget:set_markup("󰝚 " .. stdout)
+            if stdout ~= "" then
+                widget:set_markup("󰝚 " .. stdout)
+            else
+                widget:set_markup("󰝚 Not playing")
+            end
         end
     )
 end
