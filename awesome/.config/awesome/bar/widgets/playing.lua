@@ -14,7 +14,7 @@ local function daemon ()
 end
 
 local function toggle ()
-    awful.spawn.easy_async_with_shell(
+    awful.spawn.with_shell(
         'playerctl play-pause'
     )
 end
