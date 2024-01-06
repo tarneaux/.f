@@ -270,7 +270,17 @@ require("lazy").setup({
                                 end
                             end,
                             "Toggle colorcolumn between none and 80 for current buffer",
-                        }
+                        },
+                        w = {
+                            function ()
+                                if vim.opt.textwidth:get() == 0 then
+                                    vim.opt.textwidth = 80
+                                else
+                                    vim.opt.textwidth = 0
+                                end
+                            end,
+                            "Toggle text width for current buffer",
+                        },
                     },
                 }
             })
