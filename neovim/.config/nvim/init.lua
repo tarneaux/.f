@@ -260,6 +260,17 @@ require("lazy").setup({
                                 end)
                             end,
                             "Set tab width for current buffer"
+                        },
+                        c = {
+                            function ()
+                                local new_value
+                                if vim.opt.colorcolumn:get()[1] == "79" then
+                                    vim.opt.colorcolumn = ""
+                                else
+                                    vim.opt.colorcolumn = "79"
+                                end
+                            end,
+                            "Toggle colorcolumn between none and 79 for current buffer",
                         }
                     },
                 }
