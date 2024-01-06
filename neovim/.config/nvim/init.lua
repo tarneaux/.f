@@ -549,7 +549,7 @@ vim.g.pyindent_open_paren = "shiftwidth()"
 
 -- Enable colorcolumn in all programming files
 vim.api.nvim_create_autocmd("Filetype", {
-    pattern = "python,html,css,scss,typescript,javascript,rust,sh",
+    pattern = "python,html,css,scss,typescript,javascript,rust,sh,lua",
     callback = function ()
         vim.opt.colorcolumn = "81"
     end
