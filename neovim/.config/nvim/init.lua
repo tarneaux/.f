@@ -263,7 +263,6 @@ require("lazy").setup({
                         },
                         c = {
                             function ()
-                                local new_value
                                 if vim.opt.colorcolumn:get()[1] == "79" then
                                     vim.opt.colorcolumn = ""
                                 else
