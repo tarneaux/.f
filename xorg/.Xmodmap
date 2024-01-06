@@ -1,3 +1,5 @@
+! French letters on external keyboard using F13+ keys, see:
+! https://github.com/tarneaux/zmk-config-triboard/blob/main/config/triboard.keymap
 keycode 191 = eacute Eacute
 keycode 192 = egrave Egrave
 keycode 193 = agrave Agrave
