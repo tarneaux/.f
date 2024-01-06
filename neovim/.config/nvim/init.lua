@@ -263,13 +263,13 @@ require("lazy").setup({
                         },
                         c = {
                             function ()
-                                if vim.opt.colorcolumn:get()[1] == "80" then
+                                if vim.opt.colorcolumn:get()[1] == "81" then
                                     vim.opt.colorcolumn = ""
                                 else
-                                    vim.opt.colorcolumn = "80"
+                                    vim.opt.colorcolumn = "81"
                                 end
                             end,
-                            "Toggle colorcolumn between none and 80 for current buffer",
+                            "Toggle colorcolumn between none and 81 for current buffer",
                         },
                         w = {
                             function ()
@@ -509,7 +509,7 @@ vim.api.nvim_create_autocmd("Filetype", {
     pattern = "gitcommit",
     callback = function ()
         vim.opt.textwidth = 72
-        vim.opt.colorcolumn = "72"
+        vim.opt.colorcolumn = "73"
     end
 })
 
@@ -551,6 +551,6 @@ vim.g.pyindent_open_paren = "shiftwidth()"
 vim.api.nvim_create_autocmd("Filetype", {
     pattern = "python,html,css,scss,typescript,javascript,rust,sh",
     callback = function ()
-        vim.opt.colorcolumn = "80"
+        vim.opt.colorcolumn = "81"
     end
 })
