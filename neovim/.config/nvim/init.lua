@@ -263,13 +263,13 @@ require("lazy").setup({
                         },
                         c = {
                             function ()
-                                if vim.opt.colorcolumn:get()[1] == "79" then
+                                if vim.opt.colorcolumn:get()[1] == "80" then
                                     vim.opt.colorcolumn = ""
                                 else
-                                    vim.opt.colorcolumn = "79"
+                                    vim.opt.colorcolumn = "80"
                                 end
                             end,
-                            "Toggle colorcolumn between none and 79 for current buffer",
+                            "Toggle colorcolumn between none and 80 for current buffer",
                         }
                     },
                 }
