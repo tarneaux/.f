@@ -59,7 +59,7 @@ require("lazy").setup({
         init = function ()
             require('orgmode').setup_ts_grammar()
             require'nvim-treesitter.configs'.setup {
-                ensure_installed = {"c", "lua", "rust", "python", "javascript", "typescript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "kotlin", "arduino", "latex", "svelte"},
+                ensure_installed = {"c", "lua", "rust", "python", "javascript", "typescript", "markdown", "yaml", "org", "nix", "html", "css", "scss", "bash", "haskell", "arduino", "latex", "svelte"},
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = {"org", "python"},
@@ -269,7 +269,7 @@ require("lazy").setup({
                                     vim.opt.colorcolumn = "81"
                                 end
                             end,
-                            "Toggle colorcolumn between none and 81 for current buffer",
+                            "toggle colorcolumn between none and 81 for current buffer",
                         },
                         w = {
                             function ()
@@ -279,7 +279,7 @@ require("lazy").setup({
                                     vim.opt.textwidth = 0
                                 end
                             end,
-                            "Toggle text width for current buffer",
+                            "toggle text width for current buffer",
                         },
                     },
                 }
