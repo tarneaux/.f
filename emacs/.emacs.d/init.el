@@ -114,7 +114,7 @@
 
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :config (global-copilot-mode)
+  :config ; (global-copilot-mode)
           (with-eval-after-load 'company
             ;; disable inline previews
             (delq 'company-preview-if-just-one-frontend company-frontends))
