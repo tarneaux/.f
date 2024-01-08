@@ -292,12 +292,8 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-lua/popup.nvim",
-            "joaomsa/telescope-orgmode.nvim",
         },
         init = function()
-            local telescope = require("telescope")
-            -- Telescope orgmode integration: search headings and refile
-            telescope.load_extension("orgmode")
             require("which-key").register({
                 ["<leader>t"] = {
                     name = "Go to",
