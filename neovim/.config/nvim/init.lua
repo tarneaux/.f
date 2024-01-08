@@ -336,8 +336,7 @@ require("lazy").setup({
     -- Gitgutter
     {
         "lewis6991/gitsigns.nvim",
-        opts = {
-        }
+        opts = {}
     },
     -- Auto close brackets that aren't annoying (= closing already closed brackets)
     {
