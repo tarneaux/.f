@@ -1,0 +1,60 @@
+#!/bin/sh -e
+# mvd: mv a directory into a newly created directory with the same name, or
+#     reverse.
+# Examples:
+# mvd -i hello/ moves hello/ into hello/hello/
+# mvd -o hello/hello/ moves hello/hello/ into hello/
+
+usage() {
+    echo "Usage: mvd [-i|-o] <dir>"
+    exit 1
+}
+
+while getopts "io" opt; do
+    case $opt in
+        i) IN=1 ;;
+        o) OUT=1 ;;
+        *) usage ;;
+    esac
+done
+
+shift $((OPTIND - 1)) # Shift off the options and optional --.
+
+if [ -z "$IN" ] && [ -z "$OUT" ] || [ -z "$1" ]; then
+    usage
+fi
+
+if [ -n "$IN" ] && [ -n "$OUT" ]; then
+    echo "Error: -i and -o are mutually exclusive"
+    exit 1
+fi
+
+dir="$1"
+
+if [ -n "$IN" ]; then
+    dirpath="$dir" # Rename the variable for clarity.
+    dirbase="$(basename "$dir")" # Get the directory's name.
+
+    echo "Moving $dirpath to $dirbase.tmp..."
+    mv "$dirpath" "$dirbase.tmp"
+    echo "Creating $dirpath..."
+    mkdir "$dirpath"
+    echo "Moving $dirbase.tmp to $dirpath/$dirbase..."
+    mv "$dirbase.tmp" "$dirpath/$dirbase"
+elif [ -n "$OUT" ]; then
+    innerpath="$dir" # Rename the variable for clarity.
+    outerpath="$(dirname "$dir")" # Get the parent directory path.
+
+    echo "Moving $innerpath to $outerpath.tmp..."
+    mv "$innerpath" "$outerpath.tmp"
+    echo "Moving $outerpath.tmp to $outerpath..."
+    rmdir "$outerpath" || {
+        echo "Error: $outerpath is not empty"
+        echo "Aborting..."
+        echo "Moving $outerpath.tmp back to $innerpath..."
+        mv "$outerpath.tmp" "$innerpath"
+        exit 1
+    }
+    echo "Renaming $outerpath.tmp to $outerpath..."
+    mv "$outerpath.tmp" "$outerpath"
+fi
