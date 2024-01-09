@@ -38,10 +38,9 @@ dofile(awesome_conf_dir .. "signals.lua")
 
 -- Autostart applications
 
-awful.spawn.with_shell("mpd")
--- awful.spawn.with_shell("element-desktop --hidden")
+awful.spawn.with_shell("pgrep mpd || mpd")
+
 awful.spawn.with_shell("pgrep signal-desktop || signal-desktop --start-in-tray")
--- awful.spawn.with_shell("wg-quick up vpn")
 
 -- Keyboard manager: automatically set layouts for the different keyboards I use
 awful.spawn.with_shell("~/.config/scripts/manage-keyboards")
@@ -56,6 +55,6 @@ awful.spawn.with_shell("pgrep unison || ~/.config/scripts/unison-sync")
 
 -- Screen lock
 awful.spawn.with_shell("xset s 300")
--- xss-lock will handle being called multiple times
--- (by exiting if it's already running)
+
+-- xss-lock will exit if already running, no need to pgrep.
 awful.spawn.with_shell("xss-lock ~/.config/scripts/lock")
