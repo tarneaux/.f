@@ -40,6 +40,10 @@ dofile(awesome_conf_dir .. "signals.lua")
 
 awful.spawn.with_shell("pgrep mpd || mpd")
 
+-- Mpris: allows controlling mpd with playerctl (media keys, playing widget).
+-- We sleep before starting to allow mpd to start first.
+awful.spawn.with_shell("pgrep mpd-mpris || {sleep 1; mpd-mpris -host localhost}")
+
 awful.spawn.with_shell("pgrep signal-desktop || signal-desktop --start-in-tray")
 
 -- Keyboard manager: automatically set layouts for the different keyboards I use

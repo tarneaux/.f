@@ -42,6 +42,7 @@ brightnessctl
 xss-lock
 i3lock
 imagemagick
+mpd-mpris # for playerctl to work with mpd
 
 
 ###############################

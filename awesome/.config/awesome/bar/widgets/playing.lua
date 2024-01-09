@@ -6,9 +6,10 @@ local widget = wibox.widget.textbox()
 
 local function daemon ()
     awful.spawn.easy_async_with_shell(
-        'playerctl metadata --format "{{ artist }} - {{ title}}"',
+        'playerctl -p $(playerctl -l | grep mpd) metadata --format "{{ artist }} - {{ title }}"',
         function(stdout)
-            if stdout ~= "" then
+            stdout = stdout:gsub('%\n$', '')
+            if stdout ~= "" and stdout ~= " - " then
                 widget:set_markup("󰝚 " .. stdout)
             else
                 widget:set_markup("󰝚 Not playing")
