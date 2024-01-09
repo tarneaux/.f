@@ -37,4 +37,17 @@ gears.timer {
     callback = daemon
 }
 
-return widget
+-- Put the widget in a container to allow for scrolling when the text is too
+-- long (like this comment :-)).
+local scrolling_widget = wibox.widget {
+   layout = wibox.container.scroll.horizontal,
+   max_size = 300,
+   step_function = wibox.container.scroll.step_functions
+                   .waiting_nonlinear_back_and_forth,
+   speed = 100,
+   widget
+}
+
+scrolling_widget:set_fps(60)
+
+return scrolling_widget
