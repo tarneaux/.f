@@ -75,9 +75,9 @@ local globalkeys = gears.table.join(
     awful.key({}, "XF86AudioMute", function ()          awful.spawn.with_shell("pactl set-sink-mute 0 toggle")  end),
 
     -- Playerctl control (incompatible with mpd below)
-    awful.key({}, "XF86AudioNext", function ()          awful.spawn.with_shell("playerctl next")                end),
-    awful.key({}, "XF86AudioPrev", function ()          awful.spawn.with_shell("playerctl previous")            end),
-    awful.key({}, "XF86AudioPlay", function ()          awful.spawn.with_shell("playerctl play-pause")          end),
+    awful.key({}, "XF86AudioNext", function () awful.spawn.with_shell("playerctl next -p $(playerctl -l | grep mpd | head -n 1)")       end),
+    awful.key({}, "XF86AudioPrev", function () awful.spawn.with_shell("playerctl previous -p $(playerctl -l | grep mpd | head -n 1)")   end),
+    awful.key({}, "XF86AudioPlay", function () awful.spawn.with_shell("playerctl play-pause -p $(playerctl -l | grep mpd | head -n 1)") end),
 
     -- MPD control (incompatible with playerctl above)
     -- awful.key({}, "XF86AudioNext", function ()          awful.spawn.with_shell("mpc next")                      end),
