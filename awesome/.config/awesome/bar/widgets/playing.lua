@@ -6,7 +6,7 @@ local widget = wibox.widget.textbox()
 
 local function daemon ()
     awful.spawn.easy_async_with_shell(
-        'playerctl -p $(playerctl -l | grep mpd) metadata --format "{{ artist }} - {{ title }}"',
+        'playerctl -p $(playerctl -l | grep mpd | head -n 1) metadata --format "{{ artist }} - {{ title }}"',
         function(stdout)
             stdout = stdout:gsub('%\n$', '')
             if stdout ~= "" and stdout ~= " - " then
