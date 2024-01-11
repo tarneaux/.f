@@ -438,8 +438,76 @@ require("lazy").setup({
         "sindrets/diffview.nvim",
         init = function ()
             require("which-key").register({
-                ["<leader>d"] = { "<cmd>DiffviewOpen<cr>", "Open diffview" },
+                ["<leader>D"] = { "<cmd>DiffviewOpen<cr>", "Open diffview" },
             })
+        end
+    },
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+            "mfussenegger/nvim-dap-python",
+        },
+        config = function ()
+            local dap = require("dap")
+            local dapui = require("dapui")
+            dapui.setup()
+
+            vim.keymap.set(
+                'n',
+                '<leader>db',
+                dap.toggle_breakpoint,
+                {desc = "Toggle breakpoint"}
+            )
+            vim.keymap.set(
+                'n',
+                '<leader>dc',
+                dap.continue,
+                {desc = "Continue"}
+            )
+
+            dap.listeners.before.attach.dapui_config = function() dapui.open() end
+            dap.listeners.before.launch.dapui_config = function() dapui.open() end
+            dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
+            dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
+
+            require("dap-python").setup("/usr/bin/python3")
+
+            dap.adapters.lldb = {
+                type = 'executable',
+                command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+                name = 'lldb'
+            }
+
+            dap.configurations.rust = {
+                {
+                    type = 'lldb',
+                    request = 'launch',
+                    name = "Debug",
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = false,
+                    args = {},
+                    runInTerminal = false,
+                },
+                {
+                    type = 'lldb',
+                    request = 'launch',
+                    name = "Debug with arguments",
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = false,
+                    args = function ()
+                        local args = vim.fn.input('Arguments: ', '', 'file')
+                        return vim.split(args, ' ')
+                    end,
+                    runInTerminal = false,
+                }
+            }
         end
     },
 })
