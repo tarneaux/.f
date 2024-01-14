@@ -33,3 +33,5 @@ aerc/.config/aerc/accounts.conf
 xorg/.config/fontconfig/fonts.conf.back
 
 __pycache__/
+
+.zcompdump
