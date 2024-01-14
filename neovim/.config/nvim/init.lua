@@ -471,11 +471,11 @@ require("lazy").setup({
             dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
             dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
 
-            require("dap-python").setup("/usr/bin/python3")
+            require("dap-python").setup("/usr/bin/env python3")
 
             dap.adapters.lldb = {
                 type = 'executable',
-                command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+                command = '/usr/bin/env lldb-vscode', -- adjust as needed, must be absolute path
                 name = 'lldb'
             }
 

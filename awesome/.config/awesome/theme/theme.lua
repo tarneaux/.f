@@ -32,14 +32,14 @@ theme.fg_accent = theme.color11
 theme.fg_inactive = theme.color14
 
 -- ADD THE GAAAAP
-theme.useless_gap = 10
+theme.useless_gap = 5
 theme.gap_single_client = true
 
 theme.bar_bg = theme.background
 theme.bar_fg = theme.foreground
 
-theme.font          = "Fantasque Sans Mono 14"
-theme.bar_height    = 30
+theme.font          = "FantasqueSansM Nerd Font 8"
+theme.bar_height    = 18
 
 theme.bg_normal     = theme.background
 theme.bg_focus      = theme.background

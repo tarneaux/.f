@@ -15,7 +15,7 @@ BAR_HEIGHT_SMALL=18
 USELESS_GAP_LARGE=10
 USELESS_GAP_SMALL=5
 
-external=$(xrandr | grep " connected " | grep -o "DisplayPort-[0-9]*")
+external=$(xrandr | grep " connected " | grep -o "^DP-[0-9]*")
 
 if [ $(echo "$external" | wc -l) -gt 1 ]; then
     echo "More than one external display is connected, doing nothing"
@@ -35,10 +35,10 @@ if [ "$external" = "" ]; then
     useless_gap_to=$USELESS_GAP_LARGE
 
 
-    xrandr --output eDP --auto
+    xrandr --output eDP-1 --auto
     # Disable other displays just in case (they still count as connected and
     # will mess up the size of the desktop and available space for apps)
-    other_displays=$(xrandr | grep -o "DisplayPort-[0-9]*")
+    other_displays=$(xrandr | grep -o "^DP-[0-9]*")
     for display in $other_displays; do
         xrandr --output "$display" --off
     done
@@ -54,7 +54,7 @@ elif [ "$(echo "$external" | wc -l)" -eq 1 ]; then
     useless_gap_from=$USELESS_GAP_LARGE
     useless_gap_to=$USELESS_GAP_SMALL
 
-    xrandr --output eDP --off
+    xrandr --output eDP-1 --off
     xrandr --output "$external" --auto
 fi
 
@@ -62,7 +62,7 @@ fi
 # Every one of these takes a single argument, which is the value to replace the
 # placeholder with.
 alacritty_font_size() {
-    echo "size = ${1}"
+    echo "  size: ${1}"
 }
 qutebrowser_font_size() {
     echo "c.fonts.default_size = \"${1}pt\""
@@ -71,7 +71,7 @@ qutebrowser_zoom() {
     echo "c.zoom.default = \"${1}%\"" 
 }
 awesome_font_size() {
-    echo "theme.font          = \"Fantasque Sans Mono ${1}\"" 
+    echo "theme.font          = \"FantasqueSansM Nerd Font ${1}\"" 
 }
 awesome_bar_height() {
     echo "theme.bar_height    = ${1}" 
@@ -88,7 +88,7 @@ awesome_useless_gap() {
 # - Otherwise, send a notification to the user so they can fix the config file
 
 # Alacritty (reloading is automatic)
-alacritty_config=~/.config/alacritty/alacritty.toml
+alacritty_config=~/.config/alacritty/alacritty.yml
 if grep -q "^$(alacritty_font_size "$font_size_from")$" $alacritty_config; then
     sed -i "s/^$(alacritty_font_size "$font_size_from")$/$(alacritty_font_size "$font_size_to")/" $alacritty_config
 elif ! grep -q "^$(alacritty_font_size "$font_size_to")$" $alacritty_config; then

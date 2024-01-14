@@ -9,11 +9,11 @@ local gears = require("gears")
 local naughty = require("naughty")
 require("awful.hotkeys_popup.keys")
 
-local lain = require("lain")
+-- local lain = require("lain")
 
-local org_quake = lain.util.quake({ app = "alacritty --class OrgQuake", argname = "--title %s -e nvim org/fast.org", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "OrgQuake", settings = function(c) c.sticky = true end })
+-- local org_quake = lain.util.quake({ app = "alacritty --class OrgQuake", argname = "--title %s -e nvim org/fast.org", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "OrgQuake", settings = function(c) c.sticky = true end })
 
-local weechat_quake = lain.util.quake({ app = "alacritty --class WeechatQuake", argname = "--title %s -e ssh cocinero-tarneo -t \"tmux a -t weechat\"", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "WeechatQuake", settings = function(c) c.sticky = true end })
+-- local weechat_quake = lain.util.quake({ app = "alacritty --class WeechatQuake", argname = "--title %s -e ssh cocinero-tarneo -t \"tmux a -t weechat\"", followtag = true, height = 0.9, width = 0.9, vert = "center", horiz = "center", border = 2, name = "WeechatQuake", settings = function(c) c.sticky = true end })
 
 ModKey = "Mod4"
 
@@ -32,9 +32,9 @@ local globalkeys = gears.table.join(
     -- Zathura: PDF viewer. Archlinux package: zathura.
     awful.key({ ModKey,           }, "z", function() awful.spawn.with_shell("zathura") end),
     -- Open org quake terminal
-    awful.key({ ModKey,           }, "j", function() org_quake:toggle() end),
+    -- awful.key({ ModKey,           }, "j", function() org_quake:toggle() end),
     -- Open weechat quake terminal
-    awful.key({ ModKey,           }, "k", function() weechat_quake:toggle() end),
+    -- awful.key({ ModKey,           }, "k", function() weechat_quake:toggle() end),
     -- ncmpcpp: terminal music player/mpd frontend. Archlinux package: ncmpcpp.
     awful.key({ ModKey,           }, "slash", function() awful.spawn.with_shell(TerminalCmd .. " ncmpcpp") end),
 

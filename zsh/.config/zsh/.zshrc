@@ -206,6 +206,11 @@ alias ta="tmux attach -t"
 
 alias rennes="ssh -t cocinero \"./start-tmux\""
 
+# By default nix-shell doesn't use the user's shell for purity.
+# With this, we both start Zsh instead of bash, and also use Zsh in all
+# subsequent shells, e.g. tmux sessions (which would otherwise use bash).
+alias nix-zshell="nix-shell --command 'SHELL=zsh zsh'"
+
 # Little scripts with curl
 wttr() { curl -s "wttr.in/$1" }
 picopinout() { curl -s https://gabmus.org/pico_pinout | bat -p }

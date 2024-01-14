@@ -13,9 +13,9 @@ c.url.start_pages = "https://searx.renn.es"
 config.bind("<Ctrl+p>", "hint links spawn mpv --ytdl-format=bestvideo+bestaudio/best {hint-url}")
 
 # Set default zoom level to 80%
-c.zoom.default = "120%"
+c.zoom.default = "70%"
 
-c.fonts.default_size = "14pt"
+c.fonts.default_size = "8pt"
 
 # Open pdfs in browser
 c.content.pdfjs = False

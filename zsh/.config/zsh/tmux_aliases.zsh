@@ -24,6 +24,11 @@ rtmux() {
 }
 
 htmux() {
+    if ! command -v hugo &> /dev/null ; then
+        nix-shell -p hugo --command "SHELL=$SHELL zsh -ic htmux"
+        return
+    fi
+
 	local session_name="$(__dir_to_tmux_session_name)"
 
 	# Verify we are in a Hugo project

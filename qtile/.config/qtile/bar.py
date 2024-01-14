@@ -41,7 +41,7 @@ my_bar = bar.Bar(
 )
 
 widget_defaults = dict(
-    font="Fantasque Sans Mono",
+    font="FantasqueSansM Nerd Font",
     fontsize=20,
     padding=5,
 )

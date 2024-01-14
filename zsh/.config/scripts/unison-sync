@@ -1,10 +1,10 @@
-#! /bin/bash
+#!/bin/sh
 
 # This script is used to sync a local directory with a remote one using unison.
 # It notifies you when a conflict occurs and allows you to resolve it manually by running the script again with the -i option.
 
 # Change the following variables to suit your needs:
-REMOTE_HOST="cocinero-tarneo" # the remote host to sync with.
+REMOTE_HOST="tarneo@cocinero" # the remote host to sync with.
 REMOTE_DIR="sync"             # the remote directory
 LOCAL_DIR="$HOME/.sync"       # the local directory, preferably an absolute path.
 
