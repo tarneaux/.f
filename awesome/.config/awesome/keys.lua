@@ -57,7 +57,7 @@ local globalkeys = gears.table.join(
     -- awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("sudo shutdown now") end),
 
     -- Hibernate the computer: you need some configuration for this to work. See the archwiki, page on hibernation.
-    awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("systemctl suspend") end),
+    awful.key({ ModKey, "Control" }, "q", function() awful.spawn.with_shell("systemctl hibernate") end),
 
     -- change brightness. Only works on my laptop (asus something)
     awful.key({ }, "XF86MonBrightnessDown", function ()
