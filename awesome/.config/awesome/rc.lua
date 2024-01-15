@@ -60,5 +60,5 @@ awful.spawn.with_shell("pgrep unison || ~/.config/scripts/unison-sync")
 -- Screen lock
 awful.spawn.with_shell("xset s 300")
 
--- xss-lock will exit if already running, no need to pgrep.
-awful.spawn.with_shell("xss-lock ~/.config/scripts/lock")
+-- Lock screen on suspend. Light-locker handles multiple starts gracefully.
+awful.spawn.with_shell("light-locker --lock-on-suspend")
