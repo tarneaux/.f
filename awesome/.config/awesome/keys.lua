@@ -61,9 +61,9 @@ local globalkeys = gears.table.join(
 
     -- change brightness. Only works on my laptop (asus something)
     awful.key({ }, "XF86MonBrightnessDown", function ()
-        awful.spawn.with_shell("brightnessctl -d amdgpu_bl1 set 10%-") end),
+        awful.spawn.with_shell("brightnessctl -d amdgpu_bl0 set 10%-") end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.spawn.with_shell("brightnessctl -d amdgpu_bl1 set +10%") end),
+        awful.spawn.with_shell("brightnessctl -d amdgpu_bl0 set +10%") end),
 
     ----------------
     -- Media keys --
