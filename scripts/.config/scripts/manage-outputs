@@ -96,7 +96,7 @@ elif ! grep -q "^$(alacritty_font_size "$font_size_to")$" $alacritty_config; the
 fi
 
 # Qutebrowser (do everything at once to avoid reloading twice)
-qutebrowser_config=~/.config/qutebrowser/config.py
+qutebrowser_config=~/.config/qutebrowser/dynamic.py
 if grep -q "^$(qutebrowser_font_size "$font_size_from")$" $qutebrowser_config \
         && grep -q "^$(qutebrowser_zoom "$zoom_from")$" $qutebrowser_config; then
     sed -i "s/^$(qutebrowser_font_size "$font_size_from")$/$(qutebrowser_font_size "$font_size_to")/" $qutebrowser_config

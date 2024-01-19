@@ -11,6 +11,7 @@ INITIAL_KEYBOARD_STATE=$(xinput list-props "AT Translated Set 2 keyboard" \
 xinput set-prop "AT Translated Set 2 keyboard" "Device Enabled" "1"
 
 SCREEN_SIZE=$(xrandr \
+    | grep -oP 'connected \d+x\d+' \
     | grep -oP '\d+x\d+' \
     | head -n1)
 
@@ -19,24 +20,28 @@ if [ -z "$SCREEN_SIZE" ]; then
     SCREEN_SIZE="1920x1080"
 fi
 
-WALLPAPER_PATH=~/.config/awesome/theme/walls/lock.png
+WALLPAPER_PATH=$(awesome-client "return require('beautiful').lockwall" \
+    | sed "s/^\s*string \"//" | sed "s/\"$//")
 
-# In the follwing line, the ^ after the size means "fill at least this size"
-# (kinda like the CSS background-size: cover property or the feh --bg-fill
-#   option)
-WALLPAPER_RAW=$(convert $WALLPAPER_PATH \
-    -resize "${SCREEN_SIZE}^" -extent "$SCREEN_SIZE" -gravity west \
-    RGB:-)
+if [ -z "$WALLPAPER_PATH" ]; then
+    echo "Could not get wallpaper path, falling back to" \
+        ".config/awesome/theme/walls/lock.png"
+    WALLPAPER_PATH="$HOME/.config/awesome/theme/walls/nord-earth.png"
+fi
 
 # *Just* before locking, make sure the keyboard layouts and screens are set
 # correcly
 ~/.config/scripts/manage-keyboards &
 ~/.config/scripts/manage-outputs &
 
+# In the follwing line, the ^ after the size means "fill at least this size"
+# (kinda like the CSS background-size: cover property or the feh --bg-fill
+#   option)
 # The --nofork option prevents i3lock from running in the background and so
 # possibly immediately re-disabling the keyboard below
-echo "$WALLPAPER_RAW" \
-    | i3lock --raw "$SCREEN_SIZE":rgb --image /dev/stdin --nofork
+convert $WALLPAPER_PATH \
+    -gravity west -resize "${SCREEN_SIZE}^" -extent "$SCREEN_SIZE" -gaussian-blur 0x4 \
+    RGB:- | i3lock --raw "$SCREEN_SIZE":rgb --image /dev/stdin --nofork
 
 # Restore the state of the internal keyboard
 xinput set-prop "AT Translated Set 2 keyboard" \
