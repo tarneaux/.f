@@ -61,9 +61,6 @@ fi
 # Some functions to make the sed commands more readable.
 # Every one of these takes a single argument, which is the value to replace the
 # placeholder with.
-alacritty_font_size() {
-    echo "  size: ${1}"
-}
 qutebrowser_font_size() {
     echo "c.fonts.default_size = \"${1}pt\""
 }
@@ -86,14 +83,6 @@ awesome_useless_gap() {
 # If it doesn't:
 # - Check if the config file contains the to value. If it does, do nothing
 # - Otherwise, send a notification to the user so they can fix the config file
-
-# Alacritty (reloading is automatic)
-alacritty_config=~/.config/alacritty/alacritty.yml
-if grep -q "^$(alacritty_font_size "$font_size_from")$" $alacritty_config; then
-    sed -i "s/^$(alacritty_font_size "$font_size_from")$/$(alacritty_font_size "$font_size_to")/" $alacritty_config
-elif ! grep -q "^$(alacritty_font_size "$font_size_to")$" $alacritty_config; then
-    notify-send "Couldn't set font size for alacritty while handling outputs" "Please set the font size to $font_size_to in $alacritty_config"
-fi
 
 # Qutebrowser (do everything at once to avoid reloading twice)
 qutebrowser_config=~/.config/qutebrowser/dynamic.py
