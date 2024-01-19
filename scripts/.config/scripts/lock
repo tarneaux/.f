@@ -11,9 +11,9 @@ INITIAL_KEYBOARD_STATE=$(xinput list-props "AT Translated Set 2 keyboard" \
 xinput set-prop "AT Translated Set 2 keyboard" "Device Enabled" "1"
 
 SCREEN_SIZE=$(xrandr \
-    | grep -oP 'connected \d+x\d+' \
+    | grep -oP 'connected( primary)? \d+x\d+' \
     | grep -oP '\d+x\d+' \
-    | head -n1)
+    | tail -n1)
 
 if [ -z "$SCREEN_SIZE" ]; then
     echo "Could not get screen size, falling back to 1920x1080"
