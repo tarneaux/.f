@@ -125,20 +125,16 @@ eval "$(zoxide init zsh)"
 #   Aliases and vars   #
 # ==================== #
 
-# Folder shortcuts with cd ~bonjour
+# Folder shortcuts with hash
+# These are also displayed in the prompt, and the first one that is defined is
+# used in priority if there are multiple matches.
+
 # Config dirs
-hash -d nvim="$HOME/.config/nvim"
-hash -d zsh="$HOME/.config/zsh"
-hash -d tmux="$HOME/.config/tmux"
+hash -d c="$HOME/.config/"
 
 # Repos
 hash -d gw="$HOME/git/web"
 hash -d g="$HOME/git"
-
-# Websites
-hash -d gw="$HOME/git/web/"
-hash -d gwt="$HOME/git/web/tarneo.fr/"
-hash -d gwr="$HOME/git/web/renn.es/"
 
 alias e="emacsclient -a 'emacs --no-window-system'"
 alias vim="nvim"
@@ -147,11 +143,11 @@ alias fm="ranger"
 alias cp="cp -i"
 alias mv='mv -i'
 
-alias ls="exa --icons --group-directories-first"
-alias ll="exa --icons -l --group-directories-first"
-alias tree='exa --tree --icons --group-directories-first'
+alias ls="eza --icons --group-directories-first"
+alias ll="eza --icons -l --group-directories-first"
+alias tree='eza --tree --icons --group-directories-first'
 
-alias rm="/bin/rm -i"
+alias rm="rm -i"
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -170,11 +166,7 @@ alias g="git"
 alias lg="lazygit"
 
 alias ga="git add"
-alias gap="git add -p"
 alias gc="git commit"
-alias gcm="git commit -m"
-alias gca="git commit -a"
-alias gcam="git commit -am"
 alias gp="git push"
 alias gs="git status"
 alias gl="git log --decorate --oneline --graph"
