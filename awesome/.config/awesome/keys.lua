@@ -70,9 +70,9 @@ local globalkeys = gears.table.join(
     ----------------
 
     -- Volume control
-    awful.key({}, "XF86AudioRaiseVolume", function ()   awful.spawn.with_shell("pactl set-sink-volume 0 +2%")   end),
-    awful.key({}, "XF86AudioLowerVolume", function ()   awful.spawn.with_shell("pactl set-sink-volume 0 -2%")   end),
-    awful.key({}, "XF86AudioMute", function ()          awful.spawn.with_shell("pactl set-sink-mute 0 toggle")  end),
+    awful.key({}, "XF86AudioRaiseVolume", function ()   awful.spawn.with_shell("pamixer -i 2")   end),
+    awful.key({}, "XF86AudioLowerVolume", function ()   awful.spawn.with_shell("pamixer -d 2")   end),
+    awful.key({}, "XF86AudioMute", function ()          awful.spawn.with_shell("pamixer -t")  end),
 
     -- Playerctl control (incompatible with mpd below)
     awful.key({}, "XF86AudioNext", function () awful.spawn.with_shell("playerctl next -p $(playerctl -l | grep mpd | head -n 1)")       end),
