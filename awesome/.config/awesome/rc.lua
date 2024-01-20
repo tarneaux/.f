@@ -46,13 +46,9 @@ awful.spawn.with_shell("pgrep mpd-mpris || {sleep 1; mpd-mpris -host localhost}"
 
 awful.spawn.with_shell("pgrep signal-desktop || signal-desktop --start-in-tray")
 
--- Keyboard manager: automatically set layouts for the different keyboards I use
-awful.spawn.with_shell("~/.config/scripts/manage-keyboards")
-
--- Output manager: automatically set outputs for the different monitors I use
--- This may restart awesomewm automatically, but should do it only when changing outputs.
--- (i.e. not start a recursive loop)
-awful.spawn.with_shell("~/.config/scripts/manage-outputs")
+-- Keyboard & monitor manager, automatically runs autorandr and setxkbmap
+-- when a new keyboard or monitor is plugged in/out.
+awful.spawn.with_shell("~/.config/scripts/manager")
 
 -- Unison sync script: syncs files with my server.
 awful.spawn.with_shell("pgrep unison || ~/.config/scripts/unison-sync")

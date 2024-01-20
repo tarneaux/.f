@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Automatically run autorandr & set keyboard layout on udev events.
+
+# Verify that no other instance is running.
+pgrep -flx "bash $0" | grep -vq "$$" && {
+    echo "Another instance of $0 is already running."
+    exit 1
+}
+
+prev_keyboards=""
+
+while true; do
+    autorandr --change &
+
+    if [ "$prev_keyboards" != "$(xinput -list)" ]; then
+        prev_keyboards="$(xinput -list)"
+        echo "Setting keyboard layout..."
+        ~/.config/scripts/manage-keyboards &
+    fi
+
+    echo "Waiting for event..."
+    until udevadm monitor | grep -m 2 UDEV; do :; done
+
+    echo "Waiting for event to settle..."
+    while true; do
+        # Wait for event but with a 1s timeout.
+        # If we reach the timeout, exit the loop.
+        timeout 1 until udevadm monitor "|" grep -m 2 UDEV";" do :";" done || break
+    done
+done
