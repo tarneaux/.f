@@ -19,9 +19,9 @@ local function daemon ()
             -- Only get the first line, without the newline
             stdout = stdout:gsub("\n.*", "")
             if stdout ~= "" and stdout ~= " - " then
-                title:set_markup(stdout)
+                title:set_text(stdout)
             else
-                title:set_markup("Not playing")
+                title:set_text("Not playing")
             end
         end
     )
