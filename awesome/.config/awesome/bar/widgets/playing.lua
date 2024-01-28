@@ -2,31 +2,34 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 
-local widget = wibox.widget.textbox()
+local icon = wibox.widget.textbox("󰝚 ")
+local title = wibox.widget.textbox()
+local cover = wibox.widget {
+    resize = true,
+    forced_height = 300,
+    forced_width = 300,
+    clip_shape = gears.shape.rounded_rect,
+    widget = wibox.widget.imagebox
+}
 
 local function daemon ()
     awful.spawn.easy_async_with_shell(
-        'playerctl -p $(playerctl -l | grep mpd | head -n 1) metadata --format "{{ artist }} - {{ title }}"',
+        'mpc current --format "%artist% - %title%"',
         function(stdout)
-            stdout = stdout:gsub('%\n$', '')
+            -- Only get the first line, without the newline
+            stdout = stdout:gsub("\n.*", "")
             if stdout ~= "" and stdout ~= " - " then
-                widget:set_markup("󰝚 " .. stdout)
+                title:set_markup(stdout)
             else
-                widget:set_markup("󰝚 Not playing")
+                title:set_markup("Not playing")
             end
         end
     )
 end
 
-local function toggle ()
-    awful.spawn.with_shell(
-        'playerctl play-pause'
-    )
-end
-
-widget:connect_signal("button::press", function(_, _, _, button)
+title:connect_signal("button::press", function(_, _, _, button)
     if button == 1 then
-        toggle()
+        awful.spawn.with_shell('mpc toggle')
     end
 end)
 
@@ -37,17 +40,23 @@ gears.timer {
     callback = daemon
 }
 
--- Put the widget in a container to allow for scrolling when the text is too
+-- Put the title in a container to allow for scrolling when the text is too
 -- long (like this comment :-)).
-local scrolling_widget = wibox.widget {
+local scrolling_title = wibox.widget {
    layout = wibox.container.scroll.horizontal,
    max_size = 300,
    step_function = wibox.container.scroll.step_functions
                    .waiting_nonlinear_back_and_forth,
    speed = 100,
-   widget
+   title
 }
 
-scrolling_widget:set_fps(60)
+scrolling_title:set_fps(60)
 
-return scrolling_widget
+local main = wibox.widget {
+    icon,
+    scrolling_title,
+    layout = wibox.layout.fixed.horizontal
+}
+
+return main
