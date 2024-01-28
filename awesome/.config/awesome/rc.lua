@@ -37,13 +37,6 @@ dofile(awesome_conf_dir .. "signals.lua")
 
 
 -- Autostart applications
-
-awful.spawn.with_shell("pgrep mpd || mpd")
-
--- Mpris: allows controlling mpd with playerctl (media keys, playing widget).
--- We sleep before starting to allow mpd to start first.
-awful.spawn.with_shell("pgrep mpd-mpris || {sleep 1; mpd-mpris -host localhost}")
-
 awful.spawn.with_shell("pgrep signal-desktop || signal-desktop --start-in-tray")
 
 -- Keyboard & monitor manager, automatically runs autorandr and setxkbmap
@@ -53,8 +46,7 @@ awful.spawn.with_shell("~/.config/scripts/manager")
 -- Unison sync script: syncs files with my server.
 awful.spawn.with_shell("pgrep unison || ~/.config/scripts/unison-sync")
 
--- Screen lock
+-- Set the screen to turn off & lock after 5 minutes of inactivity.
 awful.spawn.with_shell("xset s 300")
-
 -- xss-lock will exit if already running, no need to pgrep.
 awful.spawn.with_shell("xss-lock ~/.config/scripts/lock")
