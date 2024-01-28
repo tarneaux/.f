@@ -15,9 +15,9 @@ end
 local function daemon ()
     get_enabled(function(status)
         if status then
-            widget:set_text(" on")
+            widget:set_text("  on")
         else
-            widget:set_text(" off")
+            widget:set_text("  off")
         end
     end)
 end
