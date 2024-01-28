@@ -16,7 +16,7 @@ local function daemon ()
     awful.spawn.easy_async_with_shell(
         'mpc current --format "%artist% - %title%"',
         function(stdout)
-            -- Only get the first line, without the newline
+            -- Remove all lines after the first one
             stdout = stdout:gsub("\n.*", "")
             if stdout ~= "" and stdout ~= " - " then
                 title:set_text(stdout)
