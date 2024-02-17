@@ -1,5 +1,7 @@
 # .f
 
+These were my configuration files for Linux. Nowadays I have switched to using the Home-Manager Nix module instead; you can find these in my [nix repo](https://github.com/tarneaux/nix).
+
 ## Screenshot
 ![Screenshot 1](https://github.com/tarneaux/.f/assets/62650051/c366c415-835c-4196-aab2-966fb2922334)
 ![Screenshot 2](https://github.com/tarneaux/.f/assets/62650051/0c9e6ac6-a562-432a-aee0-089f7f22302b)
